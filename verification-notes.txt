@@ -1,0 +1,27 @@
+Verification Notes - Blog & Navbar Features
+=============================================
+
+1. Navbar: About and Blog links CONFIRMED
+   - Desktop nav shows: Features, How It Works, Why Suddeco, Pricing, FAQ, About, Blog
+   - Mobile nav includes both page links
+   - Sign In and Get Started Free CTAs remain in place
+
+2. Blog Listing Page (/blog): CONFIRMED
+   - Hero section with "Industry Knowledge & Expert Insights"
+   - Category filter pills: All, AI & Technology, Estimation, Project Management, Industry Standards, Business Growth
+   - 6 article cards with cover gradients, category badges, dates, read times
+   - SEO title: "Blog | Suddeco AI - Construction Industry Insights"
+
+3. Blog Article Page (/blog/:slug): CONFIRMED
+   - Full article content renders with headings and paragraphs
+   - Back to Blog navigation
+   - Category badge, author, date, read time
+   - Tags displayed at bottom
+   - Related Articles section (same category)
+   - CTA section at bottom
+   - SEO title: "How AI Is Transforming Construction Estimation in 2026 | Suddeco AI Blog"
+
+4. Footer: Blog link CONFIRMED
+   - Quick Links section includes Blog link
+
+All 51 vitest tests passing (5 test files)

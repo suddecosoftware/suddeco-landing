@@ -1,0 +1,43 @@
+# Todo
+
+- [x] Basic landing page layout with all sections
+- [x] TopBar with phone, email, sign in/up links
+- [x] Navbar with logo, nav links, and CTA buttons
+- [x] Hero section with headline, subtext, and CTAs
+- [x] Features grid (6 cards) with AI Drawing Analysis, Costed Scope, etc.
+- [x] How It Works (4 steps) with interactive images
+- [x] Why Suddeco stats/trust section with animated counters
+- [x] Testimonials with star ratings
+- [x] Pricing (3 tiers) with token system
+- [x] FAQ accordion
+- [x] Contact form with name, email, phone, company, message
+- [x] Footer with company info, quick links, contact details
+- [x] CTA Banner section
+- [x] Product demo dashboard mockup in hero
+- [x] TrustedBy logo strip (RICS, CIOB, RIBA, etc.)
+- [x] All auth links point to https://my.suddeco.com
+- [x] Generate product demo video/showcase using AI
+- [x] ProductShowcase component with auto-cycling platform screenshots
+- [x] Upgrade to web-db-user for contact form backend
+- [x] Build contact form API endpoint to store submissions and notify owner
+- [x] Vitest tests for contact form endpoint (5 tests passing)
+- [x] Configure www.suddeco.com custom domain (DNS CNAME updated in GoDaddy)
+- [x] Create sign-up page improvement guide for my.suddeco.com
+- [x] Test everything and save final checkpoint
+- [x] Update address to 662 High Road, London N12 0NL across all components
+- [x] Remove FMB from TrustedBy logo strip
+- [x] Create professional Terms of Service page (16 sections, strong IP/copyright protection, Berne Convention/WIPO/TRIPS)
+- [x] Create professional Privacy Policy page (14 sections, UK GDPR compliant, ICO reference)
+- [x] Link Terms and Privacy from footer (routes in App.tsx, links in Footer.tsx)
+- [x] Vitest tests for legal pages (8 tests passing, 14 total)
+- [x] Implement cookie consent banner at bottom of page linking to privacy policy
+- [x] Add SEO-optimized meta tags for Terms and Privacy pages (SEOHead component with title, description, canonical, OG tags)
+- [x] Create dedicated About Us page with company mission, values, and history
+- [x] Add About Us link to main navigation bar (desktop and mobile)
+- [x] Create blog listing page with article cards
+- [x] Create blog article page template with SEO meta tags
+- [x] Write 6 construction industry blog articles for SEO (AI estimation, NRM1 guide, digital transformation, cost reduction, project management, SME growth)
+- [x] Add Blog link to navbar and footer
+- [x] Create sitemap.xml with all pages and blog article URLs (+ robots.txt)
+- [x] Add JSON-LD Article structured data to blog article pages
+- [x] Add JSON-LD Organization + WebSite structured data to homepage
