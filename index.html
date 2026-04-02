@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suddeco — AI Construction Scope of Works Platform | UK</title>
+  <meta name="description" content="Generate a full scope of works from architectural drawings in 2 minutes. AI-powered. Used by UK construction professionals. Free trial.">
+  <meta property="og:title" content="Suddeco — AI Scope of Works Platform">
+  <meta property="og:description" content="Generate a scope of works from drawings in 2 minutes. Used by UK construction professionals.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://suddeco.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: { 900: '#0F1F3D', 800: '#1E3A5F', 700: '#2D4F7E' },
+            amber: { 400: '#FBBF24', 500: '#F59E0B', 600: '#D97706' }
+          },
+          fontFamily: { sans: ['Inter', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .gradient-hero { background: linear-gradient(135deg, #0F1F3D 0%, #1E3A5F 50%, #2D4F7E 100%); }
+    .gradient-card { background: linear-gradient(135deg, #1E3A5F, #0F1F3D); }
+    .glow { box-shadow: 0 0 40px rgba(245, 158, 11, 0.3); }
+    @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+    .float { animation: float 4s ease-in-out infinite; }
+    @keyframes pulse-ring { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(1.5); opacity: 0; } }
+  </style>
+</head>
+<body class="font-sans bg-white text-slate-900 antialiased">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-navy-900/95 backdrop-blur-sm border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 bg-amber-500 rounded-lg flex items-center justify-center">
+          <span class="text-white font-black text-sm">S</span>
+        </div>
+        <span class="text-white font-bold text-xl">Suddeco</span>
+      </div>
+      <div class="hidden md:flex items-center gap-8 text-sm text-white/70">
+        <a href="#features" class="hover:text-white transition-colors">Features</a>
+        <a href="#how-it-works" class="hover:text-white transition-colors">How it Works</a>
+        <a href="#pricing" class="hover:text-white transition-colors">Pricing</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="https://my.suddeco.com/login" class="text-sm text-white/70 hover:text-white transition-colors hidden md:block">Sign in</a>
+        <a href="https://my.suddeco.com/register" class="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-white text-sm font-semibold rounded-lg transition-colors glow">
+          Start free trial →
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="gradient-hero min-h-screen flex items-center pt-20 pb-16 relative overflow-hidden">
+    <!-- Background grid -->
+    <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 60px 60px;"></div>
+
+    <div class="max-w-7xl mx-auto px-6 text-center relative">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-amber-400 text-sm font-medium mb-8 border border-amber-400/30">
+        <span class="w-2 h-2 bg-amber-400 rounded-full animate-pulse"></span>
+        Trusted by UK construction professionals
+      </div>
+
+      <h1 class="text-5xl md:text-7xl font-black text-white mb-6 leading-[1.05] tracking-tight">
+        Generate a scope<br>
+        <span class="text-amber-400">of works in 2 minutes</span>
+      </h1>
+
+      <p class="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto mb-12 leading-relaxed">
+        AI reads your architectural drawings. Extracts every room. Costs every task.<br class="hidden md:block">
+        Your QS just got an AI co-pilot.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+        <a href="https://my.suddeco.com/register"
+           class="w-full sm:w-auto px-8 py-4 bg-amber-500 hover:bg-amber-400 text-white font-bold text-lg rounded-xl transition-all glow transform hover:-translate-y-0.5">
+          Start free — no card needed →
+        </a>
+        <a href="#how-it-works" class="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold text-lg rounded-xl transition-all border border-white/20">
+          See how it works
+        </a>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-3 gap-8 max-w-lg mx-auto">
+        <div class="text-center">
+          <div class="text-3xl font-black text-amber-400">2 min</div>
+          <div class="text-sm text-white/60 mt-1">Per project</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-black text-amber-400">302+</div>
+          <div class="text-sm text-white/60 mt-1">Updates shipped</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-black text-amber-400">£0</div>
+          <div class="text-sm text-white/60 mt-1">To get started</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem / Solution -->
+  <section class="py-24 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-black text-navy-800 mb-4">The old way vs. the Suddeco way</h2>
+        <p class="text-xl text-slate-500">Construction hasn't changed. The tools have.</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div class="bg-red-50 border border-red-200 rounded-2xl p-8">
+          <div class="text-4xl mb-4">😤</div>
+          <h3 class="text-xl font-bold text-red-800 mb-4">Before Suddeco</h3>
+          <ul class="space-y-3 text-red-700">
+            <li class="flex items-start gap-2"><span class="mt-1">✗</span> 2 weeks reading drawings manually</li>
+            <li class="flex items-start gap-2"><span class="mt-1">✗</span> Spreadsheets with pricing errors</li>
+            <li class="flex items-start gap-2"><span class="mt-1">✗</span> Missed items discovered on site</li>
+            <li class="flex items-start gap-2"><span class="mt-1">✗</span> Scope sent by email as Word doc</li>
+          </ul>
+        </div>
+        <div class="gradient-card rounded-2xl p-8 text-white">
+          <div class="text-4xl mb-4">🚀</div>
+          <h3 class="text-xl font-bold text-amber-400 mb-4">With Suddeco</h3>
+          <ul class="space-y-3 text-white/80">
+            <li class="flex items-start gap-2"><span class="text-amber-400 mt-1">✓</span> 2 minutes — AI reads all pages</li>
+            <li class="flex items-start gap-2"><span class="text-amber-400 mt-1">✓</span> UK-benchmarked costs, auto-calculated</li>
+            <li class="flex items-start gap-2"><span class="text-amber-400 mt-1">✓</span> AI flags missing items before you do</li>
+            <li class="flex items-start gap-2"><span class="text-amber-400 mt-1">✓</span> Professional PDF sent automatically</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-black text-navy-800 mb-4">Everything you need, nothing you don't</h2>
+        <p class="text-xl text-slate-500 max-w-2xl mx-auto">Built specifically for UK construction. Not a generic tool dressed up.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="p-8 rounded-2xl border border-slate-100 hover:border-amber-200 hover:shadow-lg transition-all group">
+          <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-amber-500 transition-colors">
+            <span class="text-2xl">📐</span>
+          </div>
+          <h3 class="text-xl font-bold text-navy-800 mb-3">AI Drawing Analysis</h3>
+          <p class="text-slate-500">Upload any PDF. AI extracts every room, structural element, and service run across all pages and floors simultaneously.</p>
+        </div>
+        <div class="p-8 rounded-2xl border border-amber-200 bg-amber-50 shadow-lg">
+          <div class="w-12 h-12 bg-amber-500 rounded-xl flex items-center justify-center mb-6">
+            <span class="text-2xl">📋</span>
+          </div>
+          <h3 class="text-xl font-bold text-navy-800 mb-3">Scope Generation</h3>
+          <p class="text-slate-500">Full scope of works with 50+ tasks per project. Labour and materials broken down separately. UK rates built in.</p>
+        </div>
+        <div class="p-8 rounded-2xl border border-slate-100 hover:border-amber-200 hover:shadow-lg transition-all group">
+          <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-amber-500 transition-colors">
+            <span class="text-2xl">💰</span>
+          </div>
+          <h3 class="text-xl font-bold text-navy-800 mb-3">Cost Benchmarks</h3>
+          <p class="text-slate-500">Know if your sub-contractor is 20% over before you meet them. Real UK market rates for every trade.</p>
+        </div>
+        <div class="p-8 rounded-2xl border border-slate-100 hover:border-amber-200 hover:shadow-lg transition-all group">
+          <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-amber-500 transition-colors">
+            <span class="text-2xl">🧠</span>
+          </div>
+          <h3 class="text-xl font-bold text-navy-800 mb-3">JARVIS AI Director</h3>
+          <p class="text-slate-500">"What's the total electrical package?" — ask anything. JARVIS knows every project, every cost, every calendar event.</p>
+        </div>
+        <div class="p-8 rounded-2xl border border-slate-100 hover:border-amber-200 hover:shadow-lg transition-all group">
+          <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-amber-500 transition-colors">
+            <span class="text-2xl">👥</span>
+          </div>
+          <h3 class="text-xl font-bold text-navy-800 mb-3">Team Collaboration</h3>
+          <p class="text-slate-500">Add your QS, PM, and site manager. Each sees only what they need. Clients see their view — no margins exposed.</p>
+        </div>
+        <div class="p-8 rounded-2xl border border-slate-100 hover:border-amber-200 hover:shadow-lg transition-all group">
+          <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-amber-500 transition-colors">
+            <span class="text-2xl">📄</span>
+          </div>
+          <h3 class="text-xl font-bold text-navy-800 mb-3">Auto PDF Export</h3>
+          <p class="text-slate-500">Branded scope PDF emailed automatically on completion. Professional enough to send straight to your client.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it Works -->
+  <section id="how-it-works" class="py-24 bg-navy-900 text-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-black mb-4">From drawings to scope in <span class="text-amber-400">3 steps</span></h2>
+        <p class="text-xl text-white/60">No training needed. No setup. Just upload and go.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center relative">
+          <div class="w-16 h-16 bg-amber-500 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6 float">📁</div>
+          <div class="text-5xl font-black text-white/10 mb-3">01</div>
+          <h3 class="text-xl font-bold mb-3">Upload your drawings</h3>
+          <p class="text-white/60">Drag and drop any PDF — architectural, structural, services. All formats, all page counts. AI handles the rest.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-amber-500 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6 float" style="animation-delay: 1s">⚡</div>
+          <div class="text-5xl font-black text-white/10 mb-3">02</div>
+          <h3 class="text-xl font-bold mb-3">AI extracts everything</h3>
+          <p class="text-white/60">Rooms, dimensions, structural elements, M&E runs — found, measured, and mapped in under 2 minutes per drawing set.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-amber-500 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6 float" style="animation-delay: 2s">✅</div>
+          <div class="text-5xl font-black text-white/10 mb-3">03</div>
+          <h3 class="text-xl font-bold mb-3">Get your scope</h3>
+          <p class="text-white/60">Full costed scope of works. Review, adjust, export as PDF. Send to your client or sub-contractors immediately.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-black text-navy-800 mb-4">Simple pricing. Massive ROI.</h2>
+        <p class="text-xl text-slate-500">At 5 projects a month, Suddeco saves your team 50+ hours. What's your hourly rate?</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <!-- Starter -->
+        <div class="border-2 border-slate-200 rounded-2xl p-8 hover:border-slate-300 transition-all">
+          <h3 class="text-2xl font-bold text-navy-800 mb-2">Starter</h3>
+          <div class="text-5xl font-black text-navy-800 my-6">£79<span class="text-lg font-normal text-slate-400">/mo</span></div>
+          <p class="text-slate-500 mb-6">500 AI credits per month</p>
+          <ul class="space-y-3 text-slate-600 mb-8">
+            <li class="flex gap-2"><span class="text-green-500">✓</span> Unlimited projects</li>
+            <li class="flex gap-2"><span class="text-green-500">✓</span> PDF drawing analysis</li>
+            <li class="flex gap-2"><span class="text-green-500">✓</span> Scope generation</li>
+            <li class="flex gap-2"><span class="text-green-500">✓</span> PDF export</li>
+            <li class="flex gap-2"><span class="text-green-500">✓</span> Email support</li>
+          </ul>
+          <a href="https://my.suddeco.com/register" class="block w-full text-center py-3 rounded-xl border-2 border-navy-800 text-navy-800 font-semibold hover:bg-navy-800 hover:text-white transition-all">
+            Get started
+          </a>
+        </div>
+        <!-- Professional -->
+        <div class="border-2 border-amber-400 rounded-2xl p-8 relative shadow-2xl shadow-amber-100 scale-105">
+          <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-amber-500 text-white text-xs font-bold px-4 py-1.5 rounded-full">MOST POPULAR</div>
+          <h3 class="text-2xl font-bold text-navy-800 mb-2">Professional</h3>
+          <div class="text-5xl font-black text-navy-800 my-6">£169<span class="text-lg font-normal text-slate-400">/mo</span></div>
+          <p class="text-slate-500 mb-6">1,500 AI credits per month</p>
+          <ul class="space-y-3 text-slate-600 mb-8">
+            <li class="flex gap-2"><span class="text-green-500">✓</span> Everything in Starter</li>
+            <li class="flex gap-2"><span class="text-amber-500 font-bold">✓</span> <strong>JARVIS AI Director</strong></li>
+            <li class="flex gap-2"><span class="text-amber-500 font-bold">✓</span> <strong>Voice commands</strong></li>
+            <li class="flex gap-2"><span class="text-green-500">✓</span> Team members</li>
+            <li class="flex gap-2"><span class="text-green-500">✓</span> Priority support</li>
+          </ul>
+          <a href="https://my.suddeco.com/register" class="block w-full text-center py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-white font-bold transition-all glow">
+            Go Professional →
+          </a>
+        </div>
+        <!-- Business -->
+        <div class="border-2 border-slate-200 rounded-2xl p-8 hover:border-slate-300 transition-all">
+          <h3 class="text-2xl font-bold text-navy-800 mb-2">Business</h3>
+          <div class="text-5xl font-black text-navy-800 my-6">£329<span class="text-lg font-normal text-slate-400">/mo</span></div>
+          <p class="text-slate-500 mb-6">3,500 AI credits per month</p>
+          <ul class="space-y-3 text-slate-600 mb-8">
+            <li class="flex gap-2"><span class="text-green-500">✓</span> Everything in Professional</li>
+            <li class="flex gap-2"><span class="text-green-500">✓</span> White-label exports</li>
+            <li class="flex gap-2"><span class="text-green-500">✓</span> API access</li>
+            <li class="flex gap-2"><span class="text-green-500">✓</span> Dedicated support</li>
+            <li class="flex gap-2"><span class="text-green-500">✓</span> Custom onboarding</li>
+          </ul>
+          <a href="https://my.suddeco.com/register" class="block w-full text-center py-3 rounded-xl border-2 border-navy-800 text-navy-800 font-semibold hover:bg-navy-800 hover:text-white transition-all">
+            Scale up
+          </a>
+        </div>
+      </div>
+      <p class="text-center text-slate-400 mt-8 text-sm">14-day free trial. No credit card required. Cancel anytime. All prices inclusive of VAT.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-24 bg-slate-50">
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="text-4xl font-black text-navy-800 text-center mb-16">Common questions</h2>
+      <div class="space-y-6">
+        <details class="bg-white rounded-xl p-6 border border-slate-200 group cursor-pointer">
+          <summary class="font-semibold text-navy-800 text-lg flex justify-between items-center">
+            How long does AI extraction take?
+            <span class="text-amber-500 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="mt-4 text-slate-500">Under 2 minutes for most drawing sets. A 15-page architectural PDF with multiple floors takes about 90 seconds. Complex 50+ page sets can take up to 4 minutes.</p>
+        </details>
+        <details class="bg-white rounded-xl p-6 border border-slate-200 group cursor-pointer">
+          <summary class="font-semibold text-navy-800 text-lg flex justify-between items-center">
+            What drawing formats do you support?
+            <span class="text-amber-500 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="mt-4 text-slate-500">PDF is the primary format — any PDF from AutoCAD, Revit, Plan7Architect, or scanned drawings. Architectural, structural, and services drawings all supported.</p>
+        </details>
+        <details class="bg-white rounded-xl p-6 border border-slate-200 group cursor-pointer">
+          <summary class="font-semibold text-navy-800 text-lg flex justify-between items-center">
+            Can my whole team use it?
+            <span class="text-amber-500 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="mt-4 text-slate-500">Yes. Add your QS, PM, site manager, and clients. Each role sees only what's relevant — clients never see your margins.</p>
+        </details>
+        <details class="bg-white rounded-xl p-6 border border-slate-200 group cursor-pointer">
+          <summary class="font-semibold text-navy-800 text-lg flex justify-between items-center">
+            Is my project data secure?
+            <span class="text-amber-500 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="mt-4 text-slate-500">All data is stored on Azure UK South servers, compliant with UK GDPR. Your drawings and project data are never used to train AI models.</p>
+        </details>
+        <details class="bg-white rounded-xl p-6 border border-slate-200 group cursor-pointer">
+          <summary class="font-semibold text-navy-800 text-lg flex justify-between items-center">
+            Can I cancel anytime?
+            <span class="text-amber-500 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="mt-4 text-slate-500">Yes, cancel from your account settings at any time. No contracts, no lock-in. Your data is available to export for 30 days after cancellation.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 gradient-hero text-white text-center relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 30% 50%, rgba(245,158,11,0.4) 0%, transparent 50%), radial-gradient(circle at 70% 50%, rgba(245,158,11,0.2) 0%, transparent 50%);"></div>
+    <div class="max-w-4xl mx-auto px-6 relative">
+      <h2 class="text-5xl font-black mb-6">Ready to save 10 hours<br>on your next project?</h2>
+      <p class="text-xl text-white/70 mb-10">Join UK construction professionals who have already switched. Free trial, no card required.</p>
+      <a href="https://my.suddeco.com/register"
+         class="inline-block px-10 py-5 bg-amber-500 hover:bg-amber-400 text-white font-bold text-xl rounded-2xl transition-all glow transform hover:-translate-y-1">
+        Start your free trial →
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-navy-900 text-white/60 py-16">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-4 gap-8 mb-12">
+        <div class="md:col-span-2">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-8 h-8 bg-amber-500 rounded-lg flex items-center justify-center">
+              <span class="text-white font-black text-sm">S</span>
+            </div>
+            <span class="text-white font-bold text-xl">Suddeco</span>
+          </div>
+          <p class="text-sm leading-relaxed max-w-sm">AI-powered construction management for UK professionals. Generate scope of works from drawings in 2 minutes.</p>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-4">Product</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#features" class="hover:text-white transition-colors">Features</a></li>
+            <li><a href="#pricing" class="hover:text-white transition-colors">Pricing</a></li>
+            <li><a href="https://my.suddeco.com/register" class="hover:text-white transition-colors">Free trial</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-4">Company</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/terms" class="hover:text-white transition-colors">Terms of Service</a></li>
+            <li><a href="/privacy" class="hover:text-white transition-colors">Privacy Policy</a></li>
+            <li><a href="mailto:sales@suddeco.com" class="hover:text-white transition-colors">sales@suddeco.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
+        <p>© 2026 Suddeco Limited. All rights reserved.</p>
+        <p>Built in London 🇬🇧 for UK construction professionals</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
