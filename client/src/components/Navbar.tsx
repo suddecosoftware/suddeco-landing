@@ -9,7 +9,7 @@ import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const LOGO_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663376220736/hxUNuu6tD9vnvPxaxPp9QU/SUDDECO_Primarylogo-Black_134e2e98.png";
+  "https://files.manuscdn.com/user_upload_by_module/session_file/310519663376220736/gssmxFFgmcNomrDZ.png";
 
 const SECTION_LINKS = [
   { label: "Features", href: "#features" },
@@ -78,7 +78,7 @@ export default function Navbar() {
           <img
             src={LOGO_URL}
             alt="Suddeco"
-            className="h-9 md:h-10 brightness-0 invert"
+            className="h-9 md:h-10"
           />
         </a>
 

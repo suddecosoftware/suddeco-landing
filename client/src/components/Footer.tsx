@@ -6,7 +6,7 @@
 import { Phone, Mail, MapPin, ArrowUp } from "lucide-react";
 
 const LOGO_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663376220736/hxUNuu6tD9vnvPxaxPp9QU/SUDDECO_Primarylogo-Black_134e2e98.png";
+  "https://files.manuscdn.com/user_upload_by_module/session_file/310519663376220736/gssmxFFgmcNomrDZ.png";
 
 const quickLinks = [
   { label: "Features", href: "#features" },
@@ -48,7 +48,7 @@ export default function Footer() {
               <img
                 src={LOGO_URL}
                 alt="Suddeco"
-                className="h-9 brightness-0 invert"
+                className="h-9"
               />
             </a>
             <p className="text-slate-400 text-sm leading-relaxed mb-4">
