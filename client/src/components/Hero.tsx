@@ -10,8 +10,7 @@ import { motion } from "framer-motion";
 const HERO_BG =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663376220736/fyZTmfuczokgJFgJqZSFsM/hero-bg-AnykWVa2EiH2NNgPBsDyqc.webp";
 
-const DEMO_DASHBOARD =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663376220736/fyZTmfuczokgJFgJqZSFsM/demo-dashboard-cqe2vDta2ETnHGvTQpwc9S.webp";
+const DEMO_DASHBOARD = "/images/suddeco-dashboard-hero.webp";
 
 export default function Hero() {
   return (
