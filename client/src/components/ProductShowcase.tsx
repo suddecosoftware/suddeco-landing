@@ -9,24 +9,39 @@ import { Play, Pause } from "lucide-react";
 
 const SCREENS = [
   {
-    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663376220736/fyZTmfuczokgJFgJqZSFsM/demo-dashboard-cqe2vDta2ETnHGvTQpwc9S.webp",
-    label: "AI Drawing Analysis",
-    description: "Upload drawings and let AI extract measurements automatically",
-  },
-  {
     src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663376220736/fyZTmfuczokgJFgJqZSFsM/how-it-works-ai-kH3Y5tuRskmdqopMTsiLQS.webp",
     label: "Intelligent Extraction",
     description: "AI identifies rooms, dimensions, and structural elements",
   },
   {
-    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663376220736/fyZTmfuczokgJFgJqZSFsM/how-it-works-scope-LRykjPSMhz5XRUTScCmvRz.webp",
-    label: "Costed Scope of Works",
-    description: "Generate phase-based task lists with NRM1/BCIS pricing",
+    src: "/images/suddeco-takeoff-hero.webp",
+    label: "AI Drawing Analysis",
+    description: "Upload construction drawings and AI detects rooms, shells, and measurements",
   },
   {
-    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663376220736/fyZTmfuczokgJFgJqZSFsM/how-it-works-export-kzdwxaMSnTB7y9AUKDEYrK.webp",
-    label: "Export & Reports",
-    description: "Premium Excel and branded PDF reports for clients",
+    src: "/images/suddeco-scope-hero.webp",
+    label: "Costed Scope of Works",
+    description: "AI generates 800+ tasks with UK labour and materials pricing per room",
+  },
+  {
+    src: "/images/suddeco-dashboard-hero.webp",
+    label: "Project Dashboard",
+    description: "Track contract value, floor breakdown, and project progress at a glance",
+  },
+  {
+    src: "/images/suddeco-ai-assistant.webp",
+    label: "AI Assistant & Analytics",
+    description: "Chat with your project data, get cost breakdowns, and spot missing items",
+  },
+  {
+    src: "/images/suddeco-areas.webp",
+    label: "Areas & Rooms",
+    description: "View all detected rooms with floor areas, wall areas, and shell boundaries",
+  },
+  {
+    src: "/images/suddeco-integrations.webp",
+    label: "Integrations Hub",
+    description: "Connect Xero, QuickBooks, Google Drive, Slack, Zoom and 15+ tools",
   },
 ];
 
