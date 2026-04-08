@@ -11,6 +11,7 @@ import CookieConsent from "./components/CookieConsent";
 import About from "./pages/About";
 import Blog from "./pages/Blog";
 import BlogArticle from "./pages/BlogArticle";
+import Download from "./pages/Download";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
