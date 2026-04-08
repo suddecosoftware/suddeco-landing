@@ -22,6 +22,7 @@ const SECTION_LINKS = [
 const PAGE_LINKS = [
   { label: "About", href: "/about" },
   { label: "Blog", href: "/blog" },
+  { label: "Download", href: "/download" },
 ];
 
 export default function Navbar() {
