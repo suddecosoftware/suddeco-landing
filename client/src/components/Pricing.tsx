@@ -104,18 +104,24 @@ const plans = [
 ];
 
 const creditUsage = [
-  { action: "Upload & extract 1 PDF page", cost: "7 credits" },
+  { action: "Upload & extract 1 PDF page", cost: "8 credits" },
   { action: "Chat message (simple)", cost: "1 credit" },
   { action: "Chat message (complex AI)", cost: "5 credits" },
   { action: "Generate scope of works", cost: "20 credits" },
-  { action: "AI cost summary", cost: "5 credits" },
+  { action: "Property intelligence lookup", cost: "15 credits" },
+  { action: "AI intelligence analysis", cost: "10 credits" },
+  { action: "Voice AI (text-to-speech)", cost: "3 credits" },
+  { action: "Product scraping", cost: "3 credits" },
+  { action: "PDF/Excel export", cost: "5 credits" },
 ];
 
 const creditTopUps = [
-  { amount: "50 credits", price: "£6" },
-  { amount: "500 credits", price: "£45" },
-  { amount: "2,000 credits", price: "£150" },
-  { amount: "10,000 credits", price: "£550" },
+  { amount: "100 credits", price: "£12" },
+  { amount: "500 credits", price: "£38" },
+  { amount: "1,500 credits", price: "£85" },
+  { amount: "5,000 credits", price: "£195" },
+  { amount: "10,000 credits", price: "£350" },
+  { amount: "25,000 credits", price: "£750" },
 ];
 
 export default function Pricing() {
@@ -319,11 +325,23 @@ export default function Pricing() {
             </div>
           </div>
 
-          {/* Annual savings highlight */}
-          <div className="mt-6 p-4 rounded-xl bg-amber-500/5 border border-amber-500/20 text-center">
-            <Shield className="w-5 h-5 text-amber-400 mx-auto mb-2" />
-            <p className="text-amber-400 font-semibold text-sm mb-1">Annual plans save up to 20%</p>
-            <p className="text-slate-400 text-xs">Starter annual: £756/yr (save £192) · Professional: £1,620/yr (save £408) · Business: £3,156/yr (save £792) · Enterprise: £5,748/yr (save £1,440)</p>
+          {/* Launch offer banner */}
+          <div className="mt-6 p-5 rounded-xl bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/30 text-center">
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <Sparkles className="w-5 h-5 text-amber-400" />
+              <p className="text-amber-400 font-bold text-lg">🎉 Launch Offer: 50% Off First 3 Months</p>
+              <Sparkles className="w-5 h-5 text-amber-400" />
+            </div>
+            <p className="text-slate-300 text-sm mb-2">
+              Subscribe to any plan and get 50% off for your first 3 months. No code needed — applied automatically at checkout.
+            </p>
+            <p className="text-slate-400 text-xs mt-2">
+              Starter: <span className="text-white font-semibold">£39.50/mo</span> (then £79) ·
+              Professional: <span className="text-white font-semibold">£84.50/mo</span> (then £169) ·
+              Business: <span className="text-white font-semibold">£164.50/mo</span> (then £329) ·
+              Enterprise: <span className="text-white font-semibold">£299.50/mo</span> (then £599)
+            </p>
+            <p className="text-slate-500 text-xs mt-2">Annual plans also available with 20% off · 14-day free trial included</p>
           </div>
         </motion.div>
       </div>
