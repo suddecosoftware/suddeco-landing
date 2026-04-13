@@ -108,11 +108,21 @@ const creditUsage = [
   { action: "Chat message (simple)", cost: "1 credit" },
   { action: "Chat message (complex AI)", cost: "5 credits" },
   { action: "Generate scope of works", cost: "20 credits" },
-  { action: "Property intelligence lookup", cost: "15 credits" },
-  { action: "AI intelligence analysis", cost: "10 credits" },
   { action: "Voice AI (text-to-speech)", cost: "3 credits" },
   { action: "Product scraping", cost: "3 credits" },
   { action: "PDF/Excel export", cost: "5 credits" },
+];
+
+const intelligencePricing = [
+  { action: "Market data (sold prices, rents, £/sqft)", cost: "15 credits" },
+  { action: "Planning applications", cost: "15 credits" },
+  { action: "Flood risk assessment", cost: "15 credits" },
+  { action: "Crime & safety data", cost: "15 credits" },
+  { action: "Solar potential analysis", cost: "15 credits" },
+  { action: "EPC energy rating", cost: "2 credits" },
+  { action: "Address validation (OS Places)", cost: "2 credits" },
+  { action: "Full AI site analysis report", cost: "10 credits" },
+  { action: "Intelligence follow-up chat", cost: "5 credits" },
 ];
 
 const creditTopUps = [
@@ -299,6 +309,27 @@ export default function Pricing() {
                   </div>
                 ))}
               </div>
+
+            {/* Property Intelligence Pricing */}
+            <div className="mt-4">
+              <div className="flex items-center gap-2 mb-3">
+                <Info className="w-4 h-4 text-amber-400" />
+                <h5 className="text-white font-semibold text-sm" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                  Property Intelligence
+                </h5>
+              </div>
+              <p className="text-slate-500 text-xs mb-3">
+                Each lookup runs independently — you choose which data to fetch. A full property analysis uses approximately 89 credits.
+              </p>
+              <div className="space-y-1.5">
+                {intelligencePricing.map((item) => (
+                  <div key={item.action} className="flex items-center justify-between">
+                    <span className="text-slate-400 text-sm">{item.action}</span>
+                    <span className="text-amber-400 text-sm font-semibold whitespace-nowrap ml-4">{item.cost}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
             </div>
 
             {/* Credit Top-ups */}
@@ -335,12 +366,12 @@ export default function Pricing() {
             <p className="text-slate-300 text-sm mb-2">
               Subscribe to any plan and get 50% off for your first 3 months. No code needed — applied automatically at checkout.
             </p>
-            <p className="text-slate-400 text-xs mt-2">
+            <div className="text-slate-400 text-xs mt-2">
               Starter: <span className="text-white font-semibold">£39.50/mo</span> (then £79) ·
               Professional: <span className="text-white font-semibold">£84.50/mo</span> (then £169) ·
               Business: <span className="text-white font-semibold">£164.50/mo</span> (then £329) ·
               Enterprise: <span className="text-white font-semibold">£299.50/mo</span> (then £599)
-            </p>
+            </div>
             <p className="text-slate-500 text-xs mt-2">Annual plans also available with 20% off · 14-day free trial included</p>
           </div>
         </motion.div>
