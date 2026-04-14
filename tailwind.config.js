@@ -7,7 +7,21 @@ export default {
       colors: {
         navy: { 800: "#1E3A5F", 900: "#0F1F3D" },
         amber: { 400: "#FBBF24", 500: "#F59E0B" }
-      }
+      },
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
     }
   },
   plugins: [],
