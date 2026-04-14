@@ -158,7 +158,7 @@ export default function Pricing() {
             Simple pricing. No contracts. <span className="text-amber-400">Cancel anytime.</span>
           </h2>
           <p className="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed mb-8">
-            All plans include our AI-powered estimation engine. Credits power every AI feature — buy more any time, credits never expire.
+            All plans include our AI-powered estimation engine. Credits power every AI feature — buy more any time, credits never expire. All prices exclude VAT.
           </p>
 
           {/* Monthly/Yearly toggle */}
@@ -221,9 +221,10 @@ export default function Pricing() {
                   {plan.monthlyPrice}
                 </span>
                 <span className="text-slate-400 text-sm">/mo</span>
+                <span className="text-slate-500 text-xs ml-1">+ VAT</span>
               </div>
               <p className="text-slate-500 text-xs mb-1">
-                {yearly ? `Billed upfront · ${plan.yearlyPrice}` : plan.priceNote}
+                {yearly ? `Billed upfront · ${plan.yearlyPrice} + VAT` : plan.priceNote}
               </p>
               {yearly && (
                 <span className="inline-block px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/20 text-emerald-400 mb-3">
@@ -286,7 +287,7 @@ export default function Pricing() {
             Join 24+ UK contractors · Cancel anytime · No questions asked
           </p>
           <p className="text-slate-500 text-xs mt-2">
-            All prices exclude VAT.
+            All prices shown exclude VAT at 20%.
           </p>
         </motion.div>
 
