@@ -444,7 +444,7 @@ export default function About() {
                   className="inline-flex items-center gap-2 px-8 py-3.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-sm transition-all hover:shadow-lg hover:shadow-amber-500/20"
                   style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                 >
-                  Start Free Trial
+                  Start today
                 </a>
                 <a
                   href="/#contact"

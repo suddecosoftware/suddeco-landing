@@ -237,7 +237,7 @@ export default function BlogArticle() {
             </p>
             <a href="https://my.suddeco.com">
               <Button className="bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold px-8 py-3 text-base shadow-lg shadow-amber-500/20">
-                Start Free Trial
+                Start today
               </Button>
             </a>
           </div>

@@ -1,8 +1,8 @@
 /**
  * Pricing: 4-tier subscription pricing with monthly/yearly toggle + credit system
- * Correct pricing from Revenue Model — 30 March 2026
- * Starter £79 | Professional £169 | Business £329 | Enterprise £599
- * Annual: 20% off
+ * Pricing overhaul 14 Apr 2026
+ * Starter £49 | Professional £99 | Business £179 | Enterprise £349
+ * Annual: 2 months free (10 months billed upfront)
  */
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -13,11 +13,11 @@ const plans = [
   {
     name: "Starter",
     description: "For solo contractors & small firms",
-    monthlyPrice: "£79",
-    yearlyPrice: "£63",
+    monthlyPrice: "£49",
+    yearlyPrice: "£490/yr",
     priceNote: "per month, billed monthly",
-    credits: "500 credits/month",
-    creditsNote: "~7 projects + 50 chats + 5 scopes",
+    credits: "1,000 credits/month",
+    creditsNote: "~14 projects + 100 chats + 10 scopes",
     target: "Solo contractor, 1-2 person firm",
     features: [
       "Create projects and estimates",
@@ -28,22 +28,22 @@ const plans = [
       "Export to PDF",
       "100m² free allowance on sign up",
     ],
-    cta: "Start Free Trial",
+    cta: "Start today",
     popular: false,
     color: "slate",
   },
   {
     name: "Professional",
     description: "For growing construction businesses",
-    monthlyPrice: "£169",
-    yearlyPrice: "£135",
+    monthlyPrice: "£99",
+    yearlyPrice: "£990/yr",
     priceNote: "per month, billed monthly",
-    credits: "1,500 credits/month",
-    creditsNote: "~20 projects + 150 chats + 15 scopes",
+    credits: "2,500 credits/month",
+    creditsNote: "~35 projects + 250 chats + 25 scopes",
     target: "Small firm, 3-10 people",
     features: [
       "All Starter features",
-      "1,500 AI credits per month",
+      "2,500 AI credits per month",
       "Automated valuations & invoicing",
       "Materials ordering integration",
       "Full CRM pipeline management",
@@ -51,22 +51,22 @@ const plans = [
       "Client portal access",
       "Priority email support",
     ],
-    cta: "Start Professional",
+    cta: "Start today",
     popular: true,
     color: "amber",
   },
   {
     name: "Business",
     description: "For growing companies & teams",
-    monthlyPrice: "£329",
-    yearlyPrice: "£263",
+    monthlyPrice: "£179",
+    yearlyPrice: "£1,790/yr",
     priceNote: "per month, billed monthly",
-    credits: "3,500 credits/month",
-    creditsNote: "~50 projects + 350 chats + 35 scopes",
+    credits: "5,000 credits/month",
+    creditsNote: "~70 projects + 500 chats + 50 scopes",
     target: "Growing company, 10-50 people",
     features: [
       "All Professional features",
-      "3,500 AI credits per month",
+      "5,000 AI credits per month",
       "Team collaboration tools",
       "Advanced analytics dashboard",
       "Sage / QuickBooks / Xero integration",
@@ -74,22 +74,22 @@ const plans = [
       "Custom templates",
       "Dedicated account manager",
     ],
-    cta: "Start Business",
+    cta: "Start today",
     popular: false,
     color: "slate",
   },
   {
     name: "Enterprise",
     description: "For established firms & large teams",
-    monthlyPrice: "£599",
-    yearlyPrice: "£479",
+    monthlyPrice: "£349",
+    yearlyPrice: "£3,490/yr",
     priceNote: "per month, billed monthly",
-    credits: "8,000 credits/month",
-    creditsNote: "~115 projects + 800 chats + 80 scopes",
+    credits: "12,000 credits/month",
+    creditsNote: "~170 projects + 1,200 chats + 120 scopes",
     target: "Large contractor, 50+ people",
     features: [
       "All Business features",
-      "8,000 AI credits per month",
+      "12,000 AI credits per month",
       "Unlimited valuations & invoicing",
       "Unlimited materials orders",
       "White-label options",
@@ -97,7 +97,7 @@ const plans = [
       "SLA guarantee",
       "Priority 24/7 support",
     ],
-    cta: "Contact Sales",
+    cta: "Start today",
     popular: false,
     color: "slate",
   },
@@ -155,7 +155,7 @@ export default function Pricing() {
             className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-6"
             style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
           >
-            Simple, Transparent <span className="text-amber-400">Pricing</span>
+            Simple pricing. No contracts. <span className="text-amber-400">Cancel anytime.</span>
           </h2>
           <p className="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed mb-8">
             All plans include our AI-powered estimation engine. Credits power every AI feature — buy more any time, credits never expire.
@@ -176,8 +176,8 @@ export default function Pricing() {
               />
             </button>
             <span className={`text-sm font-medium transition-colors ${yearly ? "text-white" : "text-slate-400"}`}>
-              Yearly{" "}
-              <span className="text-amber-400 text-xs font-semibold">(20% off)</span>
+              Pay yearly{" "}
+              <span className="text-emerald-400 text-xs font-semibold">— 2 months free</span>
             </span>
           </div>
         </motion.div>
@@ -218,13 +218,20 @@ export default function Pricing() {
               {/* Price */}
               <div className="mb-1">
                 <span className="text-4xl font-bold text-white" style={{ fontFamily: "'Sora', sans-serif" }}>
-                  {yearly ? plan.yearlyPrice : plan.monthlyPrice}
+                  {plan.monthlyPrice}
                 </span>
-                <span className="text-slate-400 text-sm">/month</span>
+                <span className="text-slate-400 text-sm">/mo</span>
               </div>
-              <p className="text-slate-500 text-xs mb-4">
-                {yearly ? "billed annually (20% off)" : plan.priceNote}
+              <p className="text-slate-500 text-xs mb-1">
+                {yearly ? `Billed upfront · ${plan.yearlyPrice}` : plan.priceNote}
               </p>
+              {yearly && (
+                <span className="inline-block px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/20 text-emerald-400 mb-3">
+                  2 months free
+                </span>
+              )}
+              {!yearly && <div className="mb-3" />}
+              <p className="text-slate-500 text-xs mb-1">Cancel anytime</p>
 
               {/* Credits badge */}
               <div className={`flex items-center gap-2 px-3 py-2.5 rounded-lg mb-6 ${
@@ -267,7 +274,7 @@ export default function Pricing() {
           ))}
         </div>
 
-        {/* Pay As You Go note */}
+        {/* Trust line */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -276,11 +283,10 @@ export default function Pricing() {
           className="mt-8 text-center"
         >
           <p className="text-slate-400 text-sm">
-            Just starting out?{" "}
-            <a href="https://my.suddeco.com/register" className="text-amber-400 hover:text-amber-300 font-medium transition-colors">
-              Sign up free
-            </a>{" "}
-            — no subscription needed. Buy credit packs as you go.
+            Join 24+ UK contractors · Cancel anytime · No questions asked
+          </p>
+          <p className="text-slate-500 text-xs mt-2">
+            All prices exclude VAT.
           </p>
         </motion.div>
 
@@ -356,23 +362,21 @@ export default function Pricing() {
             </div>
           </div>
 
-          {/* Launch offer banner */}
-          <div className="mt-6 p-5 rounded-xl bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/30 text-center">
+          {/* Annual savings banner */}
+          <div className="mt-6 p-5 rounded-xl bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-500/30 text-center">
             <div className="flex items-center justify-center gap-2 mb-2">
-              <Sparkles className="w-5 h-5 text-amber-400" />
-              <p className="text-amber-400 font-bold text-lg">🎉 Launch Offer: 50% Off First 3 Months</p>
-              <Sparkles className="w-5 h-5 text-amber-400" />
+              <Shield className="w-5 h-5 text-emerald-400" />
+              <p className="text-emerald-400 font-bold text-lg">Pay yearly — get 2 months free</p>
             </div>
             <p className="text-slate-300 text-sm mb-2">
-              Subscribe to any plan and get 50% off for your first 3 months. No code needed — applied automatically at checkout.
+              Annual plans are billed upfront at 10 months price for 12 months access. Cancel anytime.
             </p>
             <div className="text-slate-400 text-xs mt-2">
-              Starter: <span className="text-white font-semibold">£39.50/mo</span> (then £79) ·
-              Professional: <span className="text-white font-semibold">£84.50/mo</span> (then £169) ·
-              Business: <span className="text-white font-semibold">£164.50/mo</span> (then £329) ·
-              Enterprise: <span className="text-white font-semibold">£299.50/mo</span> (then £599)
+              Starter: <span className="text-white font-semibold">£490/yr</span> (save £98) ·
+              Professional: <span className="text-white font-semibold">£990/yr</span> (save £198) ·
+              Business: <span className="text-white font-semibold">£1,790/yr</span> (save £358) ·
+              Enterprise: <span className="text-white font-semibold">£3,490/yr</span> (save £698)
             </div>
-            <p className="text-slate-500 text-xs mt-2">Annual plans also available with 20% off · 14-day free trial included</p>
           </div>
         </motion.div>
       </div>
