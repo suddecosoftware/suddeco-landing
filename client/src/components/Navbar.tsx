@@ -129,7 +129,7 @@ export default function Navbar() {
           </a>
           <a href="https://my.suddeco.com">
             <Button className="bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold shadow-lg shadow-amber-500/20">
-              Get Started Free
+              Start today
             </Button>
           </a>
         </div>
@@ -201,7 +201,7 @@ export default function Navbar() {
                 </a>
                 <a href="https://my.suddeco.com">
                   <Button className="w-full bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold">
-                    Get Started Free
+                    Start today
                   </Button>
                 </a>
               </div>

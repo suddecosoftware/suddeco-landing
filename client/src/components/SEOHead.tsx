@@ -13,7 +13,7 @@ interface SEOHeadProps {
 
 const DEFAULT_TITLE = "Suddeco AI - Construction Management Platform";
 const DEFAULT_DESCRIPTION =
-  "Streamline your construction projects with AI-powered drawing analysis, costed scopes of work, and intelligent project management. Start your free trial today.";
+  "Streamline your construction projects with AI-powered drawing analysis, costed scopes of work, and intelligent project management. Cancel anytime. No contracts.";
 const BASE_URL = "https://www.suddeco.com";
 
 export default function SEOHead({ title, description, canonicalPath }: SEOHeadProps) {

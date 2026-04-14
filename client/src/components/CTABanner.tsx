@@ -45,7 +45,7 @@ export default function CTABanner() {
                 size="lg"
                 className="bg-slate-900 hover:bg-slate-800 text-white font-bold text-base px-8 py-6 shadow-xl group w-full sm:w-auto"
               >
-                Start Your Free Trial
+                Start today
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </a>
