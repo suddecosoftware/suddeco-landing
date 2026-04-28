@@ -6,7 +6,14 @@ import { createRoot } from "react-dom/client";
 import superjson from "superjson";
 import App from "./App";
 import { getLoginUrl } from "./const";
+import { initClientSecurity } from "./lib/client-security";
 import "./index.css";
+
+try {
+  initClientSecurity();
+} catch {
+  /* security deterrence must never block app boot */
+}
 
 const queryClient = new QueryClient();
 

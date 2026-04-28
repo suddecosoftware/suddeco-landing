@@ -12,6 +12,7 @@ import About from "./pages/About";
 import Blog from "./pages/Blog";
 import BlogArticle from "./pages/BlogArticle";
 import Download from "./pages/Download";
+import SecurityViolation from "./pages/SecurityViolation";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -22,6 +23,7 @@ function Router() {
       <Route path={"/privacy"} component={Privacy} />
       <Route path={"/about"} component={About} />
       <Route path={"/download"} component={Download} />
+      <Route path={"/security-violation"} component={SecurityViolation} />
       <Route path={"/blog"} component={Blog} />
       <Route path={"/blog/:slug"} component={BlogArticle} />
       <Route path={"/404"} component={NotFound} />

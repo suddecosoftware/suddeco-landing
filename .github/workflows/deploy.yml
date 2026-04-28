@@ -1,6 +1,8 @@
 name: Deploy suddeco.com to Cloudflare Pages
 
 on:
+  pull_request:
+    branches: [main]
   push:
     branches: [main]
   workflow_dispatch:
@@ -9,9 +11,9 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '20'
 
@@ -23,10 +25,11 @@ jobs:
         env:
           VITE_APP_URL: https://suddeco.com
           VITE_MY_SUDDECO_URL: https://my.suddeco.com
-          VITE_MARKETPLACE_URL: https://suddecohome.com
+          VITE_MARKETPLACE_URL: https://suddecohomes.com
           VITE_SHOP_URL: https://materials.suddeco.com
 
       - name: Deploy to Cloudflare Pages via Wrangler
+        if: github.event_name != 'pull_request'
         run: npx wrangler pages deploy dist --project-name=suddeco-landing --branch=main
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
