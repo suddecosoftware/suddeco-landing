@@ -103,6 +103,18 @@
   --sidebar-ring: oklch(0.769 0.188 70.08);
 }
 
+.brand-protected,
+.brand-protected * {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+[data-protect-image="true"],
+.brand-protected img {
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
 .dark {
   --background: oklch(0.208 0.042 265.755);
   --foreground: oklch(0.968 0.007 247.896);

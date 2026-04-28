@@ -1,0 +1,6 @@
+Contact: mailto:security@suddeco.com
+Expires: 2027-04-28T00:00:00.000Z
+Acknowledgments: https://suddeco.com/security/hall-of-fame
+Preferred-Languages: en
+Canonical: https://suddeco.com/.well-known/security.txt
+Policy: https://suddeco.com/security/policy
