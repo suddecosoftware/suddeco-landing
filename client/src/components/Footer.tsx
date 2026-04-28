@@ -4,6 +4,7 @@
  * Updated: Full company address, legal links, proper copyright
  */
 import { Phone, Mail, MapPin, ArrowUp } from "lucide-react";
+import { clearAudience } from "@/lib/audience-cookie";
 
 const LOGO_URL =
   "https://files.manuscdn.com/user_upload_by_module/session_file/310519663376220736/gssmxFFgmcNomrDZ.png";
@@ -27,6 +28,11 @@ const legalLinks = [
 export default function Footer() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const resetAudience = () => {
+    clearAudience();
+    window.location.reload();
   };
 
   return (
@@ -215,9 +221,19 @@ export default function Footer() {
           <p className="text-slate-500 text-sm">
             &copy; {new Date().getFullYear()} Suddeco Ltd. All rights reserved.
           </p>
-          <p className="text-slate-600 text-xs">
-            Streamlining construction projects with precision and transparency.
-          </p>
+          <div className="flex flex-col items-center gap-2 sm:items-end">
+            <button
+              type="button"
+              onClick={resetAudience}
+              className="min-h-11 rounded-md px-3 text-sm text-slate-500 underline underline-offset-4 transition-colors hover:text-amber-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400"
+              aria-label="Reset audience selection"
+            >
+              Change my audience
+            </button>
+            <p className="text-slate-600 text-xs">
+              Streamlining construction projects with precision and transparency.
+            </p>
+          </div>
         </div>
       </div>
     </footer>

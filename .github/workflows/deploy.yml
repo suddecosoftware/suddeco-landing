@@ -23,7 +23,7 @@ jobs:
         env:
           VITE_APP_URL: https://suddeco.com
           VITE_MY_SUDDECO_URL: https://my.suddeco.com
-          VITE_MARKETPLACE_URL: https://suddecohome.com
+          VITE_MARKETPLACE_URL: https://suddecohomes.com
           VITE_SHOP_URL: https://materials.suddeco.com
 
       - name: Deploy to Cloudflare Pages via Wrangler
