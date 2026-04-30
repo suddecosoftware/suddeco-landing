@@ -40,12 +40,12 @@ export default function CTABanner() {
             time, reducing errors, and growing their businesses with Suddeco.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://my.suddeco.com">
+            <a href="/demo/pro?utm_source=cta_banner&utm_campaign=always_on">
               <Button
                 size="lg"
                 className="bg-slate-900 hover:bg-slate-800 text-white font-bold text-base px-8 py-6 shadow-xl group w-full sm:w-auto"
               >
-                Start today
+                Book a demo
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </a>

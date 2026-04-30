@@ -440,11 +440,11 @@ export default function About() {
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <a
-                  href="https://my.suddeco.com"
+                  href="/demo/pro?utm_source=about&utm_campaign=always_on"
                   className="inline-flex items-center gap-2 px-8 py-3.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-sm transition-all hover:shadow-lg hover:shadow-amber-500/20"
                   style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                 >
-                  Start today
+                  Book a demo
                 </a>
                 <a
                   href="/#contact"

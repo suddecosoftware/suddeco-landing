@@ -127,9 +127,9 @@ export default function Navbar() {
               Sign In
             </Button>
           </a>
-          <a href="https://my.suddeco.com">
+          <a href="/demo/pro?utm_source=site_nav&utm_campaign=always_on">
             <Button className="bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold shadow-lg shadow-amber-500/20">
-              Start today
+              Book a demo
             </Button>
           </a>
         </div>
@@ -199,9 +199,9 @@ export default function Navbar() {
                     Sign In
                   </Button>
                 </a>
-                <a href="https://my.suddeco.com">
+                <a href="/demo/pro?utm_source=site_nav&utm_campaign=always_on">
                   <Button className="w-full bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold">
-                    Start today
+                    Book a demo
                   </Button>
                 </a>
               </div>

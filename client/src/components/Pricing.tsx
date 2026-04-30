@@ -28,7 +28,7 @@ const plans = [
       "Export to PDF",
       "100m² free allowance on sign up",
     ],
-    cta: "Start today",
+    cta: "Book a demo",
     popular: false,
     color: "slate",
   },
@@ -51,7 +51,7 @@ const plans = [
       "Client portal access",
       "Priority email support",
     ],
-    cta: "Start today",
+    cta: "Book a demo",
     popular: true,
     color: "amber",
   },
@@ -74,7 +74,7 @@ const plans = [
       "Custom templates",
       "Dedicated account manager",
     ],
-    cta: "Start today",
+    cta: "Book a demo",
     popular: false,
     color: "slate",
   },
@@ -97,7 +97,7 @@ const plans = [
       "SLA guarantee",
       "Priority 24/7 support",
     ],
-    cta: "Start today",
+    cta: "Book a demo",
     popular: false,
     color: "slate",
   },
@@ -250,7 +250,7 @@ export default function Pricing() {
               </div>
 
               {/* CTA */}
-              <a href="https://my.suddeco.com/register" className="block mb-7">
+              <a href="/demo/pro?utm_source=pricing&utm_campaign=always_on" className="block mb-7">
                 <Button
                   className={`w-full font-semibold py-5 transition-all ${
                     plan.popular

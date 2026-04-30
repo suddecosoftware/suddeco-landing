@@ -235,9 +235,9 @@ export default function BlogArticle() {
               Experience the future of construction estimation. Upload your
               drawings and get a costed scope of works in minutes.
             </p>
-            <a href="https://my.suddeco.com">
+            <a href="/demo/pro?utm_source=blog&utm_campaign=always_on">
               <Button className="bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold px-8 py-3 text-base shadow-lg shadow-amber-500/20">
-                Start today
+                Book a demo
               </Button>
             </a>
           </div>

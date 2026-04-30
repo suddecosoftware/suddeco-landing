@@ -100,7 +100,7 @@ export default function Hero() {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href="https://my.suddeco.com" className="w-full sm:w-auto">
+              <a href="/demo/pro?utm_source=hero&utm_campaign=always_on" className="w-full sm:w-auto">
                 <button
                   className="w-full sm:w-auto"
                   style={{
@@ -129,7 +129,7 @@ export default function Hero() {
                     e.currentTarget.style.transform = "scale(1)";
                   }}
                 >
-                  Start today
+                  Book a demo
                   <ArrowRight style={{ width: "1.25rem", height: "1.25rem" }} />
                 </button>
               </a>
