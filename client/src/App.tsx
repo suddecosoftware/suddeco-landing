@@ -13,6 +13,9 @@ import Blog from "./pages/Blog";
 import BlogArticle from "./pages/BlogArticle";
 import Download from "./pages/Download";
 import SecurityViolation from "./pages/SecurityViolation";
+import DemoPage from "./pages/DemoPage";
+import { trackPageView } from "./lib/visitorTracking";
+import { useEffect } from "react";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -23,6 +26,8 @@ function Router() {
       <Route path={"/privacy"} component={Privacy} />
       <Route path={"/about"} component={About} />
       <Route path={"/download"} component={Download} />
+      <Route path={"/demo/pro"} component={DemoPage} />
+      <Route path={"/demo/homeowner"} component={DemoPage} />
       <Route path={"/security-violation"} component={SecurityViolation} />
       <Route path={"/blog"} component={Blog} />
       <Route path={"/blog/:slug"} component={BlogArticle} />
@@ -33,6 +38,10 @@ function Router() {
 }
 
 function App() {
+  useEffect(() => {
+    trackPageView();
+  }, []);
+
   return (
     <ErrorBoundary>
       <ThemeProvider defaultTheme="dark">

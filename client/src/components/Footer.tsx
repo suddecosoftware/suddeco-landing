@@ -3,7 +3,7 @@
  * Design: Forge & Build — dark footer with amber accents and back-to-top
  * Updated: Full company address, legal links, proper copyright
  */
-import { Phone, Mail, MapPin, ArrowUp } from "lucide-react";
+import { Mail, MapPin, ArrowUp } from "lucide-react";
 
 const LOGO_URL =
   "https://files.manuscdn.com/user_upload_by_module/session_file/310519663376220736/gssmxFFgmcNomrDZ.png";
@@ -12,6 +12,8 @@ const quickLinks = [
   { label: "Features", href: "#features" },
   { label: "How It Works", href: "#how-it-works" },
   { label: "Pricing", href: "#pricing" },
+  { label: "Pro Demo", href: "/demo/pro" },
+  { label: "Homeowner Demo", href: "/demo/homeowner" },
   { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
   { label: "About Us", href: "/about" },
@@ -180,15 +182,6 @@ export default function Footer() {
               Contact Us
             </h4>
             <ul className="space-y-3">
-              <li>
-                <a
-                  href="tel:+442036338086"
-                  className="flex items-center gap-3 text-slate-400 hover:text-amber-400 transition-colors text-sm"
-                >
-                  <Phone className="w-4 h-4 shrink-0" />
-                  +44 20 3633 8086
-                </a>
-              </li>
               <li>
                 <a
                   href="mailto:sales@suddeco.com"
