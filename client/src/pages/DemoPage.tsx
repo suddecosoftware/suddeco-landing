@@ -198,10 +198,9 @@ export default function DemoPage() {
             <div className="rounded-3xl border border-slate-700/70 bg-slate-950/70 p-4 shadow-2xl shadow-black/30">
               <video
                 className="aspect-video w-full rounded-2xl border border-slate-800 object-cover"
-                src="https://rachel-api.suddeco.com/share/90f45633a29e6999f0e56c6f82a590464ca748e6/suddeco-demo.mp4"
+                src="/videos/suddeco-pro-demo-hero.mp4"
                 controls
                 playsInline
-                poster="https://suddecohomes.com/assets/projects/kitchen1.jpg"
               />
               <div className="mt-5 grid gap-3 sm:grid-cols-3">
                 <div className="rounded-2xl bg-slate-900 p-4">
