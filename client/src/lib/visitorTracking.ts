@@ -1,5 +1,6 @@
 const VISITOR_COOKIE = "suddeco_visitor";
 const MAX_AGE = 60 * 60 * 24 * 180;
+const FUNCTION_BASE_URL = "https://hvpsxeytbvbytyjudtyb.supabase.co/functions/v1";
 
 function readCookie(name: string): string | null {
   if (typeof document === "undefined") return null;
@@ -38,9 +39,9 @@ export function trackPageView(extra: Record<string, unknown> = {}): void {
     ...extra,
   };
   try {
-    navigator.sendBeacon?.("/api/track", JSON.stringify(payload));
+    navigator.sendBeacon?.(`${FUNCTION_BASE_URL}/visitor-track`, JSON.stringify(payload));
   } catch {
-    fetch("/api/track", {
+    fetch(`${FUNCTION_BASE_URL}/visitor-track`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
@@ -57,9 +58,23 @@ export function linkVisitorEmail(email: string): void {
     path: window.location.pathname,
     ts: new Date().toISOString(),
   };
-  fetch("/api/track/email", {
+  fetch(`${FUNCTION_BASE_URL}/visitor-track-email`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
   }).catch(() => undefined);
+}
+
+export function installEmailCaptureTracking(): () => void {
+  if (typeof document === "undefined") return () => undefined;
+
+  const onFocusOut = (event: FocusEvent) => {
+    const target = event.target;
+    if (!(target instanceof HTMLInputElement)) return;
+    if (target.type !== "email") return;
+    linkVisitorEmail(target.value);
+  };
+
+  document.addEventListener("focusout", onFocusOut, true);
+  return () => document.removeEventListener("focusout", onFocusOut, true);
 }

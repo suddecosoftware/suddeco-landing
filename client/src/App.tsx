@@ -14,7 +14,7 @@ import BlogArticle from "./pages/BlogArticle";
 import Download from "./pages/Download";
 import SecurityViolation from "./pages/SecurityViolation";
 import DemoPage from "./pages/DemoPage";
-import { trackPageView } from "./lib/visitorTracking";
+import { installEmailCaptureTracking, trackPageView } from "./lib/visitorTracking";
 import { useEffect } from "react";
 
 function Router() {
@@ -40,6 +40,7 @@ function Router() {
 function App() {
   useEffect(() => {
     trackPageView();
+    return installEmailCaptureTracking();
   }, []);
 
   return (

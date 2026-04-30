@@ -12,6 +12,7 @@ import { getVisitorId, linkVisitorEmail, trackPageView } from "@/lib/visitorTrac
 type Track = "pro" | "homeowner";
 
 const BOOKING_URL = "https://calendly.com/suddeco-sales/30min";
+const WEBINAR_REGISTER_URL = "https://hvpsxeytbvbytyjudtyb.supabase.co/functions/v1/webinar-register";
 
 const trackConfig = {
   pro: {
@@ -110,7 +111,7 @@ export default function DemoPage() {
   }, [track]);
 
   useEffect(() => {
-    trackPageView({ demoTrack: track });
+    trackPageView({ event: "demo_view", track });
     const seen = Number(localStorage.getItem(`suddeco_demo_count_${track}`) || "7");
     setPosition(Math.max(1, Math.min(10, seen)));
   }, [track]);
@@ -128,13 +129,25 @@ export default function DemoPage() {
     };
     const saved = JSON.parse(localStorage.getItem("suddeco_demo_registrations") || "[]");
     localStorage.setItem("suddeco_demo_registrations", JSON.stringify([...saved, payload]));
-    fetch("/api/webinar/register", {
+    fetch(WEBINAR_REGISTER_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
-    }).catch(() => undefined);
-    localStorage.setItem(`suddeco_demo_count_${track}`, String(Math.min(10, position + 1)));
-    setPosition((p) => Math.min(10, p + 1));
+    })
+      .then(async (response) => {
+        if (!response.ok) throw new Error("registration capture failed");
+        return response.json();
+      })
+      .then((result) => {
+        if (typeof result.position === "number") {
+          setPosition(Math.max(1, Math.min(10, result.position)));
+          localStorage.setItem(`suddeco_demo_count_${track}`, String(Math.max(1, Math.min(10, result.position))));
+        }
+      })
+      .catch(() => {
+        localStorage.setItem(`suddeco_demo_count_${track}`, String(Math.min(10, position + 1)));
+        setPosition((p) => Math.min(10, p + 1));
+      });
     setSubmitted(true);
   };
 
