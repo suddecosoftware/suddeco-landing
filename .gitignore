@@ -108,3 +108,4 @@ temp/
 
 # Supabase local state
 supabase/.temp/
+.gitnexus
