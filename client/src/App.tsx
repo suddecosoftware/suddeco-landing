@@ -12,7 +12,6 @@ import About from "./pages/About";
 import Blog from "./pages/Blog";
 import BlogArticle from "./pages/BlogArticle";
 import Download from "./pages/Download";
-import SecurityViolation from "./pages/SecurityViolation";
 import DemoPage from "./pages/DemoPage";
 import { installEmailCaptureTracking, trackPageView } from "./lib/visitorTracking";
 import { useEffect } from "react";
@@ -28,7 +27,6 @@ function Router() {
       <Route path={"/download"} component={Download} />
       <Route path={"/demo/pro"} component={DemoPage} />
       <Route path={"/demo/homeowner"} component={DemoPage} />
-      <Route path={"/security-violation"} component={SecurityViolation} />
       <Route path={"/blog"} component={Blog} />
       <Route path={"/blog/:slug"} component={BlogArticle} />
       <Route path={"/404"} component={NotFound} />

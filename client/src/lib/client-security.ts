@@ -1,21 +1,16 @@
-let redirected = false;
-
-function redirectToViolation(reason: string) {
-  if (redirected || window.location.pathname === "/security-violation") return;
-  redirected = true;
-  try {
-    localStorage.clear();
-    sessionStorage.clear();
-    indexedDB.databases?.().then((databases) => {
-      for (const database of databases) {
-        if (database.name) indexedDB.deleteDatabase(database.name);
-      }
-    }).catch(() => {});
-  } catch {
-    /* storage may be unavailable */
-  }
-  window.location.assign("/security-violation");
-}
+/**
+ * Client-side helpers for the marketing site.
+ *
+ * Real defences (rate limits, CAPTCHA, bot detection) are server-side.
+ * Browser-side anti-inspection traps were removed: the viewport-delta
+ * heuristic produced false positives on iPhone Safari (WhatsApp / Instagram
+ * in-app browsers), where outerWidth/innerWidth diverge from the soft
+ * keyboard or address bar resize. Real visitors were being kicked to a
+ * "Suspicious activity" page and their localStorage/indexedDB wiped.
+ *
+ * What stays:
+ *   - a console banner warning users about self-XSS scams.
+ */
 
 export function initClientSecurity() {
   if (!import.meta.env.PROD || typeof window === "undefined") {
@@ -31,43 +26,5 @@ export function initClientSecurity() {
     "color:#f59e0b;font-size:16px;font-weight:700;",
   );
 
-  const preventContextMenu = (event: MouseEvent) => event.preventDefault();
-  const preventDrag = (event: DragEvent) => {
-    const target = event.target as HTMLElement | null;
-    if (target?.closest?.("[data-protect-image='true'], .brand-protected")) {
-      event.preventDefault();
-    }
-  };
-  const preventHotkeys = (event: KeyboardEvent) => {
-    const key = event.key.toLowerCase();
-    const blocked =
-      event.key === "F12" ||
-      ((event.ctrlKey || event.metaKey) && ["u", "s"].includes(key)) ||
-      ((event.ctrlKey || event.metaKey) && event.shiftKey && ["i", "j", "c"].includes(key)) ||
-      (event.metaKey && event.altKey && ["i", "j", "c"].includes(key));
-
-    if (blocked) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-  };
-
-  document.addEventListener("contextmenu", preventContextMenu);
-  document.addEventListener("dragstart", preventDrag);
-  document.addEventListener("keydown", preventHotkeys, true);
-
-  const interval = window.setInterval(() => {
-    const widthGap = Math.abs(window.outerWidth - window.innerWidth);
-    const heightGap = Math.abs(window.outerHeight - window.innerHeight);
-    if (widthGap > 160 || heightGap > 160) {
-      redirectToViolation("viewport_delta");
-    }
-  }, 1500);
-
-  return () => {
-    document.removeEventListener("contextmenu", preventContextMenu);
-    document.removeEventListener("dragstart", preventDrag);
-    document.removeEventListener("keydown", preventHotkeys, true);
-    window.clearInterval(interval);
-  };
+  return () => {};
 }
