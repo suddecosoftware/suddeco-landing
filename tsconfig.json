@@ -17,5 +17,32 @@
       "@shared/*": ["./shared/*"]
     }
   },
-  "include": ["client/src", "shared"]
+  "include": ["client/src", "shared"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build",
+    "client/src/components/AIChatBox.tsx",
+    "client/src/components/DashboardLayout.tsx",
+    "client/src/components/DashboardLayoutSkeleton.tsx",
+    "client/src/components/Markdown.tsx",
+    "client/src/components/Map.tsx",
+    "client/src/components/ui/aspect-ratio.tsx",
+    "client/src/components/ui/avatar.tsx",
+    "client/src/components/ui/calendar.tsx",
+    "client/src/components/ui/checkbox.tsx",
+    "client/src/components/ui/context-menu.tsx",
+    "client/src/components/ui/hover-card.tsx",
+    "client/src/components/ui/input-otp.tsx",
+    "client/src/components/ui/menubar.tsx",
+    "client/src/components/ui/progress.tsx",
+    "client/src/components/ui/radio-group.tsx",
+    "client/src/components/ui/resizable.tsx",
+    "client/src/components/ui/slider.tsx",
+    "client/src/components/ui/switch.tsx",
+    "client/src/components/ui/toggle.tsx",
+    "client/src/components/ui/toggle-group.tsx",
+    "client/src/hooks/useFileUpload.ts",
+    "client/src/pages/ComponentShowcase.tsx"
+  ]
 }
