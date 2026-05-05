@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Monitor, Apple, Smartphone } from "lucide-react";
 
-// GitHub Releases /latest/download/ auto-tracks the most recent release tag.
-// New releases ship via the tauri-desktop-build workflow when version is bumped.
-const RELEASE_BASE = "https://github.com/suddecosoftware/suddeco-review/releases/latest/download";
-const DOWNLOAD_AARCH64 = `${RELEASE_BASE}/Suddeco-aarch64.dmg`;
-const DOWNLOAD_X86_64 = `${RELEASE_BASE}/Suddeco-x86_64.dmg`;
+// DMGs are hosted in /public/downloads/ because the suddeco-review repo is private
+// (so /releases/latest/download/ returns 404 for unauthenticated users).
+// To update for a new release: copy new signed Suddeco-*.dmg into client/public/downloads/.
+// Long-term: move to public CDN (Cloudflare R2 or public release repo) so we don't
+// commit 10MB of binary every version bump.
+const DOWNLOAD_AARCH64 = "/downloads/Suddeco-aarch64.dmg";
+const DOWNLOAD_X86_64 = "/downloads/Suddeco-x86_64.dmg";
 
 type Arch = "aarch64" | "x86_64" | "unknown";
 
