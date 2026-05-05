@@ -196,12 +196,17 @@ export default function DemoPage() {
             </div>
 
             <div className="rounded-3xl border border-slate-700/70 bg-slate-950/70 p-4 shadow-2xl shadow-black/30">
-              <video
-                className="aspect-video w-full rounded-2xl border border-slate-800 object-cover"
-                src="/videos/suddeco-pro-demo-hero.mp4"
-                controls
-                playsInline
-              />
+              <div className="aspect-video w-full overflow-hidden rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900 via-slate-950 to-black flex flex-col items-center justify-center text-center px-8">
+                <div className="text-amber-300 text-sm font-semibold uppercase tracking-[0.2em] mb-3">Live walkthrough</div>
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">See it on real drawings — yours, in 20 minutes</h3>
+                <p className="text-slate-300 max-w-xl mb-6">Send us your floorplans. We will process them live, walk through the takeoff, and show your scope of works priced against UK benchmarks.</p>
+                <a
+                  href="mailto:sales@suddeco.com?subject=Suddeco%20Pro%20%E2%80%94%20live%20demo%20request"
+                  className="inline-flex items-center gap-2 rounded-full bg-amber-300 px-6 py-3 text-sm font-bold text-slate-950 hover:bg-amber-200 transition"
+                >
+                  Book a live demo
+                </a>
+              </div>
               <div className="mt-5 grid gap-3 sm:grid-cols-3">
                 <div className="rounded-2xl bg-slate-900 p-4">
                   <BarChart3 className="mb-3 h-5 w-5 text-amber-300" />
