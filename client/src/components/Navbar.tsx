@@ -127,6 +127,14 @@ export default function Navbar() {
               Sign In
             </Button>
           </a>
+          <a href="https://my.suddeco.com/sign-up?utm_source=site_nav&utm_campaign=always_on">
+            <Button
+              variant="outline"
+              className="border-amber-400 text-amber-300 hover:text-amber-200 hover:border-amber-300 bg-transparent"
+            >
+              Sign Up
+            </Button>
+          </a>
           <a href="/demo/pro?utm_source=site_nav&utm_campaign=always_on">
             <Button className="bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold shadow-lg shadow-amber-500/20">
               Book a demo
@@ -197,6 +205,14 @@ export default function Navbar() {
                     className="w-full border-slate-600 text-slate-300 hover:text-white hover:border-slate-400 bg-transparent"
                   >
                     Sign In
+                  </Button>
+                </a>
+                <a href="https://my.suddeco.com/sign-up?utm_source=site_nav&utm_campaign=always_on">
+                  <Button
+                    variant="outline"
+                    className="w-full border-amber-400 text-amber-300 hover:text-amber-200 hover:border-amber-300 bg-transparent"
+                  >
+                    Sign Up
                   </Button>
                 </a>
                 <a href="/demo/pro?utm_source=site_nav&utm_campaign=always_on">
