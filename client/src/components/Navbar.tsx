@@ -4,6 +4,7 @@
  * Improved: active section tracking, smooth mobile menu, better transitions
  */
 import { useState, useEffect } from "react";
+import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -29,6 +30,13 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [location] = useLocation();
+  // When the user is on a non-home page (e.g. /demo/pro, /about), section anchors
+  // need to navigate to home first. Prefix section hrefs with "/" so the browser
+  // resolves them as a full URL change instead of just appending a fragment to the
+  // current path (which is what was leaving people stranded on /demo/pro).
+  const isHome = location === "/" || location === "";
+  const sectionHref = (frag: string) => (isHome ? frag : `/${frag}`);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -75,7 +83,7 @@ export default function Navbar() {
     >
       <div className="container flex items-center justify-between py-4">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2 shrink-0">
+        <a href="/" className="flex items-center gap-2 shrink-0">
           <img
             src={LOGO_URL}
             alt="Suddeco"
@@ -88,7 +96,7 @@ export default function Navbar() {
           {SECTION_LINKS.map((link) => (
             <a
               key={link.href}
-              href={link.href}
+              href={sectionHref(link.href)}
               className={`relative text-sm font-medium tracking-wide transition-colors duration-200 ${
                 activeSection === link.href
                   ? "text-amber-400"
@@ -170,7 +178,7 @@ export default function Navbar() {
               {SECTION_LINKS.map((link, index) => (
                 <motion.a
                   key={link.href}
-                  href={link.href}
+                  href={sectionHref(link.href)}
                   onClick={() => setMobileOpen(false)}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
