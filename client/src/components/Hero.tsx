@@ -168,6 +168,18 @@ export default function Hero() {
               </a>
             </div>
 
+            {/* Homeowner secondary path — separate from B2B primary CTA. PAYG
+                (no subscription / trial language) per memory entry #30. */}
+            <p className="mt-5 text-sm text-slate-300/80">
+              Are you a homeowner planning a project?{" "}
+              <a
+                href="https://my.suddeco.com/register?type=homeowner&utm_source=hero&utm_campaign=hero_secondary"
+                className="text-amber-300 hover:text-amber-200 underline underline-offset-4 decoration-amber-400/40 hover:decoration-amber-300/70 font-medium transition-colors"
+              >
+                Start free here <span aria-hidden="true">→</span>
+              </a>
+            </p>
+
             {/* Trust indicators */}
             <div
               className="flex flex-wrap items-center gap-x-8 gap-y-3"

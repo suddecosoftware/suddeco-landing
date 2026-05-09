@@ -127,6 +127,12 @@ export default function Navbar() {
 
         {/* Desktop CTAs */}
         <div className="hidden lg:flex items-center gap-3">
+          <a
+            href="https://my.suddeco.com/register?type=homeowner&utm_source=site_nav&utm_campaign=nav_homeowner"
+            className="text-sm font-medium tracking-wide text-slate-400 hover:text-amber-300 transition-colors"
+          >
+            For homeowners <span aria-hidden="true">→</span>
+          </a>
           <a href="https://my.suddeco.com">
             <Button
               variant="outline"
@@ -207,6 +213,13 @@ export default function Navbar() {
                 </motion.a>
               ))}
               <div className="flex flex-col gap-3 pt-4">
+                <a
+                  href="https://my.suddeco.com/register?type=homeowner&utm_source=site_nav_mobile&utm_campaign=nav_homeowner"
+                  onClick={() => setMobileOpen(false)}
+                  className="text-sm font-medium text-slate-400 hover:text-amber-300 transition-colors text-center py-2"
+                >
+                  For homeowners <span aria-hidden="true">→</span>
+                </a>
                 <a href="https://my.suddeco.com">
                   <Button
                     variant="outline"
