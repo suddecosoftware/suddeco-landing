@@ -170,6 +170,14 @@ export default function Footer() {
                   Create Account
                 </a>
               </li>
+              <li>
+                <a
+                  href="https://my.suddeco.com/register?type=homeowner&utm_source=footer&utm_campaign=footer_homeowner"
+                  className="text-slate-400 hover:text-amber-400 transition-colors text-sm"
+                >
+                  For Homeowners
+                </a>
+              </li>
             </ul>
           </div>
 
