@@ -198,15 +198,23 @@ export default function DemoPage() {
             <div className="rounded-3xl border border-slate-700/70 bg-slate-950/70 p-4 shadow-2xl shadow-black/30">
               <video
                 className="aspect-video w-full overflow-hidden rounded-2xl border border-slate-800 bg-black"
-                src="https://rachel-api.suddeco.com/share/90f45633a29e6999f0e56c6f82a590464ca748e6/suddeco-demo.mp4?v=faststart-2"
+                src="https://github.com/suddecosoftware/suddeco-ad-media/releases/download/demo-v2/suddeco-demo-v2.mp4"
+                poster="https://github.com/suddecosoftware/suddeco-ad-media/releases/download/demo-v2/suddeco-demo-poster.jpg"
                 controls
                 preload="metadata"
                 playsInline
-                aria-label="Suddeco Pro live walkthrough — 30 minute demo recording"
+                aria-label="Suddeco Pro live walkthrough — full demo with captions"
               >
+                <track
+                  kind="captions"
+                  src="/suddeco-demo.vtt"
+                  srcLang="en"
+                  label="English"
+                  default
+                />
                 Your browser doesn't support inline video.
                 <a
-                  href="https://rachel-api.suddeco.com/share/90f45633a29e6999f0e56c6f82a590464ca748e6/suddeco-demo.mp4?v=faststart-2"
+                  href="https://github.com/suddecosoftware/suddeco-ad-media/releases/download/demo-v2/suddeco-demo-v2.mp4"
                   className="text-amber-300 underline ml-2"
                 >
                   Watch the demo here.
