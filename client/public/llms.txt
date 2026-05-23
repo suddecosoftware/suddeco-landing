@@ -1,0 +1,31 @@
+# Suddeco
+
+> Suddeco is an AI estimating and design platform for UK building contractors. Upload architect drawings and Suddeco produces a measured, priced, contractor-signed scope of works — and photoreal room and elevation designs generated directly from that priced scope.
+
+Suddeco turns drawings into money in one connected workspace. The same project flows end to end: measure the drawings, generate a priced scope of works (areas → stages → tasks → materials with live labour and material costs), and design every room and elevation from that exact priced scope. A property and site intelligence layer adds appraisal, feasibility and risk. Built for non-technical builders — fast and voice-friendly across web, desktop and mobile. The render doubles as a measured, priced, signed scope of works — no competitor ties design to a live priced takeoff this way.
+
+## Main pages
+- [Home](https://www.suddeco.com/): What Suddeco does and who it is for.
+- [About](https://www.suddeco.com/about): The company and mission.
+- [Blog](https://www.suddeco.com/blog): Guides on construction estimating, NRM1, digital transformation and running a building business.
+
+## What Suddeco does
+- TakeOff: measure architect drawings, detect scale, extract rooms and areas.
+- Scope of Works: a priced scope — areas, stages, tasks and materials with live labour and material costs, margins and a signed client pack.
+- Design Studio: photoreal room renders and building elevations generated from the priced scope, with two-way chat to change materials and re-price instantly.
+- Intelligence: property and site appraisal, feasibility, EPC insight and comparables.
+
+## Guides (blog)
+- [How AI is transforming construction estimation](https://www.suddeco.com/blog/ai-transforming-construction-estimation)
+- [Understanding NRM1 — a guide for contractors](https://www.suddeco.com/blog/understanding-nrm1-guide-for-contractors)
+- [Digital transformation in UK construction 2026](https://www.suddeco.com/blog/digital-transformation-uk-construction-2026)
+- [Reducing construction costs with accurate estimation](https://www.suddeco.com/blog/reducing-construction-costs-with-accurate-estimation)
+- [Construction project management best practices](https://www.suddeco.com/blog/construction-project-management-best-practices)
+- [Growing your construction business with technology](https://www.suddeco.com/blog/growing-your-construction-business-with-technology)
+
+## App
+- [Suddeco app](https://my.suddeco.com): Sign in to create projects, run takeoffs, generate priced scopes and design rooms.
+
+## Legal
+- [Terms](https://www.suddeco.com/terms)
+- [Privacy](https://www.suddeco.com/privacy)
