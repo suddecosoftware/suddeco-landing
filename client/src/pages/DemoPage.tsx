@@ -199,7 +199,7 @@ export default function DemoPage() {
               <video
                 className="aspect-video w-full overflow-hidden rounded-2xl border border-slate-800 bg-black"
                 src="https://github.com/suddecosoftware/suddeco-ad-media/releases/download/demo-v2/suddeco-demo-v2.mp4"
-                poster="https://github.com/suddecosoftware/suddeco-ad-media/releases/download/demo-v2/suddeco-demo-poster.jpg"
+                poster="/suddeco-demo-poster.jpg"
                 controls
                 preload="metadata"
                 playsInline

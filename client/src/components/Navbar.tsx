@@ -9,8 +9,9 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const LOGO_URL =
-  "https://files.manuscdn.com/user_upload_by_module/session_file/310519663376220736/gssmxFFgmcNomrDZ.png";
+// Local HD vector logo (white wordmark + orange icon, for the dark nav). Replaces the
+// sunset Manus CDN URL that was 404ing → broken logo. Crisp at any size/zoom.
+const LOGO_URL = "/suddeco-logo-white.svg";
 
 const SECTION_LINKS = [
   { label: "Features", href: "#features" },
@@ -128,7 +129,7 @@ export default function Navbar() {
         {/* Desktop CTAs */}
         <div className="hidden lg:flex items-center gap-3">
           <a
-            href="https://my.suddeco.com/register?type=homeowner&utm_source=site_nav&utm_campaign=nav_homeowner"
+            href="https://suddecohomes.com/?utm_source=site_nav&utm_campaign=nav_homeowner"
             className="text-sm font-medium tracking-wide text-slate-400 hover:text-amber-300 transition-colors"
           >
             For homeowners <span aria-hidden="true">→</span>
@@ -214,7 +215,7 @@ export default function Navbar() {
               ))}
               <div className="flex flex-col gap-3 pt-4">
                 <a
-                  href="https://my.suddeco.com/register?type=homeowner&utm_source=site_nav_mobile&utm_campaign=nav_homeowner"
+                  href="https://suddecohomes.com/?utm_source=site_nav_mobile&utm_campaign=nav_homeowner"
                   onClick={() => setMobileOpen(false)}
                   className="text-sm font-medium text-slate-400 hover:text-amber-300 transition-colors text-center py-2"
                 >

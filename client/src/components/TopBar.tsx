@@ -2,7 +2,7 @@
  * TopBar: Slim utility bar with contact info and auth links
  * Design: Forge & Build — subtle dark strip above main nav
  */
-import { Phone, Mail, UserPlus } from "lucide-react";
+import { Phone, Mail } from "lucide-react";
 
 export default function TopBar() {
   return (
@@ -22,15 +22,6 @@ export default function TopBar() {
           >
             <Mail className="w-3.5 h-3.5" />
             <span>sales@suddeco.com</span>
-          </a>
-        </div>
-        <div className="flex items-center gap-4 text-slate-400">
-          <a
-            href="https://my.suddeco.com"
-            className="flex items-center gap-1.5 text-amber-400 hover:text-amber-300 transition-colors font-medium"
-          >
-            <UserPlus className="w-3.5 h-3.5" />
-            <span>Sign Up Free</span>
           </a>
         </div>
       </div>
