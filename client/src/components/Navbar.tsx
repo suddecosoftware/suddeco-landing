@@ -134,7 +134,7 @@ export default function Navbar() {
           >
             For homeowners <span aria-hidden="true">→</span>
           </a>
-          <a href="https://my.suddeco.com">
+          <a href="https://my.suddeco.com/sign-in">
             <Button
               variant="outline"
               className="border-slate-600 text-slate-300 hover:text-white hover:border-slate-400 bg-transparent"
@@ -221,7 +221,7 @@ export default function Navbar() {
                 >
                   For homeowners <span aria-hidden="true">→</span>
                 </a>
-                <a href="https://my.suddeco.com">
+                <a href="https://my.suddeco.com/sign-in">
                   <Button
                     variant="outline"
                     className="w-full border-slate-600 text-slate-300 hover:text-white hover:border-slate-400 bg-transparent"
