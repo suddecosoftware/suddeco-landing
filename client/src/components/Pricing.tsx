@@ -250,7 +250,7 @@ export default function Pricing() {
               </div>
 
               {/* CTA */}
-              <a href={`https://my.suddeco.com/sign-up?utm_source=pricing&utm_campaign=always_on&plan=${plan.name.toLowerCase()}`} className="block mb-7">
+              <a href={`https://my.suddeco.com/sign-up?utm_source=pricing&utm_campaign=always_on&type=pro&plan=${plan.name.toLowerCase()}`} className="block mb-7">
                 <Button
                   className={`w-full font-semibold py-5 transition-all ${
                     plan.popular

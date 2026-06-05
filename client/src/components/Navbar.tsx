@@ -142,7 +142,7 @@ export default function Navbar() {
               Sign In
             </Button>
           </a>
-          <a href="https://my.suddeco.com/sign-up?utm_source=site_nav&utm_campaign=always_on">
+          <a href="https://my.suddeco.com/sign-up?utm_source=site_nav&utm_campaign=always_on&type=pro">
             <Button
               variant="outline"
               className="border-amber-400 text-amber-300 hover:text-amber-200 hover:border-amber-300 bg-transparent"
@@ -229,7 +229,7 @@ export default function Navbar() {
                     Sign In
                   </Button>
                 </a>
-                <a href="https://my.suddeco.com/sign-up?utm_source=site_nav&utm_campaign=always_on">
+                <a href="https://my.suddeco.com/sign-up?utm_source=site_nav&utm_campaign=always_on&type=pro">
                   <Button
                     variant="outline"
                     className="w-full border-amber-400 text-amber-300 hover:text-amber-200 hover:border-amber-300 bg-transparent"
