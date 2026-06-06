@@ -178,11 +178,13 @@ export default function DemoPage() {
                     <ArrowRight className="h-4 w-4" />
                   </Button>
                 </a>
-                <a href={bookingHref}>
-                  <Button variant="outline" className="h-12 rounded-xl border-slate-500 px-7 text-base text-white hover:bg-white/10">
-                    Open booking calendar
-                  </Button>
-                </a>
+                <Button
+                  variant="outline"
+                  className="h-12 rounded-xl border-slate-500 px-7 text-base text-white hover:bg-white/10"
+                  onClick={() => window.open(bookingHref, "_blank", "noopener,noreferrer")}
+                >
+                  Open booking calendar
+                </Button>
               </div>
               <div className="mt-8 grid gap-3 sm:grid-cols-3">
                 {proofTiles.map((tile) => (
@@ -266,11 +268,12 @@ export default function DemoPage() {
                 <p className="mt-3 text-slate-300">
                   We logged your interest for the {track === "pro" ? "Pro" : "Homeowner"} demo track. Use the calendar link if you want to pick a slot now.
                 </p>
-                <a href={bookingHref} className="mt-6 inline-flex">
-                  <Button className="rounded-xl bg-amber-400 text-slate-950 hover:bg-amber-300">
-                    Open booking calendar
-                  </Button>
-                </a>
+                <Button
+                  className="mt-6 rounded-xl bg-amber-400 text-slate-950 hover:bg-amber-300"
+                  onClick={() => window.open(bookingHref, "_blank", "noopener,noreferrer")}
+                >
+                  Open booking calendar
+                </Button>
               </div>
             ) : (
               <div className="space-y-5">
