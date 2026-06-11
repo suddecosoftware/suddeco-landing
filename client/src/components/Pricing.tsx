@@ -17,7 +17,7 @@ const plans = [
     yearlyPrice: "£490/yr",
     priceNote: "per month, billed monthly",
     credits: "1,000 credits/month",
-    creditsNote: "~14 projects + 100 chats + 10 scopes",
+    creditsNote: "~5 projects + 35 chats + 2 extra scopes",
     target: "Solo contractor, 1-2 person firm",
     features: [
       "Create projects and estimates",
@@ -39,7 +39,7 @@ const plans = [
     yearlyPrice: "£990/yr",
     priceNote: "per month, billed monthly",
     credits: "2,500 credits/month",
-    creditsNote: "~35 projects + 250 chats + 25 scopes",
+    creditsNote: "~12 projects + 90 chats + 5 extra scopes",
     target: "Small firm, 3-10 people",
     features: [
       "All Starter features",
@@ -62,7 +62,7 @@ const plans = [
     yearlyPrice: "£1,790/yr",
     priceNote: "per month, billed monthly",
     credits: "5,000 credits/month",
-    creditsNote: "~70 projects + 500 chats + 50 scopes",
+    creditsNote: "~25 projects + 180 chats + 10 extra scopes",
     target: "Growing company, 10-50 people",
     features: [
       "All Professional features",
@@ -85,7 +85,7 @@ const plans = [
     yearlyPrice: "£3,490/yr",
     priceNote: "per month, billed monthly",
     credits: "12,000 credits/month",
-    creditsNote: "~170 projects + 1,200 chats + 120 scopes",
+    creditsNote: "~60 projects + 430 chats + 25 extra scopes",
     target: "Large contractor, 50+ people",
     features: [
       "All Business features",
@@ -104,10 +104,10 @@ const plans = [
 ];
 
 const creditUsage = [
-  { action: "Upload & extract 1 PDF page", cost: "8 credits" },
+  { action: "Upload & extract 1 PDF page", cost: "12 credits" },
   { action: "Chat message (simple)", cost: "1 credit" },
-  { action: "Chat message (complex AI)", cost: "5 credits" },
-  { action: "Generate scope of works", cost: "20 credits" },
+  { action: "Chat message (complex AI)", cost: "6 credits" },
+  { action: "Generate scope of works", cost: "40 credits" },
   { action: "Voice AI (text-to-speech)", cost: "3 credits" },
   { action: "Product scraping", cost: "3 credits" },
   { action: "PDF/Excel export", cost: "5 credits" },
@@ -129,9 +129,9 @@ const creditTopUps = [
   { amount: "100 credits", price: "£12" },
   { amount: "500 credits", price: "£38" },
   { amount: "1,500 credits", price: "£85" },
-  { amount: "5,000 credits", price: "£195" },
-  { amount: "10,000 credits", price: "£350" },
-  { amount: "25,000 credits", price: "£750" },
+  { amount: "5,000 credits", price: "£245" },
+  { amount: "10,000 credits", price: "£440" },
+  { amount: "25,000 credits", price: "£1,075" },
 ];
 
 export default function Pricing() {
@@ -274,6 +274,33 @@ export default function Pricing() {
             </motion.div>
           ))}
         </div>
+
+        {/* Pay-as-you-go — no-subscription option */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="mt-10 max-w-4xl mx-auto"
+        >
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-6 rounded-xl bg-slate-800/40 border border-amber-500/30">
+            <div>
+              <h3 className="text-white font-bold text-lg" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                Not ready for a subscription? <span className="text-amber-400">Pay as you go.</span>
+              </h3>
+              <p className="text-slate-400 text-sm mt-1">
+                Sign up free — no monthly fee. Buy a credit pack when you need
+                one and pay £0.65/m² for measured areas. Credits never expire.
+              </p>
+            </div>
+            <a
+              href="https://my.suddeco.com/sign-up"
+              className="shrink-0 px-6 py-3 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold text-sm transition-colors"
+            >
+              Start free
+            </a>
+          </div>
+        </motion.div>
 
         {/* Trust line */}
         <motion.div
