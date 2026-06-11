@@ -3,7 +3,7 @@
  * Design: Forge & Build — amber numbered circles, interactive step visualization
  * Each step shows a corresponding product screenshot when selected
  */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Upload, Cpu, FileText, Settings } from "lucide-react";
 
@@ -51,6 +51,14 @@ const steps = [
 
 export default function HowItWorks() {
   const [activeStep, setActiveStep] = useState(0);
+  // Auto-advance the steps every 5s so the section never looks static/broken;
+  // stops the moment the user picks a step themselves.
+  const [autoRotate, setAutoRotate] = useState(true);
+  useEffect(() => {
+    if (!autoRotate) return;
+    const t = setInterval(() => setActiveStep(s => (s + 1) % steps.length), 5000);
+    return () => clearInterval(t);
+  }, [autoRotate]);
 
   return (
     <section
@@ -116,7 +124,7 @@ export default function HowItWorks() {
                       ? "bg-amber-500/10 border border-amber-500/30"
                       : "hover:bg-slate-800/40 border border-transparent"
                   }`}
-                  onClick={() => setActiveStep(index)}
+                  onClick={() => { setAutoRotate(false); setActiveStep(index); }}
                 >
                   {/* Number circle */}
                   <div className="flex flex-col items-center shrink-0">
@@ -164,19 +172,15 @@ export default function HowItWorks() {
                         {step.title}
                       </h3>
                     </div>
-                    <AnimatePresence mode="wait">
-                      {isActive && (
-                        <motion.p
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.3 }}
-                          className="text-slate-400 leading-relaxed overflow-hidden"
-                        >
-                          {step.description}
-                        </motion.p>
-                      )}
-                    </AnimatePresence>
+                    <p
+                      className={`leading-relaxed transition-all duration-300 ${
+                        isActive
+                          ? "text-slate-400"
+                          : "text-slate-500/80 text-sm line-clamp-2"
+                      }`}
+                    >
+                      {step.description}
+                    </p>
                   </div>
                 </motion.div>
               );
