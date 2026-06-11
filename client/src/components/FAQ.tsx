@@ -36,8 +36,8 @@ const faqs = [
     question: "How does the credit system work?",
     answer:
       "Credits are used when you run AI features: drawing " +
-      "extraction (8 credits per page), scope generation (20 " +
-      "credits), AI chat messages (1\u20135 credits), and property " +
+      "extraction (12 credits per page), scope generation (40 " +
+      "credits), AI chat messages (1\u201310 credits), and property " +
       "intelligence lookups (15 credits). Every subscription plan " +
       "includes a monthly credit allowance \u2014 Starter gets 1,000 " +
       "credits, Professional gets 2,500, Business gets 5,000, and " +
