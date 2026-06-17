@@ -10,7 +10,7 @@
   "dependencies": {
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "framer-motion": "^11.0.0",
+    "framer-motion": "^12.38.0",
     "wouter": "^3.0.0",
     "lucide-react": "^0.453.0",
     "class-variance-authority": "^0.7.0",
