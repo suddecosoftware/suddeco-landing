@@ -5,6 +5,7 @@
  */
 import TopBar from "@/components/TopBar";
 import Navbar from "@/components/Navbar";
+import SplitHero from "@/components/SplitHero";
 import Hero from "@/components/Hero";
 import ProductShowcase from "@/components/ProductShowcase";
 import TrustedBy from "@/components/TrustedBy";
@@ -27,6 +28,7 @@ export default function Home() {
       <TopBar />
       <Navbar />
       <main>
+        <SplitHero />
         <Hero />
         <ProductShowcase />
         <TrustedBy />
