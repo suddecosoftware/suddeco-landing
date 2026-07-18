@@ -86,6 +86,43 @@ Deno.serve(async (req) => {
       .single();
     if (error) throw error;
 
+    // Notify the owner (email → sales@suddeco.com + Google Calendar) for EVERY
+    // new registration — this is the hook the mailer/notify route was written
+    // for but was never being called, so no booking email ever arrived. The
+    // lead is already saved above; the notifier is timeout-guarded and swallows
+    // its own errors so a notifier outage never fails or slows registration.
+    try {
+      const notifyUrl =
+        Deno.env.get("OWNER_NOTIFY_URL") ||
+        "https://rachel.suddeco.com/api/mailer/notify";
+      const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || "";
+      const ctrl = new AbortController();
+      const timer = setTimeout(() => ctrl.abort(), 4000);
+      await fetch(notifyUrl, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${serviceKey}`,
+        },
+        body: JSON.stringify({
+          registrationId: String(data.id),
+          track,
+          name,
+          email,
+          company: registration.company,
+          audienceType: registration.audience_type,
+          painPoint: registration.pain_point,
+          utmSource: registration.utm_source,
+          utmCampaign: registration.utm_campaign,
+          utmContent: registration.utm_content,
+        }),
+        signal: ctrl.signal,
+      }).catch(() => {});
+      clearTimeout(timer);
+    } catch (_notifyErr) {
+      /* never block registration on notifier failure */
+    }
+
     if (visitorUuid) {
       await supabase.from("visitor_sessions").upsert({
         visitor_uuid: visitorUuid,
