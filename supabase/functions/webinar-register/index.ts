@@ -5,6 +5,7 @@ type RegisterBody = {
   track?: string;
   name?: string;
   email?: string;
+  phone?: string;
   company?: string;
   audience_type?: string;
   audienceType?: string;
@@ -68,6 +69,7 @@ Deno.serve(async (req) => {
       track,
       name,
       email,
+      phone: (body.phone || "").toString().trim() || null,
       company: body.company || null,
       audience_type: body.audience_type || body.audienceType || null,
       pain_point: body.pain_point || body.painPoint || null,
@@ -109,6 +111,7 @@ Deno.serve(async (req) => {
           track,
           name,
           email,
+          phone: registration.phone,
           company: registration.company,
           audienceType: registration.audience_type,
           painPoint: registration.pain_point,

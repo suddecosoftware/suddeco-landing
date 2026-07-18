@@ -1,5 +1,5 @@
 /**
- * Contact: Contact form with name, email, phone (optional), company (optional), message
+ * Contact: Contact form with name, email, phone (required), company (optional), message
  * Design: Forge & Build — glass card form with amber accents
  * Submits to tRPC backend → stores in DB + notifies owner
  */
@@ -190,11 +190,14 @@ export default function Contact() {
                       htmlFor="phone"
                       className="block text-sm font-medium text-slate-300 mb-2"
                     >
-                      Phone <span className="text-slate-500 text-xs">(optional)</span>
+                      Phone
                     </label>
                     <input
                       id="phone"
                       type="tel"
+                      required
+                      inputMode="tel"
+                      autoComplete="tel"
                       value={formData.phone}
                       onChange={(e) =>
                         setFormData({ ...formData, phone: e.target.value })

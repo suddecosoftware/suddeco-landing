@@ -90,6 +90,7 @@ export default function DemoPage() {
   const [form, setForm] = useState({
     name: "",
     email: "",
+    phone: "",
     company: "",
     audienceType: "",
     painPoint: "",
@@ -282,6 +283,7 @@ export default function DemoPage() {
                   <Input required placeholder="Name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="h-12 border-slate-700 bg-slate-900 text-white" />
                   <Input required type="email" placeholder="Email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="h-12 border-slate-700 bg-slate-900 text-white" />
                 </div>
+                <Input required type="tel" inputMode="tel" autoComplete="tel" placeholder="Phone number" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} className="h-12 border-slate-700 bg-slate-900 text-white" />
                 <Input placeholder="Company" value={form.company} onChange={(e) => setForm({ ...form, company: e.target.value })} className="h-12 border-slate-700 bg-slate-900 text-white" />
                 <Input required placeholder={config.audiencePlaceholder} value={form.audienceType} onChange={(e) => setForm({ ...form, audienceType: e.target.value })} className="h-12 border-slate-700 bg-slate-900 text-white" />
                 <Textarea required placeholder="What do you want the demo to solve?" value={form.painPoint} onChange={(e) => setForm({ ...form, painPoint: e.target.value })} className="min-h-28 border-slate-700 bg-slate-900 text-white" />
