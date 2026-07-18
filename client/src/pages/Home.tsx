@@ -32,10 +32,10 @@ export default function Home() {
         <SplitHero />
         <Hero />
         <ProductShowcase />
+        <LearnSuddeco />
         <TrustedBy />
         <Features />
         <HowItWorks />
-        <LearnSuddeco />
         <WhySuddeco />
         <Testimonials />
         <Pricing />
