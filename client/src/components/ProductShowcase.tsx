@@ -25,6 +25,21 @@ const SCREENS = [
     description: "Hundreds of tasks costed with UK labour and materials — profit and benchmark built in",
   },
   {
+    src: "/images/suddeco-ui-stages.webp",
+    label: "Costed by Stage",
+    description: "Every build stage priced — from site setup to finishes",
+  },
+  {
+    src: "/images/suddeco-ui-dashboard.webp",
+    label: "Full Programme & Gantt",
+    description: "Contract value, a 26-week programme and cost-by-area at a glance",
+  },
+  {
+    src: "/images/suddeco-ui-intelligence.webp",
+    label: "AI Project Intelligence",
+    description: "Market value, planning odds, finance options — and an AI that proposes the missing tasks",
+  },
+  {
     src: "/images/suddeco-ui-designstudio.webp",
     label: "AI Design Studio",
     description: "Turn a room into a photorealistic 3D render with every finish priced into the scope",
@@ -33,6 +48,11 @@ const SCREENS = [
     src: "/images/suddeco-render-loft.webp",
     label: "Photorealistic Renders",
     description: "Loft conversions, generated straight from your drawings",
+  },
+  {
+    src: "/images/suddeco-render-kitchendining.webp",
+    label: "Redesign Any Room",
+    description: "Kitchens, bathrooms and living spaces — visualised before you build",
   },
   {
     src: "/images/suddeco-render-extension.webp",
@@ -45,9 +65,19 @@ const SCREENS = [
     description: "Kitchen extensions and new builds — visualised and costed together",
   },
   {
-    src: "/images/suddeco-ui-intelligence.webp",
-    label: "AI Project Intelligence",
-    description: "Market value, planning odds, finance options — and an AI that proposes the missing tasks",
+    src: "/images/suddeco-ui-3dmodel.webp",
+    label: "Editable 3D Model",
+    description: "A full 3D model of the property — room by room, ready to design",
+  },
+  {
+    src: "/images/suddeco-ui-present.webp",
+    label: "Present to Your Client",
+    description: "A branded, client-ready proposal — priced and designed",
+  },
+  {
+    src: "/images/suddeco-ui-share.webp",
+    label: "Share, Export & Win",
+    description: "Client-safe links and PDF exports — margins and rates stay hidden",
   },
 ];
 
