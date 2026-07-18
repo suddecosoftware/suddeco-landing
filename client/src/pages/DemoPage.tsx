@@ -201,30 +201,16 @@ export default function DemoPage() {
             </div>
 
             <div className="rounded-3xl border border-slate-700/70 bg-slate-950/70 p-4 shadow-2xl shadow-black/30">
-              <video
-                className="aspect-video w-full overflow-hidden rounded-2xl border border-slate-800 bg-black"
-                src="https://github.com/suddecosoftware/suddeco-ad-media/releases/download/demo-v2/suddeco-demo-v2.mp4"
-                poster="/suddeco-demo-poster.jpg"
-                controls
-                preload="metadata"
-                playsInline
-                aria-label="Suddeco Pro live walkthrough — full demo with captions"
-              >
-                <track
-                  kind="captions"
-                  src="/suddeco-demo.vtt"
-                  srcLang="en"
-                  label="English"
-                  default
+              <div className="aspect-video w-full overflow-hidden rounded-2xl border border-slate-800 bg-black">
+                <iframe
+                  className="h-full w-full"
+                  src="https://www.youtube-nocookie.com/embed/E6RYdflWWfk?rel=0&modestbranding=1"
+                  title="Suddeco — drawings to a priced scope of works"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
                 />
-                Your browser doesn't support inline video.
-                <a
-                  href="https://github.com/suddecosoftware/suddeco-ad-media/releases/download/demo-v2/suddeco-demo-v2.mp4"
-                  className="text-amber-300 underline ml-2"
-                >
-                  Watch the demo here.
-                </a>
-              </video>
+              </div>
               <div className="mt-5 grid gap-3 sm:grid-cols-3">
                 <div className="rounded-2xl bg-slate-900 p-4">
                   <BarChart3 className="mb-3 h-5 w-5 text-amber-300" />
