@@ -11,6 +11,7 @@ import ProductShowcase from "@/components/ProductShowcase";
 import TrustedBy from "@/components/TrustedBy";
 import Features from "@/components/Features";
 import HowItWorks from "@/components/HowItWorks";
+import LearnSuddeco from "@/components/LearnSuddeco";
 import WhySuddeco from "@/components/WhySuddeco";
 import Testimonials from "@/components/Testimonials";
 import Pricing from "@/components/Pricing";
@@ -34,6 +35,7 @@ export default function Home() {
         <TrustedBy />
         <Features />
         <HowItWorks />
+        <LearnSuddeco />
         <WhySuddeco />
         <Testimonials />
         <Pricing />

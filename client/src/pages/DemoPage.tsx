@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { ArrowRight, BarChart3, CheckCircle2, Home, Mail, Users } from "lucide-react";
 import Footer from "@/components/Footer";
+import LearnSuddeco from "@/components/LearnSuddeco";
 import Navbar from "@/components/Navbar";
 import SEOHead from "@/components/SEOHead";
 import TopBar from "@/components/TopBar";
@@ -294,6 +295,7 @@ export default function DemoPage() {
             )}
           </form>
         </section>
+        <LearnSuddeco />
       </main>
       <Footer />
     </div>
