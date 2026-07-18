@@ -19,9 +19,14 @@ const SCREENS = [
     description: "Upload construction drawings and AI detects rooms, shells, and measurements",
   },
   {
-    src: "/images/suddeco-scope-hero.webp",
-    label: "Costed Scope of Works",
-    description: "AI generates 800+ tasks with UK labour and materials pricing per room",
+    src: "/images/suddeco-render-loft.webp",
+    label: "AI Design Studio Render",
+    description: "Photorealistic renders of your project — generated straight from the drawings",
+  },
+  {
+    src: "/images/suddeco-render-extension.webp",
+    label: "See It Before You Build",
+    description: "Photorealistic renders of extensions and rooms — generated from your real drawings",
   },
   {
     src: "/images/suddeco-dashboard-hero.webp",
