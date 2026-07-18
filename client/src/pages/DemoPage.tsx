@@ -92,6 +92,8 @@ export default function DemoPage() {
     email: "",
     phone: "",
     address: "",
+    preferredDate: "",
+    preferredTime: "",
     company: "",
     audienceType: "",
     painPoint: "",
@@ -272,6 +274,31 @@ export default function DemoPage() {
                 </div>
                 <Input required type="tel" inputMode="tel" autoComplete="tel" placeholder="Phone number" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} className="h-12 border-slate-700 bg-slate-900 text-white" />
                 <Input type="text" autoComplete="street-address" placeholder="Address (optional)" value={form.address} onChange={(e) => setForm({ ...form, address: e.target.value })} className="h-12 border-slate-700 bg-slate-900 text-white" />
+                <div className="space-y-1.5">
+                  <p className="text-xs font-medium text-slate-400">
+                    Pick a day &amp; time for your demo — we'll send a calendar invite (or leave blank and we'll follow up to schedule).
+                  </p>
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    <Input
+                      type="date"
+                      min={new Date().toISOString().slice(0, 10)}
+                      value={form.preferredDate}
+                      onChange={(e) => setForm({ ...form, preferredDate: e.target.value })}
+                      className="h-12 border-slate-700 bg-slate-900 text-white [color-scheme:dark]"
+                    />
+                    <select
+                      value={form.preferredTime}
+                      onChange={(e) => setForm({ ...form, preferredTime: e.target.value })}
+                      className="h-12 rounded-md border border-slate-700 bg-slate-900 px-3 text-white"
+                      aria-label="Preferred demo time"
+                    >
+                      <option value="">Preferred time (UK)</option>
+                      {["09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00"].map((t) => (
+                        <option key={t} value={t}>{t}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
                 <Input placeholder="Company" value={form.company} onChange={(e) => setForm({ ...form, company: e.target.value })} className="h-12 border-slate-700 bg-slate-900 text-white" />
                 <Input required placeholder={config.audiencePlaceholder} value={form.audienceType} onChange={(e) => setForm({ ...form, audienceType: e.target.value })} className="h-12 border-slate-700 bg-slate-900 text-white" />
                 <Textarea required placeholder="What do you want the demo to solve?" value={form.painPoint} onChange={(e) => setForm({ ...form, painPoint: e.target.value })} className="min-h-28 border-slate-700 bg-slate-900 text-white" />

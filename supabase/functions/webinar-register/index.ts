@@ -7,6 +7,8 @@ type RegisterBody = {
   email?: string;
   phone?: string;
   address?: string;
+  preferredDate?: string;
+  preferredTime?: string;
   company?: string;
   audience_type?: string;
   audienceType?: string;
@@ -119,6 +121,8 @@ Deno.serve(async (req) => {
         email,
         phone: patch.phone ?? null,
         address: patch.address ?? null,
+        preferredDate: (body.preferredDate || "").toString().trim() || null,
+        preferredTime: (body.preferredTime || "").toString().trim() || null,
         company: patch.company ?? null,
         audienceType: patch.audience_type ?? null,
         painPoint: patch.pain_point ?? null,
@@ -176,6 +180,8 @@ Deno.serve(async (req) => {
       email,
       phone: registration.phone,
       address: registration.address,
+      preferredDate: (body.preferredDate || "").toString().trim() || null,
+      preferredTime: (body.preferredTime || "").toString().trim() || null,
       company: registration.company,
       audienceType: registration.audience_type,
       painPoint: registration.pain_point,
