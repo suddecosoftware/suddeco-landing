@@ -6,6 +6,7 @@ type RegisterBody = {
   name?: string;
   email?: string;
   phone?: string;
+  address?: string;
   company?: string;
   audience_type?: string;
   audienceType?: string;
@@ -70,6 +71,7 @@ Deno.serve(async (req) => {
       name,
       email,
       phone: (body.phone || "").toString().trim() || null,
+      address: (body.address || "").toString().trim() || null,
       company: body.company || null,
       audience_type: body.audience_type || body.audienceType || null,
       pain_point: body.pain_point || body.painPoint || null,
@@ -97,31 +99,56 @@ Deno.serve(async (req) => {
       const notifyUrl =
         Deno.env.get("OWNER_NOTIFY_URL") ||
         "https://rachel.suddeco.com/api/mailer/notify";
-      const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || "";
-      const ctrl = new AbortController();
-      const timer = setTimeout(() => ctrl.abort(), 4000);
-      await fetch(notifyUrl, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-          authorization: `Bearer ${serviceKey}`,
-        },
-        body: JSON.stringify({
-          registrationId: String(data.id),
-          track,
-          name,
-          email,
-          phone: registration.phone,
-          company: registration.company,
-          audienceType: registration.audience_type,
-          painPoint: registration.pain_point,
-          utmSource: registration.utm_source,
-          utmCampaign: registration.utm_campaign,
-          utmContent: registration.utm_content,
-        }),
-        signal: ctrl.signal,
-      }).catch(() => {});
-      clearTimeout(timer);
+      // Shared secret the notifier accepts. Must be OWNER_NOTIFY_TOKEN — the
+      // notifier lives on a DIFFERENT Supabase project, so its service-role key
+      // never matched ours and every booking silently 401'd (no email, no
+      // calendar). Fall back to the service key only for backwards-compat.
+      const notifyToken = Deno.env.get("OWNER_NOTIFY_TOKEN") ||
+        Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || "";
+      // Run the notifier in the BACKGROUND so the booking response returns
+      // immediately, but the whole notifier finishes — including the Google
+      // Calendar insert that runs AFTER the email. A foreground 4s await let the
+      // email land (~3s) then severed the connection before the calendar step.
+      const notifyTask = (async () => {
+        const ctrl = new AbortController();
+        const timer = setTimeout(() => ctrl.abort(), 12000);
+        try {
+          await fetch(notifyUrl, {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+              authorization: `Bearer ${notifyToken}`,
+            },
+            body: JSON.stringify({
+              registrationId: String(data.id),
+              track,
+              name,
+              email,
+              phone: registration.phone,
+              address: registration.address,
+              company: registration.company,
+              audienceType: registration.audience_type,
+              painPoint: registration.pain_point,
+              utmSource: registration.utm_source,
+              utmCampaign: registration.utm_campaign,
+              utmContent: registration.utm_content,
+            }),
+            signal: ctrl.signal,
+          });
+        } catch (_e) {
+          /* swallow — the lead is already saved */
+        } finally {
+          clearTimeout(timer);
+        }
+      })();
+      const edgeRuntime = (globalThis as {
+        EdgeRuntime?: { waitUntil?: (p: Promise<unknown>) => void };
+      }).EdgeRuntime;
+      if (edgeRuntime && typeof edgeRuntime.waitUntil === "function") {
+        edgeRuntime.waitUntil(notifyTask);
+      } else {
+        await notifyTask;
+      }
     } catch (_notifyErr) {
       /* never block registration on notifier failure */
     }
