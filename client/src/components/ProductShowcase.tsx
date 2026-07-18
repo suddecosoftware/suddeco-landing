@@ -29,6 +29,11 @@ const SCREENS = [
     description: "Photorealistic renders of extensions and rooms — generated from your real drawings",
   },
   {
+    src: "/images/suddeco-render-kitchen-ext.webp",
+    label: "Extensions, Priced & Designed",
+    description: "Kitchen extensions, loft conversions and new builds — visualised and costed together",
+  },
+  {
     src: "/images/suddeco-dashboard-hero.webp",
     label: "Project Dashboard",
     description: "Track contract value, floor breakdown, and project progress at a glance",
