@@ -3,8 +3,8 @@
  * Renders ABOVE the existing <Hero />. Purely additive — does not replace anything.
  *
  * Layout:
- *   - A centred band on top with the moat H1, a PRIMARY "Try for free" CTA,
- *     a GHOST "Book a demo" CTA, and "No card needed" microcopy.
+ *   - A centred band on top with the moat H1, one dominant sign-up CTA,
+ *     a quiet demo link, and concise trust microcopy.
  *   - A 50/50 split below (stacks on mobile):
  *       LEFT  = HOMEOWNER (warm amber wash), whole panel + button clickable.
  *       RIGHT = BUILDER / PRO (cool steel/navy wash), whole panel + button clickable.
@@ -26,7 +26,7 @@ const DEMO_URL = "/demo/pro";
 const HEAD_FONT = "'Plus Jakarta Sans', sans-serif";
 const MONO_FONT = "'Sora', ui-monospace, 'SFMono-Regular', monospace";
 
-/** Shared "Start free →" pill. Rendered as a styled span (not a nested <a>/<button>)
+/** Shared "Sign up →" pill. Rendered as a styled span (not a nested <a>/<button>)
  * so the enclosing panel <a> stays valid, accessible interactive markup. */
 function SideCTA({ tone }: { tone: "home" | "pro" }) {
   const color = tone === "home" ? "#FCD34D" : "#93C5FD";
@@ -52,7 +52,7 @@ function SideCTA({ tone }: { tone: "home" | "pro" }) {
         transition: "all 0.2s",
       }}
     >
-      Start free
+      Sign up
       <ArrowRight
         aria-hidden="true"
         className="split-hero-arrow"
@@ -104,7 +104,7 @@ export default function SplitHero() {
       `}</style>
 
       {/* ---------- CENTRED BAND ---------- */}
-      <div style={{ position: "relative", zIndex: 20, textAlign: "center", padding: "4rem 0 2.5rem" }}>
+      <div style={{ position: "relative", zIndex: 20, textAlign: "center", padding: "3.25rem 0 2rem" }}>
         <div className="container">
           <div style={{ marginBottom: "1.25rem" }}>
             <span
@@ -153,77 +153,24 @@ export default function SplitHero() {
               margin: "0 auto 1.75rem",
             }}
           >
-            From an architect&rsquo;s drawing to a priced scope and a finished design &mdash;
-            every design is anchored to a real price.
+            Turn drawings into a priced scope, a clear project plan, and a finished design
+            anchored to a real price.
           </p>
 
           <div className="flex flex-col sm:flex-row" style={{ alignItems: "center", justifyContent: "center", gap: "0.875rem", marginBottom: "0.75rem" }}>
-            <a href={PRIMARY_URL} className="w-full sm:w-auto">
-              <button
-                type="button"
-                className="split-hero-btn w-full sm:w-auto"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: "0.5rem",
-                  padding: "1rem 2.125rem",
-                  background: "#F59E0B",
-                  color: "#0F172A",
-                  fontWeight: 700,
-                  fontSize: "1rem",
-                  borderRadius: "0.5rem",
-                  border: "none",
-                  cursor: "pointer",
-                  boxShadow: "0 10px 26px rgba(245, 158, 11, 0.3)",
-                  width: "100%",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "#FBBF24";
-                  e.currentTarget.style.transform = "translateY(-1px)";
-                  e.currentTarget.style.boxShadow = "0 14px 32px rgba(245, 158, 11, 0.4)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = "#F59E0B";
-                  e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow = "0 10px 26px rgba(245, 158, 11, 0.3)";
-                }}
-              >
-                Try for free
-                <ArrowRight aria-hidden="true" style={{ width: "1.25rem", height: "1.25rem" }} />
-              </button>
+            <a
+              href={PRIMARY_URL}
+              className="split-hero-btn inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-lg bg-amber-500 px-8 font-bold text-slate-900 shadow-[0_10px_26px_rgba(245,158,11,0.3)] transition-all hover:-translate-y-0.5 hover:bg-amber-400 hover:shadow-[0_14px_32px_rgba(245,158,11,0.4)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 sm:w-auto"
+            >
+              Sign up
+              <ArrowRight aria-hidden="true" className="h-5 w-5" />
             </a>
-            <a href={DEMO_URL} className="w-full sm:w-auto">
-              <button
-                type="button"
-                className="split-hero-btn w-full sm:w-auto"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: "0.5rem",
-                  padding: "1rem 2.125rem",
-                  background: "rgba(255, 255, 255, 0.06)",
-                  color: "#FFFFFF",
-                  fontWeight: 600,
-                  fontSize: "1rem",
-                  borderRadius: "0.5rem",
-                  border: "1px solid rgba(255, 255, 255, 0.3)",
-                  cursor: "pointer",
-                  width: "100%",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.6)";
-                  e.currentTarget.style.background = "rgba(255, 255, 255, 0.1)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.3)";
-                  e.currentTarget.style.background = "rgba(255, 255, 255, 0.06)";
-                }}
-              >
-                <Play aria-hidden="true" style={{ width: "1.125rem", height: "1.125rem" }} />
-                Book a demo
-              </button>
+            <a
+              href={DEMO_URL}
+              className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-4 font-semibold text-slate-300 transition-colors hover:bg-white/5 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400"
+            >
+              <Play aria-hidden="true" className="h-4 w-4" />
+              Watch a demo
             </a>
           </div>
 
@@ -238,7 +185,7 @@ export default function SplitHero() {
             }}
           >
             <CheckCircle2 aria-hidden="true" style={{ width: "1rem", height: "1rem", color: "#FBBF24" }} />
-            No card needed
+            Built for UK construction teams and homeowners
           </p>
         </div>
       </div>
@@ -270,10 +217,10 @@ export default function SplitHero() {
         <a
           href={HOMEOWNER_URL}
           className="split-hero-panel split-hero-home"
-          aria-label="I'm a homeowner — design your project and get a priced quote. Start free."
+          aria-label="I'm a homeowner — design your project and get a priced quote. Sign up."
           style={{
             position: "relative",
-            padding: "3.25rem 0 3.625rem",
+            padding: "2.75rem 0 3rem",
             overflow: "hidden",
             textDecoration: "none",
             color: "inherit",
@@ -344,10 +291,10 @@ export default function SplitHero() {
         <a
           href={PRO_URL}
           className="split-hero-panel split-hero-pro"
-          aria-label="I'm a builder or pro — price takeoffs, design, and win more jobs. Start free."
+          aria-label="I'm a builder or pro — price takeoffs, design, and win more jobs. Sign up."
           style={{
             position: "relative",
-            padding: "3.25rem 0 3.625rem",
+            padding: "2.75rem 0 3rem",
             overflow: "hidden",
             textDecoration: "none",
             color: "inherit",

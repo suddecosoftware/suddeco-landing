@@ -205,6 +205,11 @@
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
+}
+
+body {
+  overflow-x: clip;
 }
 
 /* Custom scrollbar for dark theme */

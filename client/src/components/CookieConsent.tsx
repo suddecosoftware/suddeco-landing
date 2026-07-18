@@ -41,11 +41,11 @@ export default function CookieConsent() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          className="fixed bottom-0 left-0 right-0 z-[9999] p-4"
+          className="fixed inset-x-0 bottom-0 z-[9999] p-2 sm:p-4"
         >
-          <div className="container max-w-5xl mx-auto">
-            <div className="bg-slate-900 border border-slate-700/60 rounded-xl shadow-2xl shadow-black/40 p-5 sm:p-6">
-              <div className="flex items-start gap-4">
+          <div className="mx-auto w-full max-w-5xl">
+            <div className="rounded-xl border border-slate-700/60 bg-slate-900 p-3 shadow-2xl shadow-black/40 sm:p-6">
+              <div className="flex items-start gap-2.5 sm:gap-4">
                 {/* Cookie icon */}
                 <div className="hidden sm:flex shrink-0 w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/20 items-center justify-center mt-0.5">
                   <Cookie className="w-5 h-5 text-amber-400" />
@@ -54,12 +54,12 @@ export default function CookieConsent() {
                 {/* Content */}
                 <div className="flex-1 min-w-0">
                   <h3
-                    className="text-white font-bold text-sm mb-1.5"
+                    className="mb-1 text-sm font-bold text-white sm:mb-1.5"
                     style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                   >
                     We value your privacy
                   </h3>
-                  <p className="text-slate-400 text-sm leading-relaxed mb-4" style={{ fontFamily: "'Outfit', sans-serif" }}>
+                  <p className="mb-3 text-xs leading-snug text-slate-400 sm:mb-4 sm:text-sm sm:leading-relaxed" style={{ fontFamily: "'Outfit', sans-serif" }}>
                     We use cookies to enhance your browsing experience, provide essential functionality, and analyse site usage. You can choose to accept all cookies or only essential ones.{" "}
                     <a
                       href="/privacy#cookies"
@@ -70,17 +70,17 @@ export default function CookieConsent() {
                   </p>
 
                   {/* Buttons */}
-                  <div className="flex flex-wrap items-center gap-3">
+                  <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:items-center sm:gap-3">
                     <button
                       onClick={acceptAll}
-                      className="px-5 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold text-sm transition-all hover:shadow-lg hover:shadow-amber-500/20"
+                      className="min-h-11 rounded-lg bg-amber-500 px-3 py-2 text-sm font-semibold text-slate-900 transition-all hover:bg-amber-400 hover:shadow-lg hover:shadow-amber-500/20 sm:px-5"
                       style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                     >
                       Accept All
                     </button>
                     <button
                       onClick={acceptEssential}
-                      className="px-5 py-2 rounded-lg border border-slate-600 hover:border-slate-500 text-slate-300 hover:text-white font-medium text-sm transition-all bg-transparent"
+                      className="min-h-11 rounded-lg border border-slate-600 bg-transparent px-3 py-2 text-sm font-medium text-slate-300 transition-all hover:border-slate-500 hover:text-white sm:px-5"
                       style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                     >
                       Essential Only
@@ -91,7 +91,7 @@ export default function CookieConsent() {
                 {/* Close button */}
                 <button
                   onClick={acceptEssential}
-                  className="shrink-0 w-8 h-8 rounded-lg flex items-center justify-center text-slate-500 hover:text-slate-300 hover:bg-slate-800 transition-all"
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-slate-500 transition-all hover:bg-slate-800 hover:text-slate-300"
                   aria-label="Close cookie banner"
                 >
                   <X className="w-4 h-4" />

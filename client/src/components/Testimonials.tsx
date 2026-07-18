@@ -34,7 +34,7 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="py-24 lg:py-32 relative bg-slate-800/20">
+    <section className="relative bg-slate-800/20 py-16 sm:py-20 lg:py-24">
       <div className="absolute inset-0 dot-pattern opacity-10" />
       <div className="container relative z-10">
         {/* Section header */}

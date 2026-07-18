@@ -127,7 +127,7 @@ const faqs = [
 
 export default function FAQ() {
   return (
-    <section id="faq" className="py-24 lg:py-32 relative">
+    <section id="faq" className="relative py-16 sm:py-20 lg:py-24">
       <div className="container relative z-10">
         <div className="max-w-3xl mx-auto">
           {/* Section header */}
