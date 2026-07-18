@@ -5,6 +5,7 @@
  */
 import TopBar from "@/components/TopBar";
 import Navbar from "@/components/Navbar";
+import AppDownloadBar from "@/components/AppDownloadBar";
 import SplitHero from "@/components/SplitHero";
 import Hero from "@/components/Hero";
 import ProductShowcase from "@/components/ProductShowcase";
@@ -28,12 +29,13 @@ export default function Home() {
       <StructuredData type="website" />
       <TopBar />
       <Navbar />
+      <AppDownloadBar />
       <main>
         <SplitHero />
-        <Hero />
+        <TrustedBy />
         <ProductShowcase />
         <LearnSuddeco />
-        <TrustedBy />
+        <Hero />
         <Features />
         <HowItWorks />
         <WhySuddeco />

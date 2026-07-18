@@ -1,5 +1,5 @@
 /**
- * Hero: Cinematic hero with side-by-side layout
+ * Hero: Secondary product-proof section with side-by-side layout
  * Design: Forge & Build — massive headline, amber accents, dramatic depth
  * Layout: Text left, product dashboard right (stacks on mobile)
  * Requested by Gary — ATF product demo beside H1/H2
@@ -14,7 +14,7 @@ const DEMO_DASHBOARD = "/images/suddeco-takeoff-hero.webp";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden" style={{ marginTop: "-72px", paddingTop: "72px" }}>
+    <section className="relative overflow-hidden" aria-labelledby="product-proof-heading">
       {/* Background image with very heavy overlay */}
       <div className="absolute inset-0 z-0">
         <img
@@ -30,7 +30,7 @@ export default function Hero() {
       <div className="absolute top-1/4 -left-32 w-96 h-96 rounded-full blur-3xl z-[1]" style={{ background: "rgba(245, 158, 11, 0.06)" }} />
 
       {/* Hero content — two-column layout */}
-      <div className="container relative z-10" style={{ paddingTop: "5rem", paddingBottom: "4rem" }}>
+      <div className="container relative z-10 py-16 sm:py-20 lg:py-24">
         <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
           {/* Left column — text content */}
           <div className="flex-1 min-w-0">
@@ -58,12 +58,13 @@ export default function Hero() {
                     display: "inline-block",
                   }}
                 />
-                AI-Powered Construction Management
+                FROM DRAWINGS TO DECISIONS
               </span>
             </div>
 
             {/* Headline */}
-            <h1
+            <h2
+              id="product-proof-heading"
               style={{
                 fontFamily: "'Plus Jakarta Sans', sans-serif",
                 fontSize: "clamp(2.25rem, 4vw, 3.75rem)",
@@ -75,12 +76,10 @@ export default function Hero() {
                 textShadow: "0 2px 20px rgba(0,0,0,0.5)",
               }}
             >
-              Streamline Your{" "}
-              <span style={{ color: "#FBBF24" }}>
-                Construction Projects
-              </span>{" "}
-              with Intelligence
-            </h1>
+              See the whole project{" "}
+              <span style={{ color: "#FBBF24" }}>priced and organised</span>{" "}
+              in one place
+            </h2>
 
             {/* Subtext */}
             <p
@@ -93,9 +92,8 @@ export default function Hero() {
                 textShadow: "0 1px 10px rgba(0,0,0,0.3)",
               }}
             >
-              Upload your construction drawings and let our AI extract detailed
-              measurements, generate costed scopes of work, and manage your
-              entire project pipeline — all from one powerful platform.
+              Upload construction drawings, extract detailed measurements, build a
+              costed scope of work, and keep the project moving from one clear view.
             </p>
 
             {/* CTAs */}

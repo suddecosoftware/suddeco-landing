@@ -70,7 +70,7 @@ const cardVariants = {
 
 export default function Features() {
   return (
-    <section id="features" className="py-24 lg:py-32 relative">
+    <section id="features" className="relative py-16 sm:py-20 lg:py-24">
       <div className="absolute inset-0 dot-pattern opacity-20" />
       <div className="container relative z-10">
         {/* Section header */}

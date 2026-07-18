@@ -138,7 +138,7 @@ export default function Pricing() {
   const [yearly, setYearly] = useState(false);
 
   return (
-    <section id="pricing" className="py-24 lg:py-32 relative bg-slate-800/20">
+    <section id="pricing" className="relative bg-slate-800/20 py-16 sm:py-20 lg:py-24">
       <div className="container relative z-10">
         {/* Section header */}
         <motion.div

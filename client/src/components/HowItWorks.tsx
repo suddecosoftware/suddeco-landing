@@ -63,7 +63,7 @@ export default function HowItWorks() {
   return (
     <section
       id="how-it-works"
-      className="py-24 lg:py-32 relative bg-slate-800/30"
+      className="relative bg-slate-800/30 py-16 sm:py-20 lg:py-24"
     >
       {/* Angled top edge */}
       <div className="absolute top-0 left-0 right-0 h-16 -translate-y-full">

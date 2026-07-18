@@ -22,7 +22,7 @@ export default function CTABanner() {
         <div className="absolute inset-0 bg-gradient-to-r from-amber-600/92 via-amber-500/88 to-amber-600/92" />
       </div>
 
-      <div className="container relative z-10 py-20 lg:py-28 text-center">
+      <div className="container relative z-10 py-16 text-center sm:py-20 lg:py-24">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

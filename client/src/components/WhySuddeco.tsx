@@ -86,7 +86,7 @@ export default function WhySuddeco() {
   return (
     <section
       id="why-suddeco"
-      className="py-24 lg:py-32 relative overflow-hidden"
+      className="relative overflow-hidden py-16 sm:py-20 lg:py-24"
     >
       {/* Background image */}
       <div className="absolute inset-0">
