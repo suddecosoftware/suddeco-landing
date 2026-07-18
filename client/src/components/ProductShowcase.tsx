@@ -7,10 +7,18 @@ import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play, Pause, ChevronLeft, ChevronRight } from "lucide-react";
 
-// Design + delivery gallery. The core flow (drawings → areas → priced scope →
-// dashboard → export) lives in the hero + How-It-Works above, so this section
-// shows the rest — no duplicate screens.
+// Leads with TakeOff (the strongest feature) then the design + delivery gallery.
 const SCREENS = [
+  {
+    src: "/images/suddeco-ui-takeoff-elec.webp",
+    label: "AI TakeOff — Any Drawing",
+    description: "Floor plans, structural, electrical, drainage — AI reads every page and finds the rooms",
+  },
+  {
+    src: "/images/suddeco-ui-takeoff-plan.webp",
+    label: "TakeOff to Priced Rooms",
+    description: "Detected rooms, measurements and a live estimate straight off the drawing",
+  },
   {
     src: "/images/suddeco-ui-designstudio.webp",
     label: "AI Design Studio",
