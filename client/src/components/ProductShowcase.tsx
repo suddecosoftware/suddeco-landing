@@ -7,51 +7,47 @@ import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play, Pause } from "lucide-react";
 
+// Real my.suddeco.com screens + AI Design Studio renders.
 const SCREENS = [
   {
-    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663376220736/fyZTmfuczokgJFgJqZSFsM/how-it-works-ai-kH3Y5tuRskmdqopMTsiLQS.webp",
-    label: "Intelligent Extraction",
-    description: "AI identifies rooms, dimensions, and structural elements",
+    src: "/images/suddeco-ui-takeoff.webp",
+    label: "AI Reads Your Drawings",
+    description: "Upload a drawing — AI detects every room, shell and measurement automatically",
   },
   {
-    src: "/images/suddeco-takeoff-hero.webp",
-    label: "AI Drawing Analysis",
-    description: "Upload construction drawings and AI detects rooms, shells, and measurements",
+    src: "/images/suddeco-ui-areas.webp",
+    label: "Every Room, Measured",
+    description: "Floor areas, wall areas and shell boundaries for the whole project",
+  },
+  {
+    src: "/images/suddeco-ui-scope.webp",
+    label: "A Priced Scope of Works",
+    description: "Hundreds of tasks costed with UK labour and materials — profit and benchmark built in",
+  },
+  {
+    src: "/images/suddeco-ui-designstudio.webp",
+    label: "AI Design Studio",
+    description: "Turn a room into a photorealistic 3D render with every finish priced into the scope",
   },
   {
     src: "/images/suddeco-render-loft.webp",
-    label: "AI Design Studio Render",
-    description: "Photorealistic renders of your project — generated straight from the drawings",
+    label: "Photorealistic Renders",
+    description: "Loft conversions, generated straight from your drawings",
   },
   {
     src: "/images/suddeco-render-extension.webp",
     label: "See It Before You Build",
-    description: "Photorealistic renders of extensions and rooms — generated from your real drawings",
+    description: "Rear extensions visualised from your real plans",
   },
   {
     src: "/images/suddeco-render-kitchen-ext.webp",
     label: "Extensions, Priced & Designed",
-    description: "Kitchen extensions, loft conversions and new builds — visualised and costed together",
+    description: "Kitchen extensions and new builds — visualised and costed together",
   },
   {
-    src: "/images/suddeco-dashboard-hero.webp",
-    label: "Project Dashboard",
-    description: "Track contract value, floor breakdown, and project progress at a glance",
-  },
-  {
-    src: "/images/suddeco-ai-assistant.webp",
-    label: "AI Assistant & Analytics",
-    description: "Chat with your project data, get cost breakdowns, and spot missing items",
-  },
-  {
-    src: "/images/suddeco-areas.webp",
-    label: "Areas & Rooms",
-    description: "View all detected rooms with floor areas, wall areas, and shell boundaries",
-  },
-  {
-    src: "/images/suddeco-integrations.webp",
-    label: "Integrations Hub",
-    description: "Connect Xero, QuickBooks, Google Drive, Slack, Zoom and 15+ tools",
+    src: "/images/suddeco-ui-intelligence.webp",
+    label: "AI Project Intelligence",
+    description: "Market value, planning odds, finance options — and an AI that proposes the missing tasks",
   },
 ];
 
