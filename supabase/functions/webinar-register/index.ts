@@ -19,6 +19,51 @@ type RegisterBody = {
   visitorUuid?: string;
 };
 
+// Notify the owner (email → sales@suddeco.com + Google Calendar) in the
+// BACKGROUND for EVERY booking — new OR returning. The lead is already saved by
+// the caller; this never throws and never blocks/slows the booking response.
+// waitUntil keeps the isolate alive so the calendar insert (which runs after the
+// email inside the notifier) isn't cut off. Auth is the shared OWNER_NOTIFY_TOKEN
+// — the notifier is on a DIFFERENT Supabase project, so its service-role key
+// never matched ours and every booking used to silently 401 (no email/calendar).
+function notifyOwner(payload: Record<string, unknown>): void {
+  try {
+    const notifyUrl = Deno.env.get("OWNER_NOTIFY_URL") ||
+      "https://rachel.suddeco.com/api/mailer/notify";
+    const notifyToken = Deno.env.get("OWNER_NOTIFY_TOKEN") ||
+      Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || "";
+    const task = (async () => {
+      const ctrl = new AbortController();
+      const timer = setTimeout(() => ctrl.abort(), 12000);
+      try {
+        await fetch(notifyUrl, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${notifyToken}`,
+          },
+          body: JSON.stringify(payload),
+          signal: ctrl.signal,
+        });
+      } catch (_e) {
+        /* swallow — the lead is already saved */
+      } finally {
+        clearTimeout(timer);
+      }
+    })();
+    const edgeRuntime = (globalThis as {
+      EdgeRuntime?: { waitUntil?: (p: Promise<unknown>) => void };
+    }).EdgeRuntime;
+    if (edgeRuntime && typeof edgeRuntime.waitUntil === "function") {
+      edgeRuntime.waitUntil(task);
+    } else {
+      void task;
+    }
+  } catch (_notifyErr) {
+    /* never block registration on notifier failure */
+  }
+}
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return jsonResponse({ ok: true });
   if (req.method !== "POST") return jsonResponse({ error: "method not allowed" }, { status: 405 });
@@ -48,6 +93,40 @@ Deno.serve(async (req) => {
     if (existingError) throw existingError;
 
     if (existing) {
+      // Returning registrant — refresh their contact details with anything new
+      // and STILL notify the owner. Previously this returned early, so a
+      // re-booking sent no email + no calendar event and dropped any updated
+      // phone/address. The calendar event id is deterministic per registration,
+      // so re-notifying updates the same event instead of duplicating it.
+      const patch: Record<string, string> = {};
+      const p = (body.phone || "").toString().trim();
+      if (p) patch.phone = p;
+      const a = (body.address || "").toString().trim();
+      if (a) patch.address = a;
+      const co = (body.company || "").toString().trim();
+      if (co) patch.company = co;
+      const at = (body.audience_type || body.audienceType || "").toString().trim();
+      if (at) patch.audience_type = at;
+      const pp = (body.pain_point || body.painPoint || "").toString().trim();
+      if (pp) patch.pain_point = pp;
+      if (Object.keys(patch).length) {
+        await supabase.from("webinar_registrations").update(patch).eq("id", existing.id);
+      }
+      notifyOwner({
+        registrationId: existing.id,
+        track,
+        name,
+        email,
+        phone: patch.phone ?? null,
+        address: patch.address ?? null,
+        company: patch.company ?? null,
+        audienceType: patch.audience_type ?? null,
+        painPoint: patch.pain_point ?? null,
+        utmSource: body.utm_source || null,
+        utmCampaign: body.utm_campaign || null,
+        utmContent: body.utm_content || null,
+      });
+
       const { count, error: countError } = await supabase
         .from("webinar_registrations")
         .select("*", { count: "exact", head: true })
@@ -90,68 +169,20 @@ Deno.serve(async (req) => {
       .single();
     if (error) throw error;
 
-    // Notify the owner (email → sales@suddeco.com + Google Calendar) for EVERY
-    // new registration — this is the hook the mailer/notify route was written
-    // for but was never being called, so no booking email ever arrived. The
-    // lead is already saved above; the notifier is timeout-guarded and swallows
-    // its own errors so a notifier outage never fails or slows registration.
-    try {
-      const notifyUrl =
-        Deno.env.get("OWNER_NOTIFY_URL") ||
-        "https://rachel.suddeco.com/api/mailer/notify";
-      // Shared secret the notifier accepts. Must be OWNER_NOTIFY_TOKEN — the
-      // notifier lives on a DIFFERENT Supabase project, so its service-role key
-      // never matched ours and every booking silently 401'd (no email, no
-      // calendar). Fall back to the service key only for backwards-compat.
-      const notifyToken = Deno.env.get("OWNER_NOTIFY_TOKEN") ||
-        Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || "";
-      // Run the notifier in the BACKGROUND so the booking response returns
-      // immediately, but the whole notifier finishes — including the Google
-      // Calendar insert that runs AFTER the email. A foreground 4s await let the
-      // email land (~3s) then severed the connection before the calendar step.
-      const notifyTask = (async () => {
-        const ctrl = new AbortController();
-        const timer = setTimeout(() => ctrl.abort(), 12000);
-        try {
-          await fetch(notifyUrl, {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-              authorization: `Bearer ${notifyToken}`,
-            },
-            body: JSON.stringify({
-              registrationId: String(data.id),
-              track,
-              name,
-              email,
-              phone: registration.phone,
-              address: registration.address,
-              company: registration.company,
-              audienceType: registration.audience_type,
-              painPoint: registration.pain_point,
-              utmSource: registration.utm_source,
-              utmCampaign: registration.utm_campaign,
-              utmContent: registration.utm_content,
-            }),
-            signal: ctrl.signal,
-          });
-        } catch (_e) {
-          /* swallow — the lead is already saved */
-        } finally {
-          clearTimeout(timer);
-        }
-      })();
-      const edgeRuntime = (globalThis as {
-        EdgeRuntime?: { waitUntil?: (p: Promise<unknown>) => void };
-      }).EdgeRuntime;
-      if (edgeRuntime && typeof edgeRuntime.waitUntil === "function") {
-        edgeRuntime.waitUntil(notifyTask);
-      } else {
-        await notifyTask;
-      }
-    } catch (_notifyErr) {
-      /* never block registration on notifier failure */
-    }
+    notifyOwner({
+      registrationId: String(data.id),
+      track,
+      name,
+      email,
+      phone: registration.phone,
+      address: registration.address,
+      company: registration.company,
+      audienceType: registration.audience_type,
+      painPoint: registration.pain_point,
+      utmSource: registration.utm_source,
+      utmCampaign: registration.utm_campaign,
+      utmContent: registration.utm_content,
+    });
 
     if (visitorUuid) {
       await supabase.from("visitor_sessions").upsert({
