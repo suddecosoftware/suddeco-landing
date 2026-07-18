@@ -7,11 +7,12 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Upload, Cpu, FileText, Settings } from "lucide-react";
 
+// Real my.suddeco.com screens, one per step (Upload → Extract → Scope → Export).
 const stepImages = [
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663376220736/fyZTmfuczokgJFgJqZSFsM/how-it-works-upload-mYjVnnrScZKrQdwxpsgTkn.webp",
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663376220736/fyZTmfuczokgJFgJqZSFsM/how-it-works-ai-kH3Y5tuRskmdqopMTsiLQS.webp",
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663376220736/fyZTmfuczokgJFgJqZSFsM/how-it-works-scope-LRykjPSMhz5XRUTScCmvRz.webp",
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663376220736/fyZTmfuczokgJFgJqZSFsM/how-it-works-export-kzdwxaMSnTB7y9AUKDEYrK.webp",
+  "/images/suddeco-ui-takeoff.webp",
+  "/images/suddeco-ui-areas.webp",
+  "/images/suddeco-ui-dashboard.webp",
+  "/images/suddeco-ui-export.webp",
 ];
 
 const steps = [

@@ -5,40 +5,12 @@
  */
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Play, Pause } from "lucide-react";
+import { Play, Pause, ChevronLeft, ChevronRight } from "lucide-react";
 
-// Real my.suddeco.com screens + AI Design Studio renders.
+// Design + delivery gallery. The core flow (drawings → areas → priced scope →
+// dashboard → export) lives in the hero + How-It-Works above, so this section
+// shows the rest — no duplicate screens.
 const SCREENS = [
-  {
-    src: "/images/suddeco-ui-takeoff.webp",
-    label: "AI Reads Your Drawings",
-    description: "Upload a drawing — AI detects every room, shell and measurement automatically",
-  },
-  {
-    src: "/images/suddeco-ui-areas.webp",
-    label: "Every Room, Measured",
-    description: "Floor areas, wall areas and shell boundaries for the whole project",
-  },
-  {
-    src: "/images/suddeco-ui-scope.webp",
-    label: "A Priced Scope of Works",
-    description: "Hundreds of tasks costed with UK labour and materials — profit and benchmark built in",
-  },
-  {
-    src: "/images/suddeco-ui-stages.webp",
-    label: "Costed by Stage",
-    description: "Every build stage priced — from site setup to finishes",
-  },
-  {
-    src: "/images/suddeco-ui-dashboard.webp",
-    label: "Full Programme & Gantt",
-    description: "Contract value, a 26-week programme and cost-by-area at a glance",
-  },
-  {
-    src: "/images/suddeco-ui-intelligence.webp",
-    label: "AI Project Intelligence",
-    description: "Market value, planning odds, finance options — and an AI that proposes the missing tasks",
-  },
   {
     src: "/images/suddeco-ui-designstudio.webp",
     label: "AI Design Studio",
@@ -70,6 +42,16 @@ const SCREENS = [
     description: "A full 3D model of the property — room by room, ready to design",
   },
   {
+    src: "/images/suddeco-ui-intelligence.webp",
+    label: "AI Project Intelligence",
+    description: "Market value, planning odds, finance options — and an AI that proposes the missing tasks",
+  },
+  {
+    src: "/images/suddeco-ui-stages.webp",
+    label: "Costed by Stage",
+    description: "Every build stage priced — from site setup to finishes",
+  },
+  {
     src: "/images/suddeco-ui-present.webp",
     label: "Present to Your Client",
     description: "A branded, client-ready proposal — priced and designed",
@@ -90,6 +72,11 @@ export default function ProductShowcase() {
 
   const next = useCallback(() => {
     setCurrent((prev) => (prev + 1) % SCREENS.length);
+    setProgress(0);
+  }, []);
+
+  const prev = useCallback(() => {
+    setCurrent((p) => (p - 1 + SCREENS.length) % SCREENS.length);
     setProgress(0);
   }, []);
 
@@ -243,6 +230,39 @@ export default function ProductShowcase() {
                 transition={{ duration: 0.6 }}
               />
             </AnimatePresence>
+
+            {/* Back / forward controls */}
+            {[
+              { dir: "prev" as const, onClick: prev, Icon: ChevronLeft, side: "left" as const },
+              { dir: "next" as const, onClick: next, Icon: ChevronRight, side: "right" as const },
+            ].map(({ dir, onClick, Icon, side }) => (
+              <button
+                key={dir}
+                type="button"
+                aria-label={dir === "prev" ? "Previous screen" : "Next screen"}
+                onClick={onClick}
+                style={{
+                  position: "absolute",
+                  top: "50%",
+                  [side]: "0.75rem",
+                  transform: "translateY(-50%)",
+                  zIndex: 2,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "2.5rem",
+                  height: "2.5rem",
+                  borderRadius: "50%",
+                  background: "rgba(15, 23, 42, 0.65)",
+                  backdropFilter: "blur(6px)",
+                  border: "1px solid rgba(245, 158, 11, 0.35)",
+                  color: "#F59E0B",
+                  cursor: "pointer",
+                }}
+              >
+                <Icon style={{ width: "1.25rem", height: "1.25rem" }} />
+              </button>
+            ))}
 
             {/* Current screen label overlay */}
             <div
