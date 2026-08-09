@@ -1,4 +1,14 @@
-name: Deploy suddeco.com to Cloudflare Pages
+name: Build check for suddeco.com
+
+# suddeco.com is served from the Hostinger VPS (815231, 195.110.58.213) as of
+# 2026-08-09. It is no longer deployed to Cloudflare Pages.
+#
+# Deployment is pull-based: the systemd timer `suddeco-landing-deploy.timer` on
+# the VPS polls origin/main every 5 minutes, and on a new commit runs
+# /opt/suddeco/landing/build.sh (vite build in a node:20 container) into
+# /var/www/suddeco-landing, then reloads nginx.
+#
+# This workflow only proves the build still compiles. Nothing here publishes.
 
 on:
   pull_request:
@@ -8,7 +18,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
@@ -27,10 +37,3 @@ jobs:
           VITE_MY_SUDDECO_URL: https://my.suddeco.com
           VITE_MARKETPLACE_URL: https://suddecohomes.com
           VITE_SHOP_URL: https://materials.suddeco.com
-
-      - name: Deploy to Cloudflare Pages via Wrangler
-        if: github.event_name != 'pull_request'
-        run: npx wrangler pages deploy dist --project-name=suddeco-landing --branch=main
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: 0e46bc9b8134c7b4457391ebf4b17758
