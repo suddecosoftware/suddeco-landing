@@ -14,6 +14,9 @@ type Track = "pro" | "homeowner";
 
 const BOOKING_URL = "https://calendly.com/suddeco-sales/30min";
 const WEBINAR_REGISTER_URL = "https://hvpsxeytbvbytyjudtyb.supabase.co/functions/v1/webinar-register";
+// DEMO_BOOKING_PIPELINE_V1 — the app's booking intake (persists the lead,
+// emails the team, creates the calendar event when connected).
+const DEMO_BOOKING_URL = "https://my.suddeco.com/api/public/demo-booking";
 
 const trackConfig = {
   pro: {
@@ -134,6 +137,33 @@ export default function DemoPage() {
     };
     const saved = JSON.parse(localStorage.getItem("suddeco_demo_registrations") || "[]");
     localStorage.setItem("suddeco_demo_registrations", JSON.stringify([...saved, payload]));
+    // DEMO_BOOKING_PIPELINE_V1: post to the app's booking intake so every
+    // registration lands in the team's inbox and calendar. The hosted
+    // webinar-register endpoint stays as a first leg (it returns the live
+    // position counter); a failure there never blocks the real pipeline.
+    const appBooking = fetch(DEMO_BOOKING_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: form.name,
+        email: form.email,
+        phone: form.phone || undefined,
+        company: form.company || undefined,
+        audience: form.audienceType || undefined,
+        preferredTime:
+          [form.preferredDate, form.preferredTime].filter(Boolean).join(" ") ||
+          undefined,
+        painPoint: form.painPoint || undefined,
+        address: form.address || undefined,
+        visitorUuid,
+        track,
+      }),
+    })
+      .then(async (response) => {
+        if (!response.ok) throw new Error("booking intake failed");
+        return response.json();
+      })
+      .catch((err) => console.warn("[demo] app booking pipe failed:", err));
     fetch(WEBINAR_REGISTER_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -153,6 +183,7 @@ export default function DemoPage() {
         localStorage.setItem(`suddeco_demo_count_${track}`, String(Math.min(10, position + 1)));
         setPosition((p) => Math.min(10, p + 1));
       });
+    void appBooking;
     setSubmitted(true);
   };
 
