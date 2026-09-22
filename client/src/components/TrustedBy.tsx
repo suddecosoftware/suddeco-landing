@@ -40,8 +40,13 @@ function LogoBadge({ name, subtitle }: { name: string; subtitle: string }) {
 }
 
 export default function TrustedBy() {
+  // Hidden 2026-09-22 at the founder's request — the strip is kept, not deleted,
+  // so removing this style brings it straight back.
   return (
-    <section className="py-12 lg:py-16 border-y border-slate-800/50 bg-[#0B1120]">
+    <section
+      className="py-12 lg:py-16 border-y border-slate-800/50 bg-[#0B1120]"
+      style={{ display: "none" }}
+    >
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

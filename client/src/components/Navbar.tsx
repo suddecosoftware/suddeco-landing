@@ -122,24 +122,17 @@ export default function Navbar() {
               )}
             </a>
           ))}
-          <details className="group relative">
-            <summary className="flex min-h-11 list-none items-center gap-1 rounded-md px-2 text-sm font-medium tracking-wide text-slate-300 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 [&::-webkit-details-marker]:hidden">
-              More
-              <ChevronDown className="h-4 w-4 transition-transform group-open:rotate-180" aria-hidden="true" />
-            </summary>
-            <div className="absolute left-1/2 top-full z-50 mt-2 w-52 -translate-x-1/2 rounded-xl border border-slate-700/70 bg-slate-900/98 p-2 shadow-2xl shadow-black/40 backdrop-blur-xl">
-              {SECONDARY_LINKS.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.section ? sectionHref(link.href) : link.href}
-                  onClick={(event) => event.currentTarget.closest("details")?.removeAttribute("open")}
-                  className="flex min-h-11 items-center rounded-lg px-3 text-sm font-medium text-slate-300 transition-colors hover:bg-slate-800 hover:text-white"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
-          </details>
+          {/* Inline since 2026-09-22 — the "More" dropdown hid links on a nav
+              that has the room to show them. */}
+          {SECONDARY_LINKS.map((link) => (
+            <a
+              key={link.href}
+              href={link.section ? sectionHref(link.href) : link.href}
+              className="relative text-sm font-medium tracking-wide text-slate-300 transition-colors duration-200 hover:text-white"
+            >
+              {link.label}
+            </a>
+          ))}
         </div>
 
         {/* Desktop CTAs */}
