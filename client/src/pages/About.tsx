@@ -94,9 +94,10 @@ export default function About() {
             {/* Stats row */}
             <motion.div
               {...fadeInUp}
-              className="grid grid-cols-1 sm:grid-cols-3 gap-6"
+              className="grid grid-cols-2 sm:grid-cols-4 gap-6"
             >
               {[
+                { value: "2022", label: "Founded", icon: Award },
                 { value: "3,500+", label: "Build Tasks Priced", icon: TrendingUp },
                 { value: "10,000+", label: "Materials in Catalogue", icon: Building2 },
                 { value: "25", label: "Build Stages Covered", icon: Zap },
@@ -168,24 +169,14 @@ export default function About() {
                 <div className="space-y-6">
                   {[
                     {
-                      year: "2024",
+                      year: "2022",
                       title: "Company Founded",
-                      desc: "Suddeco Ltd established in London with a mission to transform construction estimation through AI.",
-                    },
-                    {
-                      year: "2024",
-                      title: "Platform Launch",
-                      desc: "Released the Suddeco AI platform with AI drawing analysis, scope generation, and project management.",
-                    },
-                    {
-                      year: "2025",
-                      title: "Industry Recognition",
-                      desc: "Adopted by construction professionals across the UK, processing over 2 million square metres of drawings.",
+                      desc: "Suddeco Ltd was established in the UK with a mission to transform construction estimation through AI.",
                     },
                     {
                       year: "2026",
-                      title: "Continued Growth",
-                      desc: "Expanding features with CRM, team collaboration, branded exports, and advanced AI capabilities.",
+                      title: "Today",
+                      desc: "A full construction platform: AI drawing analysis, priced scopes of works, CRM, team collaboration and branded exports.",
                     },
                   ].map((milestone, i) => (
                     <motion.div
