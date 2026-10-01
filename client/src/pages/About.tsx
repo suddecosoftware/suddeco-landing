@@ -94,13 +94,12 @@ export default function About() {
             {/* Stats row */}
             <motion.div
               {...fadeInUp}
-              className="grid grid-cols-2 lg:grid-cols-4 gap-6"
+              className="grid grid-cols-1 sm:grid-cols-3 gap-6"
             >
               {[
-                { value: "2024", label: "Founded", icon: Building2 },
-                { value: "500+", label: "Projects Analysed", icon: TrendingUp },
-                { value: "98%", label: "Client Satisfaction", icon: Award },
-                { value: "10x", label: "Faster Estimation", icon: Zap },
+                { value: "3,500+", label: "Build Tasks Priced", icon: TrendingUp },
+                { value: "10,000+", label: "Materials in Catalogue", icon: Building2 },
+                { value: "25", label: "Build Stages Covered", icon: Zap },
               ].map((stat) => (
                 <div
                   key={stat.label}
