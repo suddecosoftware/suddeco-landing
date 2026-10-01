@@ -434,8 +434,8 @@ export default function About() {
                 className="text-slate-400 text-lg mb-8 max-w-2xl mx-auto"
                 style={{ fontFamily: "'Outfit', sans-serif" }}
               >
-                Upload your drawings, get a priced scope of works, and send it to your
-                client, all in one place.
+                Join the construction professionals who are already saving time and improving
+                accuracy with Suddeco AI.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <a

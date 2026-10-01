@@ -36,8 +36,8 @@ export default function CTABanner() {
             Ready to Revolutionise Your Projects?
           </h2>
           <p className="text-slate-800 text-lg max-w-2xl mx-auto leading-relaxed mb-10">
-            Upload your drawings, get a priced scope of works, and send it to your
-            client, all in one place.
+            Join the construction professionals who are already saving
+            time, reducing errors, and growing their businesses with Suddeco.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/demo/pro?utm_source=cta_banner&utm_campaign=always_on">
