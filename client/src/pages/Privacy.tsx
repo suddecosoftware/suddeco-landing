@@ -34,7 +34,7 @@ export default function Privacy() {
               Privacy Policy
             </h1>
             <p className="text-slate-400 text-lg">
-              Last updated: 9 March 2026
+              Last updated: 1 October 2026
             </p>
             <div className="mt-6 p-4 rounded-lg border border-amber-500/20 bg-amber-500/5">
               <p className="text-slate-300 text-sm leading-relaxed">
@@ -170,6 +170,9 @@ export default function Privacy() {
               </p>
               <p className="text-slate-300 leading-relaxed mb-3">
                 5.2. <strong className="text-white">Service Providers.</strong> We engage trusted third-party service providers who process data on our behalf to support our operations. These providers are bound by data processing agreements that require them to protect your data to the same standard we apply. Our key service providers include cloud hosting providers, payment processors, email delivery services, and analytics platforms.
+              </p>
+              <p className="text-slate-300 leading-relaxed mb-3">
+                5.2A. <strong className="text-white">Third-party AI services.</strong> Our AI features, such as reading drawings, building scopes of work, answering questions about a project and processing notes, work by sending the content you add (drawings, photos and files, project details, measurements and scope items, notes, and chat messages) to third-party AI service providers. They process it on our behalf, under data processing terms with us, to return the result you asked for. In our iOS app we ask for your permission before any of this content is sent, and you can withdraw that permission at any time in Account Settings &gt; Security &gt; AI data permission; the AI features then stop and nothing further is sent. We do not sell your personal data. To ask for your data to be deleted, use Delete my account in Account Settings or contact us.
               </p>
               <p className="text-slate-300 leading-relaxed mb-3">
                 5.3. <strong className="text-white">Legal Requirements.</strong> We may disclose your personal data if required to do so by law, regulation, legal process, or governmental request, or where we believe disclosure is necessary to protect our rights, your safety, or the safety of others.
