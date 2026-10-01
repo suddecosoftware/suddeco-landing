@@ -40,6 +40,9 @@ function LogoBadge({ name, subtitle }: { name: string; subtitle: string }) {
 }
 
 export default function TrustedBy() {
+  // NAMED_BODIES_HIDDEN (1 Oct 2026, owner instruction): this strip named professional bodies and cost-data
+  // providers, implying affiliation. It is not rendered. Data kept below for reference.
+  if (true) return null;
   // Hidden 2026-09-22 at the founder's request — the strip is kept, not deleted,
   // so removing this style brings it straight back.
   return (

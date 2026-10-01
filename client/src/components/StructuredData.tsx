@@ -98,7 +98,6 @@ function getOrganizationSchema() {
     knowsAbout: [
       "Construction Estimation",
       "AI in Construction",
-      "NRM1",
       "Quantity Surveying",
       "Project Management",
       "Building Information Modelling",

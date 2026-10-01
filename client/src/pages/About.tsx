@@ -154,8 +154,8 @@ export default function About() {
                   <p>
                     Today, Suddeco AI helps construction professionals across the United Kingdom
                     streamline their estimation workflows, produce accurate costed scopes of work, and
-                    manage projects with unprecedented efficiency. We are proud to align our methodologies
-                    with NRM1, BCIS, and RICS standards, ensuring our outputs meet the rigorous
+                    manage projects with unprecedented efficiency. We build our methodologies around UK
+                    construction practice, and we aim for outputs that meet the rigorous
                     expectations of the industry.
                   </p>
                 </div>
@@ -324,7 +324,7 @@ export default function About() {
                 {
                   icon: Shield,
                   title: "Accuracy & Trust",
-                  desc: "Our outputs are built on UK industry standards (NRM1, BCIS, RICS). We earn trust through precision, transparency, and reliability.",
+                  desc: "Our outputs are built for UK construction practice. We earn trust through precision, transparency, and reliability.",
                 },
                 {
                   icon: Users,
@@ -395,7 +395,7 @@ export default function About() {
             <motion.div {...fadeInUp} className="space-y-4 max-w-3xl mx-auto">
               {[
                 "AI-powered drawing analysis that extracts dimensions, materials, and specifications automatically",
-                "Automated scope of works generation aligned with NRM1 and BCIS standards",
+                "Automated scope of works generation built for UK construction",
                 "Accurate cost estimation using up-to-date UK pricing data",
                 "Complete project management with timelines, milestones, and task tracking",
                 "Built-in CRM for managing clients, contacts, and project relationships",
