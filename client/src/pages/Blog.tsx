@@ -33,7 +33,7 @@ export default function Blog() {
     <div className="min-h-screen bg-[#0F172A] text-slate-100">
       <SEOHead
         title="Blog | Suddeco AI - Construction Industry Insights"
-        description="Expert articles on AI in construction, estimation best practices, NRM1 standards, project management, and business growth for UK construction professionals."
+        description="Expert articles on AI in construction, estimation best practices, project management, and business growth for UK construction professionals."
         canonicalPath="/blog"
       />
       <TopBar />
