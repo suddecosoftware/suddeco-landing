@@ -13,7 +13,7 @@ import { getVisitorId, linkVisitorEmail, trackPageView } from "@/lib/visitorTrac
 type Track = "pro" | "homeowner";
 
 const BOOKING_URL = "https://calendly.com/suddeco-sales/30min";
-const WEBINAR_REGISTER_URL = "https://hvpsxeytbvbytyjudtyb.supabase.co/functions/v1/webinar-register";
+const WEBINAR_REGISTER_URL = "https://my.suddeco.com/api/public/webinar-register";
 
 const trackConfig = {
   pro: {
