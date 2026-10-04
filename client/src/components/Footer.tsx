@@ -33,7 +33,8 @@ const quickLinks = [
 const legalLinks = [
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Terms of Service", href: "/terms" },
-  { label: "Cookie Policy", href: "/privacy#cookies" },
+  { label: "Cookie Policy", href: "/cookie-policy" },
+  { label: "Refunds & Cancellations", href: "/refunds" },
 ];
 
 export default function Footer() {

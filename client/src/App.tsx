@@ -7,6 +7,8 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
+import CookiePolicy from "./pages/CookiePolicy";
+import Refunds from "./pages/Refunds";
 import CookieConsent from "./components/CookieConsent";
 import About from "./pages/About";
 import Blog from "./pages/Blog";
@@ -23,6 +25,8 @@ function Router() {
       <Route path={"/"} component={Home} />
       <Route path={"/terms"} component={Terms} />
       <Route path={"/privacy"} component={Privacy} />
+      <Route path={"/cookie-policy"} component={CookiePolicy} />
+      <Route path={"/refunds"} component={Refunds} />
       <Route path={"/about"} component={About} />
       <Route path={"/download"} component={Download} />
       <Route path={"/demo/pro"} component={DemoPage} />
@@ -46,7 +50,12 @@ function App() {
       <ThemeProvider defaultTheme="dark">
         <TooltipProvider>
           <Toaster />
-          <Router />
+          <a href="#app-content" className="skip-link">
+            Skip to content
+          </a>
+          <div id="app-content" tabIndex={-1}>
+            <Router />
+          </div>
           <CookieConsent />
         </TooltipProvider>
       </ThemeProvider>

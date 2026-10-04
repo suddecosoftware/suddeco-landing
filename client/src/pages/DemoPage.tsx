@@ -86,6 +86,7 @@ export default function DemoPage() {
   const config = trackConfig[track];
   const Icon = config.icon;
   const [submitted, setSubmitted] = useState(false);
+  const [submissionWarning, setSubmissionWarning] = useState<string | null>(null);
   const [position, setPosition] = useState(7);
   const [form, setForm] = useState({
     name: "",
@@ -123,6 +124,7 @@ export default function DemoPage() {
 
   const submit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setSubmissionWarning(null);
     linkVisitorEmail(form.email);
     const visitorUuid = getVisitorId();
     const payload = {
@@ -152,6 +154,7 @@ export default function DemoPage() {
       .catch(() => {
         localStorage.setItem(`suddeco_demo_count_${track}`, String(Math.min(10, position + 1)));
         setPosition((p) => Math.min(10, p + 1));
+        setSubmissionWarning("We saved your details in this browser, but online registration may not have completed. Please email sales@suddeco.com if you do not hear from us.");
       });
     setSubmitted(true);
   };
@@ -259,6 +262,14 @@ export default function DemoPage() {
                 <p className="mt-3 text-slate-300">
                   We logged your interest for the {track === "pro" ? "Pro" : "Homeowner"} demo track. Use the calendar link if you want to pick a slot now.
                 </p>
+                {submissionWarning && (
+                  <p
+                    role="alert"
+                    className="mt-4 rounded-xl border border-amber-300/40 bg-amber-300/10 px-4 py-3 text-left text-sm text-amber-100"
+                  >
+                    {submissionWarning}
+                  </p>
+                )}
                 <Button
                   className="mt-6 rounded-xl bg-amber-400 text-slate-950 hover:bg-amber-300"
                   onClick={() => window.open(bookingHref, "_blank", "noopener,noreferrer")}
@@ -269,39 +280,65 @@ export default function DemoPage() {
             ) : (
               <div className="space-y-5">
                 <div className="grid gap-4 sm:grid-cols-2">
-                  <Input required placeholder="Name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="h-12 border-slate-700 bg-slate-900 text-white" />
-                  <Input required type="email" placeholder="Email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="h-12 border-slate-700 bg-slate-900 text-white" />
+                  <label className="space-y-1.5 text-sm font-medium text-slate-300">
+                    Name
+                    <Input required placeholder="Name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="h-12 border-slate-700 bg-slate-900 text-white" />
+                  </label>
+                  <label className="space-y-1.5 text-sm font-medium text-slate-300">
+                    Email
+                    <Input required type="email" placeholder="Email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="h-12 border-slate-700 bg-slate-900 text-white" />
+                  </label>
                 </div>
-                <Input required type="tel" inputMode="tel" autoComplete="tel" placeholder="Phone number" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} className="h-12 border-slate-700 bg-slate-900 text-white" />
-                <Input type="text" autoComplete="street-address" placeholder="Address (optional)" value={form.address} onChange={(e) => setForm({ ...form, address: e.target.value })} className="h-12 border-slate-700 bg-slate-900 text-white" />
+                <label className="block space-y-1.5 text-sm font-medium text-slate-300">
+                  Phone number
+                  <Input required type="tel" inputMode="tel" autoComplete="tel" placeholder="Phone number" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} className="h-12 border-slate-700 bg-slate-900 text-white" />
+                </label>
+                <label className="block space-y-1.5 text-sm font-medium text-slate-300">
+                  Address <span className="text-slate-500">(optional)</span>
+                  <Input type="text" autoComplete="street-address" placeholder="Address (optional)" value={form.address} onChange={(e) => setForm({ ...form, address: e.target.value })} className="h-12 border-slate-700 bg-slate-900 text-white" />
+                </label>
                 <div className="space-y-1.5">
                   <p className="text-xs font-medium text-slate-400">
                     Pick a day &amp; time for your demo — we'll send a calendar invite (or leave blank and we'll follow up to schedule).
                   </p>
                   <div className="grid gap-3 sm:grid-cols-2">
-                    <Input
-                      type="date"
-                      min={new Date().toISOString().slice(0, 10)}
-                      value={form.preferredDate}
-                      onChange={(e) => setForm({ ...form, preferredDate: e.target.value })}
-                      className="h-12 border-slate-700 bg-slate-900 text-white [color-scheme:dark]"
-                    />
-                    <select
-                      value={form.preferredTime}
-                      onChange={(e) => setForm({ ...form, preferredTime: e.target.value })}
-                      className="h-12 rounded-md border border-slate-700 bg-slate-900 px-3 text-white"
-                      aria-label="Preferred demo time"
-                    >
-                      <option value="">Preferred time (UK)</option>
-                      {["09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00"].map((t) => (
-                        <option key={t} value={t}>{t}</option>
-                      ))}
-                    </select>
+                    <label className="space-y-1.5 text-sm font-medium text-slate-300">
+                      Preferred date
+                      <Input
+                        type="date"
+                        min={new Date().toISOString().slice(0, 10)}
+                        value={form.preferredDate}
+                        onChange={(e) => setForm({ ...form, preferredDate: e.target.value })}
+                        className="h-12 border-slate-700 bg-slate-900 text-white [color-scheme:dark]"
+                      />
+                    </label>
+                    <label className="space-y-1.5 text-sm font-medium text-slate-300">
+                      Preferred time
+                      <select
+                        value={form.preferredTime}
+                        onChange={(e) => setForm({ ...form, preferredTime: e.target.value })}
+                        className="h-12 w-full rounded-md border border-slate-700 bg-slate-900 px-3 text-white"
+                      >
+                        <option value="">Preferred time (UK)</option>
+                        {["09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00"].map((t) => (
+                          <option key={t} value={t}>{t}</option>
+                        ))}
+                      </select>
+                    </label>
                   </div>
                 </div>
-                <Input placeholder="Company" value={form.company} onChange={(e) => setForm({ ...form, company: e.target.value })} className="h-12 border-slate-700 bg-slate-900 text-white" />
-                <Input required placeholder={config.audiencePlaceholder} value={form.audienceType} onChange={(e) => setForm({ ...form, audienceType: e.target.value })} className="h-12 border-slate-700 bg-slate-900 text-white" />
-                <Textarea required placeholder="What do you want the demo to solve?" value={form.painPoint} onChange={(e) => setForm({ ...form, painPoint: e.target.value })} className="min-h-28 border-slate-700 bg-slate-900 text-white" />
+                <label className="block space-y-1.5 text-sm font-medium text-slate-300">
+                  Company <span className="text-slate-500">(optional)</span>
+                  <Input placeholder="Company" value={form.company} onChange={(e) => setForm({ ...form, company: e.target.value })} className="h-12 border-slate-700 bg-slate-900 text-white" />
+                </label>
+                <label className="block space-y-1.5 text-sm font-medium text-slate-300">
+                  {config.audienceLabel}
+                  <Input required placeholder={config.audiencePlaceholder} value={form.audienceType} onChange={(e) => setForm({ ...form, audienceType: e.target.value })} className="h-12 border-slate-700 bg-slate-900 text-white" />
+                </label>
+                <label className="block space-y-1.5 text-sm font-medium text-slate-300">
+                  What do you want the demo to solve?
+                  <Textarea required placeholder="What do you want the demo to solve?" value={form.painPoint} onChange={(e) => setForm({ ...form, painPoint: e.target.value })} className="min-h-28 border-slate-700 bg-slate-900 text-white" />
+                </label>
                 <Button type="submit" className="h-12 w-full rounded-xl bg-amber-400 text-base font-black text-slate-950 hover:bg-amber-300">
                   {config.cta}
                 </Button>

@@ -1,7 +1,7 @@
 /**
  * CookieConsent: Fixed bottom banner for UK cookie compliance
  * Persists user choice in localStorage
- * Links to Privacy Policy cookie section
+ * Links to the Cookie Policy
  */
 import { useState, useEffect } from "react";
 import { X, Cookie } from "lucide-react";
@@ -62,7 +62,7 @@ export default function CookieConsent() {
                   <p className="mb-3 text-xs leading-snug text-slate-400 sm:mb-4 sm:text-sm sm:leading-relaxed" style={{ fontFamily: "'Outfit', sans-serif" }}>
                     We use cookies to enhance your browsing experience, provide essential functionality, and analyse site usage. You can choose to accept all cookies or only essential ones.{" "}
                     <a
-                      href="/privacy#cookies"
+                      href="/cookie-policy"
                       className="text-amber-400 hover:text-amber-300 underline underline-offset-2 transition-colors"
                     >
                       Read our Cookie Policy

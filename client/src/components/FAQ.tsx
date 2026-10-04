@@ -108,8 +108,7 @@ const faqs = [
     question: "Is my data secure?",
     answer:
       "All drawings and project data are encrypted at rest and " +
-      "in transit. We run on Microsoft Azure UK South \u2014 your data " +
-      "never leaves the UK. We never share your data with third " +
+      "in transit. We never share your data with third " +
       "parties. Each project\u2019s drawings and scope are private to " +
       "your account unless you explicitly share them.",
   },
