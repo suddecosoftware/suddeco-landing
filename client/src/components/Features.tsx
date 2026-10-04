@@ -24,7 +24,7 @@ const features = [
     icon: FileSpreadsheet,
     title: "Costed Scope of Works",
     description:
-      "Automatically generate phase-based task lists with UK NRM1/BCIS pricing. Export to premium Excel with 7 sheets or branded PDF reports with your company logo.",
+      "Automatically generate phase-based task lists with UK pricing. Export to premium Excel with 7 sheets or branded PDF reports with your company logo.",
   },
   {
     icon: MessageSquareText,

@@ -16,7 +16,7 @@
 import { ArrowRight, Play, CheckCircle2, Check } from "lucide-react";
 
 const HOMEOWNER_URL =
-  "https://my.suddeco.com/register?type=homeowner&utm_source=splithero&utm_campaign=try_free";
+  "https://suddecohomes.com/?utm_source=splithero&utm_campaign=homeowner";
 const PRO_URL =
   "https://my.suddeco.com/register?type=pro&utm_source=splithero&utm_campaign=try_free";
 const PRIMARY_URL =
@@ -52,7 +52,7 @@ function SideCTA({ tone }: { tone: "home" | "pro" }) {
         transition: "all 0.2s",
       }}
     >
-      Sign up
+      {tone === "home" ? "Click here" : "Sign up"}
       <ArrowRight
         aria-hidden="true"
         className="split-hero-arrow"
@@ -201,6 +201,9 @@ export default function SplitHero() {
       >
         <style>{`
           .split-hero-split { grid-template-columns: 1fr 1fr; }
+          /* Builder/Pro on the left, Homeowner on the right. */
+          .split-hero-panel.split-hero-pro { order: 1; }
+          .split-hero-panel.split-hero-home { order: 2; }
           .split-hero-split::before {
             content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 1px;
             background: linear-gradient(180deg, transparent, rgba(148,163,184,0.35), transparent);

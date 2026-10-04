@@ -97,8 +97,8 @@ const faqs = [
   {
     question: "Does it follow UK construction standards?",
     answer:
-      "Yes. All pricing and task structures follow UK NRM1/BCIS " +
-      "standards and RIBA Plan of Work stages. Our pricing " +
+      "Yes. Pricing and task structures are built for UK " +
+      "construction, using standard UK work stages. Our pricing " +
       "database is built specifically for the UK construction " +
       "market with regional labour rates and current material " +
       "costs. Scope of works exports include stage breakdowns " +

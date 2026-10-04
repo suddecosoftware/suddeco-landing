@@ -37,7 +37,7 @@ const steps = [
     icon: FileText,
     title: "Generate Scope",
     description:
-      "Get a fully costed scope of works with materials, labour rates, and phase-based task lists following UK NRM1/BCIS standards. Adjust margins and produce client-ready quotes.",
+      "Get a fully costed scope of works with materials, labour rates, and phase-based task lists following UK construction conventions. Adjust margins and produce client-ready quotes.",
     imageAlt: "Scope of works table with phases, tasks, and pricing",
   },
   {

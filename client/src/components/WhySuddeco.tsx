@@ -18,14 +18,14 @@ const stats = [
 
 const reasons = [
   {
-    title: "UK NRM1/BCIS Standards",
+    title: "Built for UK Construction",
     description:
-      "All pricing and task structures follow UK NRM1/BCIS standards and RIBA Plan of Work stages. Built specifically for the UK construction market.",
+      "Pricing and task structures are built for UK construction, with UK labour rates, materials and work stages. Built specifically for the UK construction market.",
   },
   {
-    title: "Trusted by Contractors & Architects",
+    title: "Built for Contractors & Architects",
     description:
-      "Contractors, developers, architects, and property owners across the UK rely on Suddeco to deliver accurate estimates and streamline project delivery.",
+      "Designed for contractors, developers, architects, and property owners across the UK to deliver accurate estimates and streamline project delivery.",
   },
   {
     title: "Secure & Encrypted",

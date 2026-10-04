@@ -2,14 +2,16 @@
  * SmartDownload — one device-aware "Download the app" call to action.
  *  - iPhone/iPad → App Store (when live) else opens the mobile web app.
  *  - Android     → Google Play (when live) else opens the mobile web app.
- *  - Desktop/Mac → a modal with a QR code to continue on your phone + the
- *                  desktop (Mac) app + the web app. No dead ends.
+ *  - Windows     → a modal offering the Windows installer first.
+ *  - Desktop/Mac → the same modal with the Mac app first.
+ * The modal offered ONLY "Download for Mac" until 2026-09-08, so a Windows
+ * visitor reached a dead end on a page inviting them to download the app.
  * Fill STORE.ios / STORE.android the moment the native apps are public and the
  * mobile buttons deep-link straight to the store.
  */
 import { useEffect, useState } from "react";
 import QRCode from "qrcode";
-import { Smartphone, Apple, Monitor, X, ArrowRight } from "lucide-react";
+import { Smartphone, Apple, Monitor, MonitorDown, X, ArrowRight } from "lucide-react";
 
 // Public store URLs — empty until the native apps are live. Until then the CTA
 // opens the mobile web app so it always does something useful.
@@ -18,9 +20,12 @@ const STORE = {
   android: "", // e.g. https://play.google.com/store/apps/details?id=com.suddeco.app
   webApp: "https://my.suddeco.com",
   desktop: "/download",
+  // Direct file links so the modal is one click, like the Mac button.
+  mac: "/downloads/Suddeco-aarch64.dmg",
+  windows: "/downloads/Suddeco-x86_64-setup.exe",
 };
 
-type Platform = "ios" | "android" | "mac" | "desktop";
+type Platform = "ios" | "android" | "mac" | "windows" | "desktop";
 
 function detect(): Platform {
   if (typeof navigator === "undefined") return "desktop";
@@ -32,6 +37,7 @@ function detect(): Platform {
   if (/iPhone|iPad|iPod/i.test(ua) || touchMac) return "ios";
   if (/Android/i.test(ua)) return "android";
   if (/Macintosh|Mac OS X/i.test(ua)) return "mac";
+  if (/Windows/i.test(ua)) return "windows";
   return "desktop";
 }
 
@@ -66,7 +72,7 @@ export default function SmartDownload({
       window.location.href = STORE.android || STORE.webApp;
       return;
     }
-    setOpen(true); // desktop / mac → QR + desktop app
+    setOpen(true); // desktop / mac / windows → QR + the right desktop app
   }
 
   return (
@@ -116,13 +122,44 @@ export default function SmartDownload({
               ) : (
                 <div className="mx-auto my-5 h-44 w-44 animate-pulse rounded-xl bg-slate-800" />
               )}
+              {/*
+                * The visitor's own platform goes first. A Windows visitor used
+                * to be offered "Download for Mac" and nothing else.
+                */}
               <div className="grid gap-2">
-                <a
-                  href={STORE.desktop}
-                  className="inline-flex items-center justify-center gap-2 rounded-lg bg-amber-500 px-4 py-2.5 text-sm font-semibold text-slate-950 transition-colors hover:bg-amber-400"
-                >
-                  <Apple className="h-4 w-4" aria-hidden="true" /> Download for Mac
-                </a>
+                {platform === "windows" ? (
+                  <>
+                    <a
+                      href={STORE.windows}
+                      download
+                      className="inline-flex items-center justify-center gap-2 rounded-lg bg-amber-500 px-4 py-2.5 text-sm font-semibold text-slate-950 transition-colors hover:bg-amber-400"
+                    >
+                      <MonitorDown className="h-4 w-4" aria-hidden="true" /> Download for Windows
+                    </a>
+                    <a
+                      href={STORE.desktop}
+                      className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-slate-800"
+                    >
+                      <Apple className="h-4 w-4" aria-hidden="true" /> Download for Mac
+                    </a>
+                  </>
+                ) : (
+                  <>
+                    <a
+                      href={STORE.desktop}
+                      className="inline-flex items-center justify-center gap-2 rounded-lg bg-amber-500 px-4 py-2.5 text-sm font-semibold text-slate-950 transition-colors hover:bg-amber-400"
+                    >
+                      <Apple className="h-4 w-4" aria-hidden="true" /> Download for Mac
+                    </a>
+                    <a
+                      href={STORE.windows}
+                      download
+                      className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-slate-800"
+                    >
+                      <MonitorDown className="h-4 w-4" aria-hidden="true" /> Download for Windows
+                    </a>
+                  </>
+                )}
                 <a
                   href={STORE.webApp}
                   className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-slate-800"

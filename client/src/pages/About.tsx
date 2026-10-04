@@ -94,13 +94,13 @@ export default function About() {
             {/* Stats row */}
             <motion.div
               {...fadeInUp}
-              className="grid grid-cols-2 lg:grid-cols-4 gap-6"
+              className="grid grid-cols-2 sm:grid-cols-4 gap-6"
             >
               {[
-                { value: "2024", label: "Founded", icon: Building2 },
-                { value: "500+", label: "Projects Analysed", icon: TrendingUp },
-                { value: "98%", label: "Client Satisfaction", icon: Award },
-                { value: "10x", label: "Faster Estimation", icon: Zap },
+                { value: "2022", label: "Founded", icon: Award },
+                { value: "3,500+", label: "Build Tasks Priced", icon: TrendingUp },
+                { value: "10,000+", label: "Materials in Catalogue", icon: Building2 },
+                { value: "25", label: "Build Stages Covered", icon: Zap },
               ].map((stat) => (
                 <div
                   key={stat.label}
@@ -154,8 +154,8 @@ export default function About() {
                   <p>
                     Today, Suddeco AI helps construction professionals across the United Kingdom
                     streamline their estimation workflows, produce accurate costed scopes of work, and
-                    manage projects with unprecedented efficiency. We are proud to align our methodologies
-                    with NRM1, BCIS, and RICS standards, ensuring our outputs meet the rigorous
+                    manage projects with unprecedented efficiency. We build our methodologies around UK
+                    construction practice, and we aim for outputs that meet the rigorous
                     expectations of the industry.
                   </p>
                 </div>
@@ -169,24 +169,14 @@ export default function About() {
                 <div className="space-y-6">
                   {[
                     {
-                      year: "2024",
+                      year: "2022",
                       title: "Company Founded",
-                      desc: "Suddeco Ltd established in London with a mission to transform construction estimation through AI.",
-                    },
-                    {
-                      year: "2024",
-                      title: "Platform Launch",
-                      desc: "Released the Suddeco AI platform with AI drawing analysis, scope generation, and project management.",
-                    },
-                    {
-                      year: "2025",
-                      title: "Industry Recognition",
-                      desc: "Adopted by construction professionals across the UK, processing over 2 million square metres of drawings.",
+                      desc: "Suddeco Ltd was established in the UK with a mission to transform construction estimation through AI.",
                     },
                     {
                       year: "2026",
-                      title: "Continued Growth",
-                      desc: "Expanding features with CRM, team collaboration, branded exports, and advanced AI capabilities.",
+                      title: "Today",
+                      desc: "A full construction platform: AI drawing analysis, priced scopes of works, CRM, team collaboration and branded exports.",
                     },
                   ].map((milestone, i) => (
                     <motion.div
@@ -324,7 +314,7 @@ export default function About() {
                 {
                   icon: Shield,
                   title: "Accuracy & Trust",
-                  desc: "Our outputs are built on UK industry standards (NRM1, BCIS, RICS). We earn trust through precision, transparency, and reliability.",
+                  desc: "Our outputs are built for UK construction practice. We earn trust through precision, transparency, and reliability.",
                 },
                 {
                   icon: Users,
@@ -395,7 +385,7 @@ export default function About() {
             <motion.div {...fadeInUp} className="space-y-4 max-w-3xl mx-auto">
               {[
                 "AI-powered drawing analysis that extracts dimensions, materials, and specifications automatically",
-                "Automated scope of works generation aligned with NRM1 and BCIS standards",
+                "Automated scope of works generation built for UK construction",
                 "Accurate cost estimation using up-to-date UK pricing data",
                 "Complete project management with timelines, milestones, and task tracking",
                 "Built-in CRM for managing clients, contacts, and project relationships",
@@ -435,7 +425,7 @@ export default function About() {
                 className="text-slate-400 text-lg mb-8 max-w-2xl mx-auto"
                 style={{ fontFamily: "'Outfit', sans-serif" }}
               >
-                Join hundreds of construction professionals who are already saving time and improving
+                Join the construction professionals who are already saving time and improving
                 accuracy with Suddeco AI.
               </p>
               <div className="flex flex-wrap justify-center gap-4">

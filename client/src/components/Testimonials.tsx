@@ -33,6 +33,9 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
+  // TESTIMONIALS_WITHDRAWN (1 Oct 2026, owner instruction): these quotes could not be shown to be real customer reviews.
+  // Not rendered. Data kept above for internal reference only.
+  if (true) return null;
   return (
     <section className="relative bg-slate-800/20 py-16 sm:py-20 lg:py-24">
       <div className="absolute inset-0 dot-pattern opacity-10" />

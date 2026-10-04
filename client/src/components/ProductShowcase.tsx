@@ -30,11 +30,6 @@ const SCREENS = [
     description: "Loft conversions, generated straight from your drawings",
   },
   {
-    src: "/images/suddeco-render-kitchendining.webp",
-    label: "Redesign Any Room",
-    description: "Kitchens, bathrooms and living spaces — visualised before you build",
-  },
-  {
     src: "/images/suddeco-render-extension.webp",
     label: "See It Before You Build",
     description: "Rear extensions visualised from your real plans",
