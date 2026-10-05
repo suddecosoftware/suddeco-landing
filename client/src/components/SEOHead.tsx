@@ -12,10 +12,10 @@ interface SEOHeadProps {
   noIndex?: boolean;
 }
 
-const DEFAULT_TITLE = "Suddeco — AI Construction Management | Priced Scope of Works from Drawings";
+const DEFAULT_TITLE = "Suddeco | Construction Project Software for UK Professionals";
 const DEFAULT_DESCRIPTION =
-  "Turn architect drawings into fully priced scope of works in minutes. AI-powered construction management for UK contractors. From £49/month. Try Suddeco today.";
-const BASE_URL = "https://www.suddeco.com";
+  "Create priced scopes from architect drawings and manage construction projects in one place. Suddeco construction project software for UK professionals. From £49/month.";
+const BASE_URL = "https://suddeco.com";
 
 export default function SEOHead({ title, description, canonicalPath, noIndex = false }: SEOHeadProps) {
   useEffect(() => {
