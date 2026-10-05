@@ -27,10 +27,10 @@ const steps = [
   {
     number: "02",
     icon: Cpu,
-    title: "AI Extraction",
+    title: "Drawing Extraction",
     description:
-      "Our AI analyses every page, identifying rooms, measurements, structural elements, electrical circuits, and services with algorithmic precision.",
-    imageAlt: "AI analysis visualization of construction floor plan",
+      "Suddeco analyses every page, identifying rooms, measurements, structural elements, electrical circuits, and services with algorithmic precision.",
+    imageAlt: "Drawing analysis visualization of construction floor plan",
   },
   {
     number: "03",

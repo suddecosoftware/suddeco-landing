@@ -11,8 +11,8 @@ import { Play, Pause, ChevronLeft, ChevronRight } from "lucide-react";
 const SCREENS = [
   {
     src: "/images/suddeco-ui-takeoff-elec.webp",
-    label: "AI TakeOff — Any Drawing",
-    description: "Floor plans, structural, electrical, drainage — AI reads every page and finds the rooms",
+    label: "Drawing TakeOff — Any Drawing",
+    description: "Floor plans, structural, electrical, drainage — Suddeco reads every page and finds the rooms",
   },
   {
     src: "/images/suddeco-ui-takeoff-plan.webp",
@@ -21,7 +21,7 @@ const SCREENS = [
   },
   {
     src: "/images/suddeco-ui-designstudio.webp",
-    label: "AI Design Studio",
+    label: "Design Studio",
     description: "Turn a room into a photorealistic 3D render with every finish priced into the scope",
   },
   {
@@ -46,8 +46,8 @@ const SCREENS = [
   },
   {
     src: "/images/suddeco-ui-intelligence.webp",
-    label: "AI Project Intelligence",
-    description: "Market value, planning odds, finance options — and an AI that proposes the missing tasks",
+    label: "Project Intelligence",
+    description: "Market value, planning odds, finance options — and a project assistant that proposes the missing tasks",
   },
   {
     src: "/images/suddeco-ui-stages.webp",
@@ -132,7 +132,7 @@ export default function ProductShowcase() {
               marginBottom: "1rem",
             }}
           >
-            See Suddeco AI in Action
+            See Suddeco in Action
           </h2>
           <p style={{ fontSize: "1.1rem", color: "#94A3B8", maxWidth: "36rem", margin: "0 auto" }}>
             Watch how our platform transforms construction drawings into detailed,

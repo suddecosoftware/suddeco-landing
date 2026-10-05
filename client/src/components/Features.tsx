@@ -16,9 +16,9 @@ import {
 const features = [
   {
     icon: ScanLine,
-    title: "AI Drawing Analysis",
+    title: "Drawing Analysis",
     description:
-      "Upload architectural, structural, and services PDFs. AI extracts rooms, dimensions, structural members, electrical circuits, drainage layouts, and more with precision.",
+      "Upload architectural, structural, and services PDFs. Suddeco extracts rooms, dimensions, structural members, electrical circuits, drainage layouts, and more with precision.",
   },
   {
     icon: FileSpreadsheet,
@@ -92,7 +92,7 @@ export default function Features() {
             <span className="text-amber-400">Build Smarter</span>
           </h2>
           <p className="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">
-            From AI-powered drawing analysis to full project management, Suddeco
+            From Automated drawing analysis to full project management, Suddeco
             gives construction professionals the tools to estimate, manage, and
             deliver projects with confidence.
           </p>
