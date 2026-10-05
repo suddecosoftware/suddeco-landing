@@ -7,7 +7,7 @@ import { motion, useInView } from "framer-motion";
 import { Shield, Zap, TrendingUp, Clock, CheckCircle2 } from "lucide-react";
 
 const CONSTRUCTION_IMG =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663376220736/fyZTmfuczokgJFgJqZSFsM/construction-site-67NHfm5WpDYcAdZTcha4wJ.webp";
+  "/images/suddeco-project-archive-construction-original.jpg";
 
 const stats = [
   { value: 85, suffix: "%", label: "Faster Estimates", icon: Zap },
