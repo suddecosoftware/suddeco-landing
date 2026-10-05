@@ -21,10 +21,10 @@ const DEMO_BOOKING_URL = "https://my.suddeco.com/api/public/demo-booking";
 const trackConfig = {
   pro: {
     eyebrow: "Live Suddeco Pro demo",
-    title: "See how UK contractors price, manage and win work weeks faster.",
+    title: "See how Suddeco helps organise scopes, quotes and project work.",
     description:
       "A 30-minute live walkthrough for contractors, developers, architects and QSs. Bring a real project, drawing, quote or pricing problem.",
-    stat: "61,725 scope tasks priced",
+    stat: "Bring your project questions",
     audienceLabel: "Audience type",
     audiencePlaceholder: "Contractor, developer, architect, QS...",
     cta: "Reserve a Pro demo seat",
@@ -35,7 +35,7 @@ const trackConfig = {
     eyebrow: "Live Suddeco Homes demo",
     title: "Understand your project before you choose a builder.",
     description:
-      "A homeowner-friendly session showing how to compare quotes, understand real costs and find verified professionals with better questions.",
+      "A homeowner-friendly session showing how to compare quotes, clarify the scope and prepare better questions for professionals.",
     stat: "Clear scopes before work starts",
     audienceLabel: "Project type",
     audiencePlaceholder: "Kitchen, bathroom, loft, extension...",
@@ -57,26 +57,26 @@ const trackConfig = {
 
 const proofTiles = [
   {
-    title: "Live project proof",
-    value: "£233k",
-    body: "A real refurbishment scope with 837 priced tasks and 22 stages.",
+    title: "Project scope",
+    value: "Bring a brief",
+    body: "Identify the rooms, work and decisions you want to discuss.",
   },
   {
-    title: "TakeOff speed",
-    value: "20 rooms",
-    body: "Architectural drawings converted into structured project data.",
+    title: "Drawing review",
+    value: "Bring drawings",
+    body: "Use your plans to ask what is included and what still needs clarification.",
   },
   {
-    title: "Decision clarity",
-    value: "41%",
-    body: "Market comparison turns guesswork into a client-ready conversation.",
+    title: "Quote comparison",
+    value: "Bring questions",
+    body: "Discuss allowances, exclusions and how to compare the same scope of work.",
   },
 ];
 
-const quotes = [
-  "It turns a messy drawing pack into something I can actually price.",
-  "The value is not just speed. It is seeing the whole project in one place.",
-  "I stopped arguing with spreadsheets and started showing the client the evidence.",
+const preparationTips = [
+  "Have a drawing, quote or short description of your project ready.",
+  "List the decisions you need to make before appointing a professional.",
+  "Tell us which parts of the scope or quote need clarification.",
 ];
 
 function getTrack(): Track {
@@ -90,7 +90,7 @@ export default function DemoPage() {
   const Icon = config.icon;
   const [submitted, setSubmitted] = useState(false);
   const [submissionWarning, setSubmissionWarning] = useState<string | null>(null);
-  const [position, setPosition] = useState(7);
+  const [submitting, setSubmitting] = useState(false);
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -104,11 +104,11 @@ export default function DemoPage() {
   });
 
   const title = track === "pro"
-    ? "Suddeco Pro Demo — Live Construction AI Walkthrough"
+    ? "Suddeco Pro Demo — Live Project Walkthrough"
     : "Suddeco Homes Demo — Compare Builders and Project Costs";
   const description = track === "pro"
     ? "Reserve a seat for the live Suddeco Pro demo. See real drawings, priced scopes, UK construction data and project intelligence."
-    : "Reserve a homeowner demo seat and learn how Suddeco helps compare quotes, scope projects and find verified professionals.";
+    : "Reserve a homeowner demo seat and learn how Suddeco helps compare quotes, scope projects and prepare questions for professionals.";
 
   const bookingHref = useMemo(() => {
     const params = new URLSearchParams({
@@ -121,12 +121,12 @@ export default function DemoPage() {
 
   useEffect(() => {
     trackPageView({ event: "demo_view", track });
-    const seen = Number(localStorage.getItem(`suddeco_demo_count_${track}`) || "7");
-    setPosition(Math.max(1, Math.min(10, seen)));
   }, [track]);
 
-  const submit = (event: React.FormEvent<HTMLFormElement>) => {
+  const submit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (submitting) return;
+    setSubmitting(true);
     setSubmissionWarning(null);
     linkVisitorEmail(form.email);
     const visitorUuid = getVisitorId();
@@ -137,12 +137,19 @@ export default function DemoPage() {
       createdAt: new Date().toISOString(),
       status: "pending",
     };
-    const saved = JSON.parse(localStorage.getItem("suddeco_demo_registrations") || "[]");
-    localStorage.setItem("suddeco_demo_registrations", JSON.stringify([...saved, payload]));
-    // DEMO_BOOKING_PIPELINE_V1: post to the app's booking intake so every
-    // registration lands in the team's inbox and calendar. The hosted
-    // webinar-register endpoint stays as a first leg (it returns the live
-    // position counter); a failure there never blocks the real pipeline.
+    // Keep the existing local draft as a best-effort fallback. Browser storage
+    // may be unavailable or full; it must never block the online request.
+    try {
+      const saved = JSON.parse(localStorage.getItem("suddeco_demo_registrations") || "[]");
+      localStorage.setItem("suddeco_demo_registrations", JSON.stringify([
+        ...(Array.isArray(saved) ? saved : []),
+        payload,
+      ]));
+    } catch {
+      // The form retains the entered details for retry.
+    }
+    // Preserve both intake calls, but only a persisted booking receipt confirms
+    // the enquiry. A legacy webinar response alone cannot prove delivery.
     const appBooking = fetch(DEMO_BOOKING_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -163,31 +170,25 @@ export default function DemoPage() {
     })
       .then(async (response) => {
         if (!response.ok) throw new Error("booking intake failed");
-        return response.json();
-      })
-      .catch((err) => console.warn("[demo] app booking pipe failed:", err));
-    fetch(WEBINAR_REGISTER_URL, {
+        const result = await response.json();
+        if (result.success !== true || !Number.isInteger(result.submissionId) || result.submissionId <= 0) {
+          throw new Error("booking persistence not confirmed");
+        }
+        return result;
+      });
+    void fetch(WEBINAR_REGISTER_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
-    })
-      .then(async (response) => {
-        if (!response.ok) throw new Error("registration capture failed");
-        return response.json();
-      })
-      .then((result) => {
-        if (typeof result.position === "number") {
-          setPosition(Math.max(1, Math.min(10, result.position)));
-          localStorage.setItem(`suddeco_demo_count_${track}`, String(Math.max(1, Math.min(10, result.position))));
-        }
-      })
-      .catch(() => {
-        localStorage.setItem(`suddeco_demo_count_${track}`, String(Math.min(10, position + 1)));
-        setPosition((p) => Math.min(10, p + 1));
-        setSubmissionWarning("We saved your details in this browser, but online registration may not have completed. Please email sales@suddeco.com if you do not hear from us.");
-      });
-    void appBooking;
-    setSubmitted(true);
+    }).catch(() => undefined);
+    try {
+      await appBooking;
+      setSubmitted(true);
+    } catch {
+      setSubmissionWarning("We could not confirm your request online. Your details are still in this form. Please try again or email sales@suddeco.com; if you already received a confirmation, include it in your email.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -268,19 +269,19 @@ export default function DemoPage() {
         <section id="reserve" className="container grid gap-10 py-16 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
-              Register then batch
+              Prepare for your demo
             </p>
             <h2 className="mt-3 text-3xl font-black text-white">
-              You're #{position} of 10 for the next {track === "pro" ? "Pro" : "Homeowner"} demo.
+              Request your {track === "pro" ? "Pro" : "Homeowner"} demo.
             </h2>
             <p className="mt-4 max-w-xl text-slate-300">
-              We send the live link as soon as the track reaches 10 registrations. That keeps the session useful, focused and worth Saimir's live time.
+              Share your project questions and preferred time. We will follow up to confirm the session details.
             </p>
             <div className="mt-8 space-y-4">
-              {quotes.map((quote) => (
-                <blockquote key={quote} className="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 text-slate-300">
-                  "{quote}"
-                </blockquote>
+              {preparationTips.map((tip) => (
+                <p key={tip} className="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 text-slate-300">
+                  {tip}
+                </p>
               ))}
             </div>
           </div>
@@ -293,14 +294,6 @@ export default function DemoPage() {
                 <p className="mt-3 text-slate-300">
                   We logged your interest for the {track === "pro" ? "Pro" : "Homeowner"} demo track. Use the calendar link if you want to pick a slot now.
                 </p>
-                {submissionWarning && (
-                  <p
-                    role="alert"
-                    className="mt-4 rounded-xl border border-amber-300/40 bg-amber-300/10 px-4 py-3 text-left text-sm text-amber-100"
-                  >
-                    {submissionWarning}
-                  </p>
-                )}
                 <Button
                   className="mt-6 rounded-xl bg-amber-400 text-slate-950 hover:bg-amber-300"
                   onClick={() => window.open(bookingHref, "_blank", "noopener,noreferrer")}
@@ -310,6 +303,14 @@ export default function DemoPage() {
               </div>
             ) : (
               <div className="space-y-5">
+                {submissionWarning && (
+                  <p
+                    role="alert"
+                    className="mt-4 rounded-xl border border-amber-300/40 bg-amber-300/10 px-4 py-3 text-left text-sm text-amber-100"
+                  >
+                    {submissionWarning}
+                  </p>
+                )}
                 <div className="grid gap-4 sm:grid-cols-2">
                   <label className="space-y-1.5 text-sm font-medium text-slate-300">
                     Name
@@ -330,7 +331,7 @@ export default function DemoPage() {
                 </label>
                 <div className="space-y-1.5">
                   <p className="text-xs font-medium text-slate-400">
-                    Pick a day &amp; time for your demo — we'll send a calendar invite (or leave blank and we'll follow up to schedule).
+                    Tell us your preferred day and time. We will confirm availability, or follow up to arrange a time if you leave these blank.
                   </p>
                   <div className="grid gap-3 sm:grid-cols-2">
                     <label className="space-y-1.5 text-sm font-medium text-slate-300">
@@ -370,8 +371,8 @@ export default function DemoPage() {
                   What do you want the demo to solve?
                   <Textarea required placeholder="What do you want the demo to solve?" value={form.painPoint} onChange={(e) => setForm({ ...form, painPoint: e.target.value })} className="min-h-28 border-slate-700 bg-slate-900 text-white" />
                 </label>
-                <Button type="submit" className="h-12 w-full rounded-xl bg-amber-400 text-base font-black text-slate-950 hover:bg-amber-300">
-                  {config.cta}
+                <Button type="submit" disabled={submitting} aria-busy={submitting} className="h-12 w-full rounded-xl bg-amber-400 text-base font-black text-slate-950 hover:bg-amber-300">
+                  {submitting ? "Sending your request…" : config.cta}
                 </Button>
                 <p className="text-center text-xs text-slate-500">
                   Prefer email? Write to sales@suddeco.com.
