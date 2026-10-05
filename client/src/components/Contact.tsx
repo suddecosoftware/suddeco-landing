@@ -204,7 +204,7 @@ export default function Contact() {
                       htmlFor="phone"
                       className="block text-sm font-medium text-slate-300 mb-2"
                     >
-                      Phone
+                      Phone <span className="text-amber-400">*</span>
                     </label>
                     <input
                       id="phone"

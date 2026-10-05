@@ -52,7 +52,7 @@ function SideCTA({ tone }: { tone: "home" | "pro" }) {
         transition: "all 0.2s",
       }}
     >
-      {tone === "home" ? "Click here" : "Sign up"}
+      {tone === "home" ? "Explore Suddeco Homes" : "Sign up"}
       <ArrowRight
         aria-hidden="true"
         className="split-hero-arrow"
@@ -170,7 +170,7 @@ export default function SplitHero() {
               className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-4 font-semibold text-slate-300 transition-colors hover:bg-white/5 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400"
             >
               <Play aria-hidden="true" className="h-4 w-4" />
-              Watch a demo
+              Request a demo
             </a>
           </div>
 
@@ -220,7 +220,7 @@ export default function SplitHero() {
         <a
           href={HOMEOWNER_URL}
           className="split-hero-panel split-hero-home"
-          aria-label="I'm a homeowner — design your project and get a priced quote. Sign up."
+          aria-label="I'm a homeowner — design your project and discuss pricing. Explore Suddeco Homes."
           style={{
             position: "relative",
             padding: "2.75rem 0 3rem",
@@ -284,7 +284,7 @@ export default function SplitHero() {
             <ul style={{ listStyle: "none", margin: "0 0 1.625rem", padding: 0, display: "flex", flexDirection: "column", gap: "0.625rem" }}>
               <ValueItem tone="home">Design renders of your rooms</ValueItem>
               <ValueItem tone="home">An honest, itemised price</ValueItem>
-              <ValueItem tone="home">Matched with trusted local builders</ValueItem>
+              <ValueItem tone="home">Discuss your London building project</ValueItem>
             </ul>
             <SideCTA tone="home" />
           </div>
@@ -294,7 +294,7 @@ export default function SplitHero() {
         <a
           href={PRO_URL}
           className="split-hero-panel split-hero-pro"
-          aria-label="I'm a builder or pro — price takeoffs, design, and win more jobs. Sign up."
+          aria-label="I'm a builder or pro — price takeoffs, design, and prepare quotes. Sign up."
           style={{
             position: "relative",
             padding: "2.75rem 0 3rem",
@@ -349,16 +349,16 @@ export default function SplitHero() {
                 marginBottom: "0.75rem",
               }}
             >
-              Price takeoffs, design, and win more jobs.
+              Price takeoffs, design, and prepare quotes.
             </h2>
             <p style={{ fontSize: "1rem", color: "#CBD5E1", marginBottom: "1.25rem", maxWidth: "30rem" }}>
               Drop in a drawing and get a full priced scope of works in minutes &mdash; then send a
-              designed, professional quote that closes.
+              designed, professional quote for your clients.
             </p>
             <ul style={{ listStyle: "none", margin: "0 0 1.625rem", padding: 0, display: "flex", flexDirection: "column", gap: "0.625rem" }}>
               <ValueItem tone="pro">Automated priced takeoffs from drawings</ValueItem>
               <ValueItem tone="pro">Design studio to wow clients</ValueItem>
-              <ValueItem tone="pro">Win rate up on every bid you send</ValueItem>
+              <ValueItem tone="pro">Prepare itemised quotes for clients</ValueItem>
             </ul>
             <SideCTA tone="pro" />
           </div>
