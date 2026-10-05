@@ -140,7 +140,7 @@ export default function SplitHero() {
               maxWidth: "20ch",
             }}
           >
-            Suddeco. Price the build and{" "}
+            Suddeco. It prices the build and{" "}
             <span style={{ color: "#FBBF24" }}>designs it to match.</span>
           </h1>
 
