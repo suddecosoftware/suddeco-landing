@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
 const TEAM_IMG =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663376220736/fyZTmfuczokgJFgJqZSFsM/team-collaboration-m2WkjEo94mgWMf2RWcxaBx.webp";
+  "/images/suddeco-ui-dashboard.webp";
 
 export default function CTABanner() {
   return (
