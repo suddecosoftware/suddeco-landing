@@ -28,9 +28,9 @@ const reasons = [
       "Designed for contractors, developers, architects, and property owners across the UK to deliver accurate estimates and streamline project delivery.",
   },
   {
-    title: "Secure & Encrypted",
+    title: "Project Information Together",
     description:
-      "All drawings and project data are encrypted and stored securely. We never share your data with third parties. Industry-standard security practices throughout.",
+      "Keep drawings, scope and project information together so the team can work from a shared project brief.",
   },
 ];
 
@@ -129,7 +129,8 @@ export default function WhySuddeco() {
           transition={{ duration: 0.6 }}
           className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-20"
         >
-          {stats.map((stat, index) => (
+          {/* Unverified marketing figures preserved but withheld from publication. */}
+          {false && stats.map((stat, index) => (
             <motion.div
               key={stat.label}
               initial={{ opacity: 0, scale: 0.9 }}

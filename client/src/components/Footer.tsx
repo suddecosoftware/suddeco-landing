@@ -65,7 +65,7 @@ export default function Footer() {
               />
             </a>
             <p className="text-slate-400 text-sm leading-relaxed mb-4">
-              AI-powered construction management platform. Streamlining estimation,
+              Automated construction management platform. Streamlining estimation,
               project management, and collaboration for UK construction professionals.
             </p>
             <p className="text-slate-500 text-xs leading-relaxed mb-6">

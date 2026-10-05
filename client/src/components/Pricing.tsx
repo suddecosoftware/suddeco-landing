@@ -22,7 +22,7 @@ const plans = [
     features: [
       "Create projects and estimates",
       "Upload PDF and Excel files",
-      "AI-powered drawing analysis",
+      "Automated drawing analysis",
       "Full scope of works generation",
       "Cost estimation engine",
       "Export to PDF",
@@ -43,7 +43,7 @@ const plans = [
     target: "Small firm, 3-10 people",
     features: [
       "All Starter features",
-      "7,500 AI credits per month",
+      "7,500 credits per month",
       "Automated valuations & invoicing",
       "Materials ordering integration",
       "Full CRM pipeline management",
@@ -66,7 +66,7 @@ const plans = [
     target: "Growing company, 10-50 people",
     features: [
       "All Professional features",
-      "13,500 AI credits per month",
+      "13,500 credits per month",
       "Team collaboration tools",
       "Advanced analytics dashboard",
       "Sage / QuickBooks / Xero integration",
@@ -89,7 +89,7 @@ const plans = [
     target: "Large contractor, 50+ people",
     features: [
       "All Business features",
-      "26,500 AI credits per month",
+      "26,500 credits per month",
       "Unlimited valuations & invoicing",
       "Unlimited materials orders",
       "White-label options",
@@ -106,9 +106,9 @@ const plans = [
 const creditUsage = [
   { action: "Upload & extract 1 PDF page", cost: "4 credits" },
   { action: "Chat message (simple)", cost: "1 credit" },
-  { action: "Chat message (complex AI)", cost: "6 credits" },
+  { action: "Chat message (complex request)", cost: "6 credits" },
   { action: "Generate scope of works", cost: "40 credits" },
-  { action: "Voice AI (text-to-speech)", cost: "3 credits" },
+  { action: "Voice (text-to-speech)", cost: "3 credits" },
   { action: "Product scraping", cost: "3 credits" },
   { action: "PDF/Excel export", cost: "5 credits" },
 ];
@@ -121,7 +121,7 @@ const intelligencePricing = [
   { action: "Solar potential analysis", cost: "15 credits" },
   { action: "EPC energy rating", cost: "2 credits" },
   { action: "Address validation (OS Places)", cost: "2 credits" },
-  { action: "Full AI site analysis report", cost: "10 credits" },
+  { action: "Full site analysis report", cost: "10 credits" },
   { action: "Intelligence follow-up chat", cost: "5 credits" },
 ];
 
@@ -158,7 +158,7 @@ export default function Pricing() {
             Simple pricing. No contracts. <span className="text-amber-400">Cancel anytime.</span>
           </h2>
           <p className="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed mb-8">
-            All plans include our AI-powered estimation engine. Credits power every AI feature — buy more any time, credits never expire. All prices exclude VAT.
+            All plans include Suddeco-powered estimation engine. Credits power every software feature — buy more any time, credits never expire. All prices exclude VAT.
           </p>
 
           {/* Monthly/Yearly toggle */}

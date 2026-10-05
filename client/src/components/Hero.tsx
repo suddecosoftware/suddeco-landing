@@ -252,7 +252,7 @@ export default function Hero() {
             >
               <img
                 src={DEMO_DASHBOARD}
-                alt="Suddeco AI Dashboard - AI-powered construction drawing analysis with scope of works"
+                alt="Suddeco Dashboard - Automated construction drawing analysis with scope of works"
                 className="w-full"
                 style={{ display: "block" }}
               />

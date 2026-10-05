@@ -17,27 +17,27 @@ const faqs = [
     answer:
       "Architectural floor plans, structural beam schedules, " +
       "electrical reflected ceiling plans (RCPs), drainage layouts, " +
-      "and services drawings in PDF format. Our AI handles a wide " +
+      "and services drawings in PDF format. Suddeco handles a wide " +
       "variety of construction drawing types. Upload up to 35 pages " +
-      "per project and our AI extracts every room, dimension, and " +
+      "per project and Suddeco extracts every room, dimension, and " +
       "structural element automatically.",
   },
   {
-    question: "How accurate is the AI extraction?",
+    question: "How accurate is the drawing extraction?",
     answer:
-      "Our AI achieves high accuracy for room identification, " +
+      "Suddeco achieves high accuracy for room identification, " +
       "dimensions, and structural elements. All extractions can be " +
       "reviewed and edited before generating the scope. You can " +
-      "manually measure and override any AI-detected values to " +
+      "manually measure and override any detected values to " +
       "ensure 100% accuracy. Most projects are ready to price " +
       "within minutes of uploading.",
   },
   {
     question: "How does the credit system work?",
     answer:
-      "Credits are used when you run AI features: drawing " +
+      "Credits are used when you run software features: drawing " +
       "extraction (12 credits per page), scope generation (40 " +
-      "credits), AI chat messages (1\u201310 credits), and property " +
+      "credits), project chat messages (1\u201310 credits), and property " +
       "intelligence lookups (15 credits). Every subscription plan " +
       "includes a monthly credit allowance \u2014 Starter gets 1,000 " +
       "credits, Professional gets 2,500, Business gets 5,000, and " +
@@ -67,7 +67,7 @@ const faqs = [
     question: "What quality tiers are available?",
     answer:
       "When creating a project you choose a quality tier: " +
-      "Standard, Mid-Range, Premium, or Luxury. The AI adjusts " +
+      "Standard, Mid-Range, Premium, or Luxury. Suddeco adjusts " +
       "material specifications, labour rates, and scope detail " +
       "accordingly. A luxury apartment refurb gets Porcelanosa " +
       "tiles and bespoke joinery in the scope \u2014 a standard " +

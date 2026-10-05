@@ -100,14 +100,14 @@ function getOrganizationSchema() {
       },
     ],
     sameAs: [],
-    foundingDate: "2024",
+    foundingDate: undefined, // Withheld until a company founding date is verified.
     areaServed: {
       "@type": "Country",
       name: "United Kingdom",
     },
     knowsAbout: [
       "Construction Estimation",
-      "AI in Construction",
+      "Construction Project Planning",
       "Quantity Surveying",
       "Project Management",
       "Building Information Modelling",

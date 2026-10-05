@@ -124,7 +124,7 @@ export default function SplitHero() {
                 className="animate-pulse"
                 style={{ width: "0.5rem", height: "0.5rem", borderRadius: "50%", background: "#FBBF24", display: "inline-block" }}
               />
-              AI FOR CONSTRUCTION
+              CONSTRUCTION PROJECT SOFTWARE
             </span>
           </div>
 
@@ -140,7 +140,7 @@ export default function SplitHero() {
               maxWidth: "20ch",
             }}
           >
-            One AI. It prices the build and{" "}
+            Suddeco. Price the build and{" "}
             <span style={{ color: "#FBBF24" }}>designs it to match.</span>
           </h1>
 
@@ -282,7 +282,7 @@ export default function SplitHero() {
               real, itemised quote you can trust.
             </p>
             <ul style={{ listStyle: "none", margin: "0 0 1.625rem", padding: 0, display: "flex", flexDirection: "column", gap: "0.625rem" }}>
-              <ValueItem tone="home">AI design renders of your rooms</ValueItem>
+              <ValueItem tone="home">Design renders of your rooms</ValueItem>
               <ValueItem tone="home">An honest, itemised price</ValueItem>
               <ValueItem tone="home">Matched with trusted local builders</ValueItem>
             </ul>
@@ -357,7 +357,7 @@ export default function SplitHero() {
             </p>
             <ul style={{ listStyle: "none", margin: "0 0 1.625rem", padding: 0, display: "flex", flexDirection: "column", gap: "0.625rem" }}>
               <ValueItem tone="pro">Automated priced takeoffs from drawings</ValueItem>
-              <ValueItem tone="pro">AI design studio to wow clients</ValueItem>
+              <ValueItem tone="pro">Design studio to wow clients</ValueItem>
               <ValueItem tone="pro">Win rate up on every bid you send</ValueItem>
             </ul>
             <SideCTA tone="pro" />
