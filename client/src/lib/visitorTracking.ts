@@ -1,3 +1,11 @@
+/*
+ * DISABLED 4 Oct 2026 (security/privacy audit). This module posted every page view
+ * to a hosted function that no longer exists, set a persistent tracking cookie
+ * before any consent, and sent visitors' email addresses on field blur (before
+ * they submitted anything). The backend is gone, so the calls only failed in the
+ * visitor's console. Kept as no-ops so importers still compile; revive only behind
+ * the cookie-consent banner with a documented lawful basis.
+ */
 const VISITOR_COOKIE = "suddeco_visitor";
 const MAX_AGE = 60 * 60 * 24 * 180;
 const FUNCTION_BASE_URL = "https://hvpsxeytbvbytyjudtyb.supabase.co/functions/v1";
@@ -29,6 +37,8 @@ export function getVisitorId(): string {
 }
 
 export function trackPageView(extra: Record<string, unknown> = {}): void {
+  void extra;
+  return; // disabled: see header
   if (typeof window === "undefined") return;
   const payload = {
     visitorUuid: getVisitorId(),
@@ -51,6 +61,8 @@ export function trackPageView(extra: Record<string, unknown> = {}): void {
 }
 
 export function linkVisitorEmail(email: string): void {
+  void email;
+  return; // disabled: see header
   if (!email || typeof window === "undefined") return;
   const payload = {
     visitorUuid: getVisitorId(),

@@ -9,14 +9,15 @@ interface SEOHeadProps {
   title: string;
   description: string;
   canonicalPath?: string;
+  noIndex?: boolean;
 }
 
-const DEFAULT_TITLE = "Suddeco — AI Construction Management | Priced Scope of Works from Drawings";
+const DEFAULT_TITLE = "Suddeco | Construction Project Software for UK Professionals";
 const DEFAULT_DESCRIPTION =
-  "Turn architect drawings into fully priced scope of works in minutes. AI-powered construction management for UK contractors. From £49/month. Try Suddeco today.";
-const BASE_URL = "https://www.suddeco.com";
+  "Create priced scopes from architect drawings and manage construction projects in one place. Suddeco construction project software for UK professionals. From £49/month.";
+const BASE_URL = "https://suddeco.com";
 
-export default function SEOHead({ title, description, canonicalPath }: SEOHeadProps) {
+export default function SEOHead({ title, description, canonicalPath, noIndex = false }: SEOHeadProps) {
   useEffect(() => {
     // Set title
     document.title = title;
@@ -45,6 +46,18 @@ export default function SEOHead({ title, description, canonicalPath }: SEOHeadPr
       }
     }
 
+    let robots = document.querySelector('meta[name="robots"]');
+    if (noIndex) {
+      if (robots) {
+        robots.setAttribute("content", "noindex, nofollow");
+      } else {
+        robots = document.createElement("meta");
+        robots.setAttribute("name", "robots");
+        robots.setAttribute("content", "noindex, nofollow");
+        document.head.appendChild(robots);
+      }
+    }
+
     // Set Open Graph tags
     setMetaProperty("og:title", title);
     setMetaProperty("og:description", description);
@@ -65,13 +78,17 @@ export default function SEOHead({ title, description, canonicalPath }: SEOHeadPr
       if (canonicalEl) {
         canonicalEl.remove();
       }
+      const robotsEl = document.querySelector('meta[name="robots"]');
+      if (robotsEl) {
+        robotsEl.remove();
+      }
       // Remove OG tags
       removeMetaProperty("og:title");
       removeMetaProperty("og:description");
       removeMetaProperty("og:type");
       removeMetaProperty("og:url");
     };
-  }, [title, description, canonicalPath]);
+  }, [title, description, canonicalPath, noIndex]);
 
   return null;
 }

@@ -36,7 +36,7 @@ export default function CTABanner() {
             Ready to Revolutionise Your Projects?
           </h2>
           <p className="text-slate-800 text-lg max-w-2xl mx-auto leading-relaxed mb-10">
-            Join hundreds of construction professionals who are already saving
+            Join the construction professionals who are already saving
             time, reducing errors, and growing their businesses with Suddeco.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

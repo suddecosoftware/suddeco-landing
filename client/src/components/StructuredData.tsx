@@ -30,6 +30,9 @@ type StructuredDataProps =
   | WebSiteStructuredDataProps;
 
 const SCRIPT_ID_PREFIX = "structured-data-";
+const BASE_URL = "https://suddeco.com";
+const ORGANIZATION_ID = `${BASE_URL}/#organization`;
+const WEBSITE_ID = `${BASE_URL}/#website`;
 
 function getArticleSchema(props: ArticleStructuredDataProps) {
   return {
@@ -39,23 +42,25 @@ function getArticleSchema(props: ArticleStructuredDataProps) {
     description: props.description,
     author: {
       "@type": "Organization",
-      name: "Suddeco Ltd",
-      url: "https://www.suddeco.com",
+      "@id": ORGANIZATION_ID,
+      name: "Suddeco Limited",
+      url: BASE_URL,
     },
     publisher: {
       "@type": "Organization",
-      name: "Suddeco Ltd",
-      url: "https://www.suddeco.com",
+      "@id": ORGANIZATION_ID,
+      name: "Suddeco Limited",
+      url: BASE_URL,
       logo: {
         "@type": "ImageObject",
-        url: "https://www.suddeco.com/suddeco-logo.png",
+        url: `${BASE_URL}/suddeco-logo.png`,
       },
     },
     datePublished: props.publishDate,
     dateModified: props.publishDate,
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://www.suddeco.com/blog/${props.slug}`,
+      "@id": `${BASE_URL}/blog/${props.slug}`,
     },
     articleSection: props.category,
     keywords: props.tags.join(", "),
@@ -68,11 +73,16 @@ function getOrganizationSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "Suddeco Ltd",
-    url: "https://www.suddeco.com",
-    logo: "https://www.suddeco.com/suddeco-logo.png",
-    description:
-      "AI-powered construction management platform. Streamlining estimation, project management, and collaboration for UK construction professionals.",
+    "@id": ORGANIZATION_ID,
+    name: "Suddeco Limited",
+    url: BASE_URL,
+    logo: `${BASE_URL}/suddeco-logo.png`,
+    description: "Construction project software for UK professionals.",
+    identifier: {
+      "@type": "PropertyValue",
+      propertyID: "Companies House",
+      value: "14354951",
+    },
     address: {
       "@type": "PostalAddress",
       streetAddress: "662 High Road",
@@ -109,14 +119,14 @@ function getWebSiteSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Suddeco AI",
-    alternateName: "Suddeco",
-    url: "https://www.suddeco.com",
-    description:
-      "AI-powered construction management platform for estimation, project management, and collaboration.",
+    "@id": WEBSITE_ID,
+    name: "Suddeco",
+    url: `${BASE_URL}/`,
+    description: "Construction project software for UK professionals.",
     publisher: {
       "@type": "Organization",
-      name: "Suddeco Ltd",
+      "@id": ORGANIZATION_ID,
+      name: "Suddeco Limited",
     },
     inLanguage: "en-GB",
   };

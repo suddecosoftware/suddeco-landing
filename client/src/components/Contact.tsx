@@ -19,21 +19,26 @@ export default function Contact() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const submitMutation = trpc.contact.submit.useMutation({
     onSuccess: (data) => {
       toast.success(data.message);
+      setErrorMessage(null);
       setFormData({ name: "", email: "", phone: "", company: "", message: "" });
       setSubmitted(true);
       setTimeout(() => setSubmitted(false), 5000);
     },
     onError: (error) => {
-      toast.error(error.message || "Something went wrong. Please try again.");
+      const message = error.message || "Something went wrong. Please try again.";
+      setErrorMessage(message);
+      toast.error(message);
     },
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMessage(null);
     submitMutation.mutate({
       fullName: formData.name,
       email: formData.email,
@@ -139,6 +144,15 @@ export default function Contact() {
                   </h3>
                   <p className="text-slate-400 text-sm mt-1">We typically respond within 24 hours</p>
                 </div>
+
+                {errorMessage && (
+                  <div
+                    role="alert"
+                    className="rounded-lg border border-red-400/40 bg-red-500/10 px-4 py-3 text-sm text-red-100"
+                  >
+                    {errorMessage}
+                  </div>
+                )}
 
                 {/* Name & Email row */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
