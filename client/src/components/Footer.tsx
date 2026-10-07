@@ -22,6 +22,11 @@ const quickLinks = [
   { label: "Features", href: "#features" },
   { label: "How It Works", href: "#how-it-works" },
   { label: "Pricing", href: "#pricing" },
+  // Plain links to the product pages so search engines (and visitors) can reach them.
+  { label: "Takeoff Software", href: "/takeoff-software" },
+  { label: "Estimating Software", href: "/construction-estimating-software" },
+  { label: "Quantity Surveying Software", href: "/quantity-surveying-software" },
+  { label: "Tender & Bid Software", href: "/tender-bid-software" },
   { label: "Pro Demo", href: "/demo/pro" },
   { label: "Homeowner Demo", href: "/demo/homeowner" },
   { label: "FAQ", href: "#faq" },
