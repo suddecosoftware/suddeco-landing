@@ -29,8 +29,8 @@ export default function Contact() {
       setSubmitted(true);
       setTimeout(() => setSubmitted(false), 5000);
     },
-    onError: (error) => {
-      const message = error.message || "Something went wrong. Please try again.";
+    onError: () => {
+      const message = "We could not confirm your message online. Your details are still in this form. Please try again, or open an email draft below and send it from your email app.";
       setErrorMessage(message);
       toast.error(message);
     },
@@ -130,7 +130,7 @@ export default function Contact() {
                   Message Sent Successfully!
                 </h3>
                 <p className="text-slate-400">
-                  Thank you for reaching out. Our team will get back to you within 24 hours.
+                  Thank you for reaching out. Our team will review your enquiry and get back to you.
                 </p>
               </div>
             ) : (
@@ -142,7 +142,7 @@ export default function Contact() {
                   <h3 className="text-xl font-bold text-white" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                     Send Us a Message
                   </h3>
-                  <p className="text-slate-400 text-sm mt-1">We typically respond within 24 hours</p>
+                  <p className="text-slate-400 text-sm mt-1">Tell us how we can help with your construction workflow.</p>
                 </div>
 
                 {errorMessage && (
@@ -167,6 +167,7 @@ export default function Contact() {
                       id="name"
                       type="text"
                       required
+                      minLength={2}
                       value={formData.name}
                       onChange={(e) =>
                         setFormData({ ...formData, name: e.target.value })
@@ -251,6 +252,7 @@ export default function Contact() {
                   <textarea
                     id="message"
                     required
+                    minLength={10}
                     rows={4}
                     value={formData.message}
                     onChange={(e) =>
@@ -275,6 +277,24 @@ export default function Contact() {
                     </>
                   )}
                 </Button>
+                {errorMessage && (
+                  <p className="text-slate-300 text-sm text-center">
+                    <a
+                      href={`mailto:sales@suddeco.com?subject=${encodeURIComponent("Website enquiry")}&body=${encodeURIComponent([
+                        `Name: ${formData.name}`,
+                        `Email: ${formData.email}`,
+                        `Phone: ${formData.phone}`,
+                        `Company: ${formData.company}`,
+                        "",
+                        formData.message,
+                      ].join("\n"))}`}
+                      className="text-amber-400 underline underline-offset-4 hover:text-amber-300"
+                    >
+                      Open email draft with these details
+                    </a>
+                    <span className="block mt-1">Opening a draft does not send it. Please send it from your email app.</span>
+                  </p>
+                )}
               </form>
             )}
           </motion.div>
