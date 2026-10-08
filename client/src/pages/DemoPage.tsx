@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { getVisitorId, linkVisitorEmail, trackPageView } from "@/lib/visitorTracking";
+import { getDemoCampaign } from "@/lib/demoCampaign";
 
 type Track = "pro" | "homeowner";
 
@@ -132,6 +133,7 @@ export default function DemoPage() {
     const visitorUuid = getVisitorId();
     const payload = {
       ...form,
+      ...getDemoCampaign(window.location.search),
       visitorUuid,
       track,
       createdAt: new Date().toISOString(),
