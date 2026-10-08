@@ -232,8 +232,9 @@ export default function BlogArticle() {
               <span className="text-amber-400">Suddeco AI</span>?
             </h2>
             <p className="text-slate-400 max-w-xl mx-auto mb-8">
-              Experience the future of construction estimation. Upload your
-              drawings and get a costed scope of works in minutes.
+              Bring your project brief and drawing revisions to a professional
+              demo. Discuss how you review quantities, scope and assumptions
+              before relying on an estimate.
             </p>
             <a href="/demo/pro?utm_source=blog&utm_campaign=always_on">
               <Button className="bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold px-8 py-3 text-base shadow-lg shadow-amber-500/20">
