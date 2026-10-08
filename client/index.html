@@ -49,34 +49,8 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <!-- Meta Pixel -->
-    <script>
-      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init','966453266001638');
-      fbq('track','PageView');
-    </script>
-    <!-- End Meta Pixel -->
-    <!-- First-party visit count: no cookie, no storage, sent to our own server (my.suddeco.com/api/public/funnel). -->
-    <script>
-      (function () {
-        try {
-          var q = new URLSearchParams(location.search);
-          var body = JSON.stringify({
-            step: "landing",
-            utm_source: q.get("utm_source") || undefined,
-            utm_medium: q.get("utm_medium") || undefined,
-            utm_campaign: q.get("utm_campaign") || undefined,
-            path: location.pathname,
-          });
-          if (navigator.sendBeacon) {
-            navigator.sendBeacon(
-              "https://my.suddeco.com/api/public/funnel",
-              new Blob([body], { type: "text/plain" })
-            );
-          }
-        } catch (e) {}
-      })();
-    </script>
+    <!-- Optional analytics starts only after an explicit cookie choice. -->
+    <script type="module" src="/src/lib/consentedAnalytics.ts"></script>
   </head>
 
   <body>

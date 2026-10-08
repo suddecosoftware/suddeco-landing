@@ -1,3 +1,5 @@
+import { getCookieConsent } from "./consentedAnalytics";
+
 /*
  * DISABLED 4 Oct 2026 (security/privacy audit). This module posted every page view
  * to a hosted function that no longer exists, set a persistent tracking cookie
@@ -29,10 +31,15 @@ function createVisitorId(): string {
 }
 
 export function getVisitorId(): string {
-  const existing = readCookie(VISITOR_COOKIE);
-  if (existing) return existing;
   const next = createVisitorId();
-  writeCookie(VISITOR_COOKIE, next);
+  if (typeof window === "undefined" || getCookieConsent(window) !== "accepted") return next;
+  try {
+    const existing = readCookie(VISITOR_COOKIE);
+    if (existing) return existing;
+    writeCookie(VISITOR_COOKIE, next);
+  } catch {
+    // Restricted cookies must not prevent a demo request from being submitted.
+  }
   return next;
 }
 

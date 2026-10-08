@@ -34,7 +34,7 @@ export default function Privacy() {
               Privacy Policy
             </h1>
             <p className="text-slate-400 text-lg">
-              Last updated: 1 October 2026
+              Last updated: 8 October 2026
             </p>
             <div className="mt-6 p-4 rounded-lg border border-amber-500/20 bg-amber-500/5">
               <p className="text-slate-300 text-sm leading-relaxed">
@@ -130,7 +130,7 @@ export default function Privacy() {
                     <tr className="border-b border-slate-800"><td className="py-3 px-4">Responding to contact form enquiries</td><td className="py-3 px-4">Legitimate interests (Article 6(1)(f))</td></tr>
                     <tr className="border-b border-slate-800"><td className="py-3 px-4">Sending service-related communications</td><td className="py-3 px-4">Performance of a contract (Article 6(1)(b))</td></tr>
                     <tr className="border-b border-slate-800"><td className="py-3 px-4">Sending marketing communications</td><td className="py-3 px-4">Consent (Article 6(1)(a))</td></tr>
-                    <tr className="border-b border-slate-800"><td className="py-3 px-4">Analytics and service improvement</td><td className="py-3 px-4">Legitimate interests (Article 6(1)(f))</td></tr>
+                    <tr className="border-b border-slate-800"><td className="py-3 px-4">Optional website analytics and advertising measurement</td><td className="py-3 px-4">Consent (Article 6(1)(a))</td></tr>
                     <tr className="border-b border-slate-800"><td className="py-3 px-4">Security and fraud prevention</td><td className="py-3 px-4">Legitimate interests (Article 6(1)(f))</td></tr>
                     <tr className="border-b border-slate-800"><td className="py-3 px-4">Compliance with legal obligations</td><td className="py-3 px-4">Legal obligation (Article 6(1)(c))</td></tr>
                   </tbody>
@@ -310,7 +310,7 @@ export default function Privacy() {
                 10.2. <strong className="text-white">Managing Cookies.</strong> You can control and manage cookies through your browser settings. Most browsers allow you to refuse or delete cookies. Please note that disabling certain cookies may affect the functionality of the Platform.
               </p>
               <p className="text-slate-300 leading-relaxed">
-                10.3. We do not use third-party advertising cookies or tracking pixels for targeted advertising purposes.
+                10.3. On suddeco.com, optional analytics and advertising measurement start only after you choose Accept All in the cookie banner. Essential Only or closing the banner leaves optional tracking off. See our <a href="/cookie-policy" className="text-amber-400 hover:text-amber-300 underline">Cookie Policy</a> for the information collected and how to change your choice.
               </p>
             </section>
 

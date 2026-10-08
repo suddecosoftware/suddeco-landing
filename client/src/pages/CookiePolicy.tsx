@@ -20,8 +20,14 @@ const storageRows = [
   {
     name: "suddeco_visitor",
     type: "Cookie",
-    purpose: "Created when you submit a demo form, so the demo request can be linked to the same browser session.",
+    purpose: "With Accept All selected, created when you submit a demo form to link the request to the same browser. Without optional consent, the form uses a temporary request identifier without creating this cookie.",
     duration: "Up to 180 days.",
+  },
+  {
+    name: "Optional advertising measurement",
+    type: "Cookies and page-view events",
+    purpose: "Enabled only after Accept All to measure visits and advertising performance.",
+    duration: "Cookie expiry varies; inspect or remove these cookies in your browser settings.",
   },
   {
     name: "suddeco_demo_registrations",
@@ -58,7 +64,7 @@ export default function CookiePolicy() {
             <h1 className="text-4xl lg:text-5xl font-extrabold text-white mb-4">
               Cookie Policy
             </h1>
-            <p className="text-slate-400 text-lg">Last updated: 4 October 2026</p>
+            <p className="text-slate-400 text-lg">Last updated: 8 October 2026</p>
           </div>
 
           <div className="space-y-8">
@@ -67,7 +73,7 @@ export default function CookiePolicy() {
                 What This Site Uses
               </h2>
               <p className="text-slate-300 leading-relaxed">
-                This policy covers cookies and browser storage used on suddeco.com. We use essential storage to remember your choices and support submitted demo requests. We do not use advertising cookies on this site.
+                This policy covers cookies and browser storage used on suddeco.com. Essential storage remembers your choices and supports submitted demo requests. Optional analytics and advertising measurement start only after you choose Accept All. Choosing Essential Only or closing the banner leaves optional tracking off.
               </p>
             </section>
 
@@ -104,7 +110,7 @@ export default function CookiePolicy() {
                 Analytics and Tracking
               </h2>
               <p className="text-slate-300 leading-relaxed">
-                Website page-view tracking is currently disabled on suddeco.com. The demo form stores the information you submit and creates a visitor cookie only when you submit the form.
+                If you choose Accept All, we measure page visits and advertising performance. Our own visit event includes the page path and campaign source, medium and campaign name from the link; it does not include the full query string or demo form fields. An optional advertising script also receives a page-view event and may use cookies. We do not capture email addresses as you type. The demo form sends the details you explicitly submit whether or not you accept optional tracking.
               </p>
             </section>
 
