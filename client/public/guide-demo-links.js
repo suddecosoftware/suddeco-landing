@@ -36,6 +36,23 @@
       }
     }
 
+    // The legacy footer still links to comparison routes that return 404.
+    // Retain the same column and link styling, and expose published guides.
+    const footerGuides = [
+      ["planswift", "bill-of-quantities-explained", "Bill of quantities"],
+      ["bluebeam", "building-quote-template", "Building quote template"],
+      ["magicplan", "construction-takeoff-software-guide", "Takeoff guide"],
+      ["kreo", "scope-of-works-template", "Scope of works template"],
+    ];
+    footerGuides.forEach(([previous, slug, label]) => {
+      document.querySelectorAll(`footer a[href="/compare/${previous}-alternative"]`).forEach((link) => {
+        link.setAttribute("href", `/blog/${slug}`);
+        link.textContent = label;
+      });
+    });
+    const footerHeading = document.querySelector('footer h4[data-loc="client/src/components/Footer.tsx:208"]');
+    if (footerHeading?.textContent === "Compare") footerHeading.textContent = "Guides";
+
     // Two guides linked to this legacy Article Not Found destination.
     const estimatingDestination = guide === "construction-estimating-software-buyers-guide"
       ? "/blog/ai-construction-estimating-software-uk"
