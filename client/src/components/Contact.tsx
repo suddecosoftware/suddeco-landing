@@ -1,14 +1,14 @@
 /**
  * Contact: Contact form with name, email, phone (required), company (optional), message
  * Design: Forge & Build — glass card form with amber accents
- * Submits to tRPC backend → stores in DB + notifies owner
+ * Submits to the dedicated marketing enquiry handler; retains an email fallback.
  */
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Send, Phone, Mail, MapPin, ArrowUpRight, CheckCircle } from "lucide-react";
 import { toast } from "sonner";
-import { trpc } from "@/lib/trpc";
+import { useMutation } from "@tanstack/react-query";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -20,10 +20,34 @@ export default function Contact() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const request = useRef<{ fingerprint: string; id: string } | null>(null);
 
-  const submitMutation = trpc.contact.submit.useMutation({
+  const submitMutation = useMutation({
+    mutationFn: async (fields: typeof formData) => {
+      const fingerprint = JSON.stringify(fields);
+      if (request.current?.fingerprint !== fingerprint) {
+        request.current = { fingerprint, id: crypto.randomUUID() };
+      }
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        signal: AbortSignal.timeout(30000),
+        body: JSON.stringify({
+          requestId: request.current.id,
+          fullName: fields.name, email: fields.email, phone: fields.phone,
+          company: fields.company, message: fields.message,
+        }),
+      });
+      const data = await response.json();
+      if (!response.ok || data.ok !== true || data.reference !== request.current.id) {
+        throw new Error("Enquiry not confirmed");
+      }
+      return data as { message: string };
+    },
+    retry: false,
     onSuccess: (data) => {
       toast.success(data.message);
+      request.current = null;
       setErrorMessage(null);
       setFormData({ name: "", email: "", phone: "", company: "", message: "" });
       setSubmitted(true);
@@ -39,13 +63,7 @@ export default function Contact() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage(null);
-    submitMutation.mutate({
-      fullName: formData.name,
-      email: formData.email,
-      phone: formData.phone || undefined,
-      company: formData.company || undefined,
-      message: formData.message,
-    });
+    submitMutation.mutate({ ...formData });
   };
 
   return (
@@ -127,7 +145,7 @@ export default function Contact() {
                   <CheckCircle className="w-8 h-8 text-emerald-400" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-2" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                  Message Sent Successfully!
+                  Thank You for Your Enquiry
                 </h3>
                 <p className="text-slate-400">
                   Thank you for reaching out. Our team will review your enquiry and get back to you.
@@ -168,6 +186,8 @@ export default function Contact() {
                       type="text"
                       required
                       minLength={2}
+                      maxLength={120}
+                      disabled={submitMutation.isPending}
                       value={formData.name}
                       onChange={(e) =>
                         setFormData({ ...formData, name: e.target.value })
@@ -188,6 +208,8 @@ export default function Contact() {
                       id="email"
                       type="email"
                       required
+                      maxLength={254}
+                      disabled={submitMutation.isPending}
                       value={formData.email}
                       onChange={(e) =>
                         setFormData({ ...formData, email: e.target.value })
@@ -213,6 +235,9 @@ export default function Contact() {
                       required
                       inputMode="tel"
                       autoComplete="tel"
+                      minLength={3}
+                      maxLength={50}
+                      disabled={submitMutation.isPending}
                       value={formData.phone}
                       onChange={(e) =>
                         setFormData({ ...formData, phone: e.target.value })
@@ -232,6 +257,8 @@ export default function Contact() {
                     <input
                       id="company"
                       type="text"
+                      maxLength={160}
+                      disabled={submitMutation.isPending}
                       value={formData.company}
                       onChange={(e) =>
                         setFormData({ ...formData, company: e.target.value })
@@ -253,6 +280,8 @@ export default function Contact() {
                     id="message"
                     required
                     minLength={10}
+                    maxLength={8000}
+                    disabled={submitMutation.isPending}
                     rows={4}
                     value={formData.message}
                     onChange={(e) =>
