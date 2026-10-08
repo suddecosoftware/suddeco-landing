@@ -19,9 +19,9 @@ const socialLinks = [
 ];
 
 const quickLinks = [
-  { label: "Features", href: "#features" },
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "Pricing", href: "#pricing" },
+  { label: "Features", href: "/#features" },
+  { label: "How It Works", href: "/#how-it-works" },
+  { label: "Pricing", href: "/#pricing" },
   // Plain links to the product pages so search engines (and visitors) can reach them.
   { label: "Takeoff Software", href: "/takeoff-software" },
   { label: "Estimating Software", href: "/construction-estimating-software" },
@@ -29,8 +29,8 @@ const quickLinks = [
   { label: "Tender & Bid Software", href: "/tender-bid-software" },
   { label: "Pro Demo", href: "/demo/pro" },
   { label: "Homeowner Demo", href: "/demo/homeowner" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Contact", href: "#contact" },
+  { label: "FAQ", href: "/#faq" },
+  { label: "Contact", href: "/#contact" },
   { label: "About Us", href: "/about" },
   { label: "Blog", href: "/blog" },
 ];
@@ -62,7 +62,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Company info */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <a href="#" className="inline-block mb-4">
+            <a href="/" className="inline-block mb-4">
               <img
                 src={LOGO_URL}
                 alt="Suddeco"

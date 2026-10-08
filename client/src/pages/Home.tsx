@@ -3,6 +3,7 @@
  * Design: Forge & Build — Bold Construction Authority
  * Dark professional theme with amber/gold accents
  */
+import { useEffect } from "react";
 import TopBar from "@/components/TopBar";
 import Navbar from "@/components/Navbar";
 import AppDownloadBar from "@/components/AppDownloadBar";
@@ -23,6 +24,22 @@ import Footer from "@/components/Footer";
 import StructuredData from "@/components/StructuredData";
 
 export default function Home() {
+  useEffect(() => {
+    // Cross-page fragment navigation can arrive before React renders the section.
+    const scrollToSection = () => {
+      const sectionId = window.location.hash.slice(1);
+      if (!["features", "how-it-works", "why-suddeco", "pricing", "faq", "contact"].includes(sectionId)) return;
+      const section = document.getElementById(sectionId);
+      if (section) window.scrollTo({ top: section.getBoundingClientRect().top + window.scrollY - 96, behavior: "instant" });
+    };
+    const frame = window.requestAnimationFrame(scrollToSection);
+    window.addEventListener("hashchange", scrollToSection);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("hashchange", scrollToSection);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#0F172A] text-slate-100">
       <StructuredData type="organization" />
