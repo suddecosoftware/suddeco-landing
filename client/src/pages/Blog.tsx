@@ -12,6 +12,9 @@ import TopBar from "@/components/TopBar";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { blogArticles, BLOG_CATEGORIES } from "@/data/blogArticles";
+import { staticBlogGuides, type BlogListingEntry } from "@/data/staticBlogGuides";
+
+const allArticles: BlogListingEntry[] = [...blogArticles, ...staticBlogGuides];
 
 function formatDate(dateStr: string) {
   return new Date(dateStr).toLocaleDateString("en-GB", {
@@ -26,8 +29,8 @@ export default function Blog() {
 
   const filtered =
     activeCategory === "All"
-      ? blogArticles
-      : blogArticles.filter((a) => a.category === activeCategory);
+      ? allArticles
+      : allArticles.filter((a) => a.category === activeCategory);
 
   return (
     <div className="min-h-screen bg-[#0F172A] text-slate-100">
@@ -121,22 +124,32 @@ export default function Blog() {
 
                   <div className="p-6 flex flex-col flex-1">
                     {/* Meta */}
-                    <div className="flex items-center gap-4 text-xs text-slate-500 mb-3">
-                      <span className="flex items-center gap-1">
-                        <Calendar className="w-3.5 h-3.5" />
-                        {formatDate(article.publishDate)}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Clock className="w-3.5 h-3.5" />
-                        {article.readTime}
-                      </span>
-                    </div>
+                    {(article.publishDate || article.readTime) && (
+                      <div className="flex items-center gap-4 text-xs text-slate-500 mb-3">
+                        {article.publishDate && (
+                          <span className="flex items-center gap-1">
+                            <Calendar className="w-3.5 h-3.5" />
+                            {formatDate(article.publishDate)}
+                          </span>
+                        )}
+                        {article.readTime && (
+                          <span className="flex items-center gap-1">
+                            <Clock className="w-3.5 h-3.5" />
+                            {article.readTime}
+                          </span>
+                        )}
+                      </div>
+                    )}
 
                     {/* Title */}
                     <h2 className="text-xl font-bold mb-3 group-hover:text-amber-400 transition-colors leading-tight">
-                      <Link href={`/blog/${article.slug}`}>
-                        {article.title}
-                      </Link>
+                      {article.staticPage ? (
+                        <a href={`/blog/${article.slug}`}>{article.title}</a>
+                      ) : (
+                        <Link href={`/blog/${article.slug}`}>
+                          {article.title}
+                        </Link>
+                      )}
                     </h2>
 
                     {/* Excerpt */}
@@ -145,15 +158,28 @@ export default function Blog() {
                     </p>
 
                     {/* Read more */}
-                    <Link href={`/blog/${article.slug}`}>
+                    {article.staticPage ? (
                       <Button
+                        asChild
                         variant="ghost"
-                        className="text-amber-400 hover:text-amber-300 hover:bg-amber-500/10 p-0 h-auto font-medium group/btn"
+                        className="self-start text-amber-400 hover:text-amber-300 hover:bg-amber-500/10 p-0 h-auto font-medium group/btn"
                       >
-                        Read Article
-                        <ArrowRight className="w-4 h-4 ml-1 transition-transform group-hover/btn:translate-x-1" />
+                        <a href={`/blog/${article.slug}`}>
+                          Read Article
+                          <ArrowRight className="w-4 h-4 ml-1 transition-transform group-hover/btn:translate-x-1" />
+                        </a>
                       </Button>
-                    </Link>
+                    ) : (
+                      <Link href={`/blog/${article.slug}`}>
+                        <Button
+                          variant="ghost"
+                          className="text-amber-400 hover:text-amber-300 hover:bg-amber-500/10 p-0 h-auto font-medium group/btn"
+                        >
+                          Read Article
+                          <ArrowRight className="w-4 h-4 ml-1 transition-transform group-hover/btn:translate-x-1" />
+                        </Button>
+                      </Link>
+                    )}
                   </div>
                 </motion.article>
               ))}
