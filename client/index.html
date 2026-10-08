@@ -56,6 +56,27 @@
       fbq('track','PageView');
     </script>
     <!-- End Meta Pixel -->
+    <!-- First-party visit count: no cookie, no storage, sent to our own server (my.suddeco.com/api/public/funnel). -->
+    <script>
+      (function () {
+        try {
+          var q = new URLSearchParams(location.search);
+          var body = JSON.stringify({
+            step: "landing",
+            utm_source: q.get("utm_source") || undefined,
+            utm_medium: q.get("utm_medium") || undefined,
+            utm_campaign: q.get("utm_campaign") || undefined,
+            path: location.pathname,
+          });
+          if (navigator.sendBeacon) {
+            navigator.sendBeacon(
+              "https://my.suddeco.com/api/public/funnel",
+              new Blob([body], { type: "text/plain" })
+            );
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
 
   <body>
