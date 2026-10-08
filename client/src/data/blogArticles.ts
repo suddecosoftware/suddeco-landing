@@ -29,6 +29,47 @@ export const BLOG_CATEGORIES = [
 
 export const blogArticles: BlogArticle[] = [
   {
+  "slug": "understanding-nrm1-guide-for-contractors",
+  "title": "NRM 1: A Practical Guide for UK Contractors",
+  "excerpt": "Understand how NRM 1 structures early estimates and cost plans, how it differs from NRM 2, and what to check before pricing a project.",
+  "category": "Industry Standards",
+  "author": "Suddeco Team",
+  "authorRole": "Construction Technology Insights",
+  "publishDate": "2026-10-08",
+  "readTime": "5 min read",
+  "coverGradient": "from-amber-600/20 to-orange-600/20",
+  "metaDescription": "A practical UK guide to NRM 1 cost planning, NRM 2 measurement, project allowances and checks before preparing a construction estimate.",
+  "tags": [
+    "Cost Planning",
+    "Estimation",
+    "NRM 1"
+  ],
+  "content": [
+    "NRM 1 provides a common structure for early construction estimates and cost plans. It helps a project team explain what an estimate covers, how costs are grouped and which assumptions still need checking. It is a measurement and cost-management framework; using its headings alone does not prove that a price is complete or correct.",
+    "<strong>What NRM 1 is used for</strong>",
+    "NRM 1 covers order-of-cost estimating and cost planning for capital building works. Early estimates may use floor areas and comparable project information. As drawings and specifications develop, the cost plan can become more detailed, with quantities and allowances allocated to building elements.",
+    "The useful output is more than a total. The client should be able to see the design basis, measurement basis, pricing date, exclusions and allowances. An estimate based on outline information should be presented with that limitation, rather than as a fixed contractor quotation.",
+    "<strong>NRM 1 and NRM 2 do different jobs</strong>",
+    "NRM 2 deals with detailed measurement for building works. It is the relevant part of the suite when preparing detailed measured descriptions and bills of quantities. NRM 3 addresses estimating and cost planning for building maintenance works.",
+    "A cost plan and a bill of quantities may describe the same project at different levels of detail. Before starting, agree the required document, the design information available and the measurement rules to use. Do not assume that an elemental cost plan can replace a fully measured tender document.",
+    "<strong>A practical cost-planning workflow</strong>",
+    "1. Record the brief and design stage. Identify the drawings, specification and revisions used. State the proposed building use, location and programme assumptions that affect the estimate.",
+    "2. Measure the relevant areas or quantities consistently. Keep a record of the measurement method and any incomplete information. Check units before applying rates: square metres, metres and individual items are not interchangeable.",
+    "3. Build the cost structure. Separate the building elements and explain how preliminaries, overheads and profit, professional fees, other project costs and risk allowances are treated. Make tax assumptions explicit and obtain project-specific advice where the treatment is uncertain.",
+    "4. Check rates and allowances. Record the source and date of rates, what each rate includes and whether location, specification or programme adjustments are needed. A historic rate should not be presented as a current supplier or subcontractor quotation.",
+    "5. Review the total with the project team. Check for missing scope, overlaps and double counting. Identify which allowances need further design information, investigation or quotations before they can be firmed up.",
+    "<strong>Example: pricing an extension</strong>",
+    "For a residential extension, the team might initially group costs under substructure, superstructure, finishes and services. The estimate also needs a clear treatment of site setup, access, temporary works, connections and making good to the existing building, where applicable.",
+    "If the foundation design or drainage route is unknown, explain the assumption and associated allowance. A single cost-per-square-metre figure cannot establish the final price for those conditions. Update the cost plan when surveys, design decisions and quotations become available.",
+    "<strong>Checks before issuing an estimate</strong>",
+    "Check that every quantity has a unit, the drawings are the agreed revision and the specification matches the rates. Explain exclusions, provisional allowances, risk, inflation and VAT treatment. Distinguish the works estimate from the wider project budget, and identify who has reviewed the document.",
+    "Keep an audit trail for changes. When a client changes the layout or finish, record the revision and explain its cost effect. This makes comparisons between versions more useful than silently replacing the previous total.",
+    "<strong>Where software can help</strong>",
+    "Software can help organise drawings, quantities, scope and revisions. It still needs a person to check measurement, classification, rates and completeness against the project brief. No software output should be treated as independently verified solely because it uses NRM headings.",
+    "Explore <a href=\"/construction-estimating-software\">construction estimating software</a> or read our <a href=\"/blog/bill-of-quantities-explained\">bill of quantities guide</a>. To discuss the workflow for your business, <a href=\"/demo/pro\">see the professional demo</a>. Homeowners planning building work can visit <a href=\"https://suddecohomes.com/how-it-works.html\">Suddeco Homes</a>."
+  ]
+},
+  {
     slug: "ai-transforming-construction-estimation",
     title: "How AI Is Transforming Construction Estimation in 2026",
     excerpt:
