@@ -8,7 +8,7 @@ Type=simple
 DynamicUser=yes
 EnvironmentFile=/opt/suddeco/env/landing-contact.env
 Environment=CONTACT_STATE_DIR=/var/lib/suddeco-contact
-ExecStart=/usr/bin/node /opt/suddeco/landing/contact-service/contact-service.mjs
+ExecStart=/usr/bin/node /usr/local/lib/suddeco-contact/contact-service.mjs
 Restart=on-failure
 RestartSec=5
 StateDirectory=suddeco-contact
