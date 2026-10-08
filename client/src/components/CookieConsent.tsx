@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import { X, Cookie } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const COOKIE_CONSENT_KEY = "suddeco_cookie_consent";
+import { getCookieConsent, saveCookieConsent } from "@/lib/consentedAnalytics";
 
 export default function CookieConsent() {
   const [visible, setVisible] = useState(false);
@@ -15,7 +15,7 @@ export default function CookieConsent() {
   useEffect(() => {
     // Small delay so it doesn't flash on page load
     const timer = setTimeout(() => {
-      const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
+      const consent = getCookieConsent();
       if (!consent) {
         setVisible(true);
       }
@@ -24,12 +24,12 @@ export default function CookieConsent() {
   }, []);
 
   const acceptAll = () => {
-    localStorage.setItem(COOKIE_CONSENT_KEY, "accepted");
+    saveCookieConsent("accepted");
     setVisible(false);
   };
 
   const acceptEssential = () => {
-    localStorage.setItem(COOKIE_CONSENT_KEY, "essential");
+    saveCookieConsent("essential");
     setVisible(false);
   };
 
@@ -60,7 +60,7 @@ export default function CookieConsent() {
                     We value your privacy
                   </h3>
                   <p className="mb-3 text-xs leading-snug text-slate-400 sm:mb-4 sm:text-sm sm:leading-relaxed" style={{ fontFamily: "'Outfit', sans-serif" }}>
-                    We use cookies to enhance your browsing experience, provide essential functionality, and analyse site usage. You can choose to accept all cookies or only essential ones.{" "}
+                    We use essential cookies and storage to remember your choices and support the site. With your permission, we also measure site visits and advertising performance. Choose Accept All to enable optional tracking, or Essential Only to leave it off.{" "}
                     <a
                       href="/cookie-policy"
                       className="text-amber-400 hover:text-amber-300 underline underline-offset-2 transition-colors"
